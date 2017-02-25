@@ -6,15 +6,18 @@ import json
 app = Flask(__name__)
 
 # initialize extensions
-extensions = [f for f in listdir(join(getcwd(), 'extensions')) if not isfile(join(getcwd(), 'extensions', f))]
+print listdir('static/scripts/extensions')
+extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
 
 def get_extensions():
     html_inject = ""
     for extension in extensions:
-        if "config.json" in listdir(join(getcwd(), 'extensions', extension)):
-            config_text = open(join(getcwd(), 'extensions', extension, 'config.json')).read()
+        if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
+            config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
             config_json = json.loads(config_text)
-            html_inject += "<p>"+config_json["name"]+"</p>"
+            script = open(join('static', 'scripts', 'extensions', extension, extension+".js")).read()
+            html_inject += "<script>"+script+"</script>\n"
+            html_inject += "<a onclick='"+str(config_json["function"])+"()'>"+str(config_json["name"])+"</a>\n"
     return html_inject
 
 # endpoints
