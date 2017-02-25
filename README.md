@@ -4,10 +4,11 @@ Legal advice web service
 ## Setup
 To install dependencies,
 ```
-npm install
+pip install flask
+pip install PyPDF2
 ```
 To run,
 ```
-npm start
+python app.py
 ```
-Go to 127.0.0.1:3000
+Go to 127.0.0.1:5000

@@ -13,19 +13,22 @@
     <title>Pro Bono Fide</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./css/cover.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
+    <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
 
-    <script src = "./dropzone-4.3.0/dist/dropzone.js"></script>
-    <link rel="stylesheet" href="./dropzone-4.3.0/dist/dropzone.css">
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
 
   </head>
 
@@ -42,17 +45,21 @@
               <h3 class="masthead-brand">Pro Bono Fide</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="#">Cases</a></li>
-                  <li><a href="features.html">Features</a></li>
-                  <li><a href="aboutus.html">About Us</a></li>
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="cases">Cases</a></li>
+                  <li><a href="features">Features</a></li>
+                  <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
-            <form action="/upload-target" class="dropzone"></form>
+            <h1 class="cover-heading">Share legal representation to eligible clients effectively with strong defenses.</h1>
+            <p class="lead">The mission of Pro Bono Fide is to assist in the assembly of pro-bono defense cases by analyzing previous trends in similar case files.</p>
+            <p class="lead">
+              <a href="features" class="btn btn-lg btn-default">Learn more</a>
+            </p>
           </div>
 
           <div class="mastfoot">
@@ -66,13 +73,6 @@
       </div>
 
     </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
 
   </body>
 </html>

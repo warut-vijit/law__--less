@@ -13,16 +13,23 @@
     <title>Pro Bono Fide</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./css/cover.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
-    <script src="./js/ie-emulation-modes-warning.js"></script>
+    <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+
 
   </head>
 
@@ -39,10 +46,10 @@
               <h3 class="masthead-brand">Pro Bono Fide</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="cases.html">Cases</a></li>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="cases">Cases</a></li>
                   <li class="active"><a href="#">Features</a></li>
-                  <li><a href="aboutus.html">About Us</a></li>
+                  <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
             </div>
@@ -67,13 +74,5 @@
       </div>
 
     </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
-
   </body>
 </html>
