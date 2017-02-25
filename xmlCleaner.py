@@ -1,5 +1,4 @@
 import os
-
 # function removes ampersand and replaces misformated
 
 def cleaner(filename):
