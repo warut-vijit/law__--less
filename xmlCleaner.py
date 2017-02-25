@@ -8,20 +8,20 @@ def cleaner(filename):
 
     output = filename[:-4] + 'b' + '.xml'
     with open(filename) as xml:
-        with open(output, 'a+') as output:
+        with open(output, 'w+') as output:
             for line in xml:
 
                 # iterates line by line through the xml and removes ampersands/errors
 
                 line = line.replace('\"id=', 'id=\"')
                 line = line.replace('&', '')
+                line = line.replace('\n', '')
                 output.write(line)
 
 
-fileDir = input("Input path to files to be cleaned: ")
-for filename in os.listdir(fileDir):
+for filename in os.listdir(os.getcwd()): # searches through all files in working directory
 
-    # ignores its own file
+    # ignores its own file name
 
     if filename == 'xmlCleaner.py':
         pass
