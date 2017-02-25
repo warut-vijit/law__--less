@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="legal advice web services for pro-bono cases">
+    <meta name="author" content="Warut, Kabir, Nathan, Chiranth, Naveed, Owen">
 
     <title>law --less</title>
 
@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
+
+    <!-- Custom Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -54,29 +57,38 @@
           </div>
 
           <div class="inner cover">
-            <h3 class="cover-heading"><b>Warut Vijit</b></h3>
-            <p class="lead">University of Illinois, Computer Engineering</p>
-            <img src="https://avatars3.githubusercontent.com/u/22158205?v=3&s=460" alt="Warut Vijit" class-"image">
-            <h3 class="cover-heading"><b>Kabir Manghnani</b></h3>
-            <p class="lead">University of Illinois, Computer Science</p>
-            <img src="https://scontent.xx.fbcdn.net/v/t31.0-8/s960x960/10511636_690260944414156_942007579649707411_o.jpg?oh=65c942bd1e1498c26f432199009aa5a7&oe=5947CFAE" alt="Kabir Manghnani" class-"image">
-            <h3 class="cover-heading"><b>Nathan Narasimhan</b></h3>
-            <p class="lead">University of Illinois, Computer Engineering</p>
-            <img src="https://avatars3.githubusercontent.com/u/18367556?v=3&s=400" alt="Nathan Narasimhan" class-"image">
-            <h3 class="cover-heading"><b>Chiranth Kishore</b></h3>
-            <p class="lead">Purdue University, Mechanical Engineering</p>
-            <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13413021_1038504382884119_7137633169045242603_n.jpg?oh=bdcaa2219c39b1702dd5543efc6c5891&oe=592ADE2A" alt="Chiranth Kishore" class-"image">
-            <h3 class="cover-heading"><b>Naveed Riaziat</b></h3>
-            <p class="lead">Purdue University, Mechanical Engineering</p>
-            <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/10989146_940107572680068_8527883772940941597_n.jpg?oh=7ce075ca3e19f06434f3e2ca44ab8cd5&oe=5944BB0B" alt="Naveed Riaziat" class-"image">
-            <h3 class="cover-heading"><b>Owen Li</b></h3>
-            <p class="lead">Purdue University, Mechanical Engineering</p>
-            <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13620854_10206873603984253_6818444876586287992_n.jpg?oh=717fa4f51425dc1c9affa0c3c4f1a014&oe=593D41A9" alt="Owen Li" class-"image">
+            <div id ="images">
+              <br>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13413021_1038504382884119_7137633169045242603_n.jpg?oh=bdcaa2219c39b1702dd5543efc6c5891&oe=592ADE2A" class="img-responsive img-circle" style="width:100%;height:200px" alt="Chiranth Kishore">
+                <br><h4><b>Chiranth Kishore</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h4>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://scontent.xx.fbcdn.net/v/t31.0-8/s960x960/10511636_690260944414156_942007579649707411_o.jpg?oh=65c942bd1e1498c26f432199009aa5a7&oe=5947CFAE" class="img-responsive img-circle" style="width:100%;height:200px" alt="Kabir Manghnani">
+                <br><h4><b>Kabir Manghnani</b><br><i>University of Illinois</i><br><small>Computer Science</small></h4>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/1383417_875157205841772_5949934962040020322_n.jpg?oh=9c1d9aaac6cd7fb74227d555a7a104a4&oe=594283B6" class="img-responsive img-circle" style="width:100%;height:200px" alt="Naveed Riaziat">
+                <br><h4><b>Naveed Riaziat</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h4>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://avatars3.githubusercontent.com/u/18367556?v=3&s=400" class="img-responsive img-circle" style="width:100%;height:200px" alt="Nathan Narasimhan">
+                <br><h4><b>Nathan Narasimhan</b><br><i>University of Illinois</i><br><small>Computer Engineering</small></h4>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.0-9/13255945_10206444236970346_579042169390603954_n.jpg?oh=f6d1ac29acc14b0951fa06d49b64839b&oe=592554D6" class="img-responsive img-circle" style="width:100%;height:200px" alt="width:100%;height:40%">
+                <br><h4><b>Owen Li</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h4>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="https://avatars3.githubusercontent.com/u/22158205?v=3&s=460" class="img-responsive img-circle" style="width:100%;height:200px" alt="Warut Vijit">
+                <br><h4><b>Warut Vijit</b><br><i>University of Illinois</i><br><small>Computer Engineering</small></h4>
+              </div>
+            </div>
           </div>
 
           <div class="mastfoot">
             <div class="inner">
-              <p>legal advice web services | <a href="http://devpost.com">law --less</a> | by Duke, Kabir, Nathan, Chiranth, Naveed, Owen</p>
+              <p>legal advice web services | <a href="http://devpost.com">law --less</a> | by Warut, Kabir, Nathan, Chiranth, Naveed, Owen</p>
             </div>
           </div>
 
