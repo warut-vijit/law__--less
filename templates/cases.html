@@ -35,7 +35,7 @@
 
     <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.css')}}">
-
+    
   </head>
 
   <body>
@@ -62,6 +62,7 @@
 
           <div class="inner cover">
             <form action="/upload-target" class="dropzone"></form>
+            <div>{{extensions|safe}}</div>
           </div>
 
           <div class="mastfoot">
