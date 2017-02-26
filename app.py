@@ -61,6 +61,10 @@ def cases():
 def features():
     return render_template("features.html")
 
+@app.route('/contribute',methods=['GET'])
+def contribute():
+    return render_template("contribute.html")
+
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     return render_template("aboutus.html")
