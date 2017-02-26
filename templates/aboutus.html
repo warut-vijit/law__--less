@@ -20,8 +20,10 @@
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
 
-    <!-- Custom Google Font -->
+    <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -34,7 +36,7 @@
 
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.jpg')}}">
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
 
     <div class="site-wrapper">
 
@@ -44,7 +46,9 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">law --less</h3>
+              <a href="/">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" style="float:left;margin-top: -10px">
+              </a>
               <nav>
                 <ul class="nav masthead-nav">
                   <li><a href="/">Home</a></li>
@@ -58,15 +62,18 @@
 
           <div class="inner cover">
               <br><br>
-
+            <div id ="images">
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Chiranth.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Chiranth Kishore">
+                <a href="https://github.com/Chiranth7954">
+                <img src="{{url_for('static', filename='icons/Chiranth.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Chiranth Kishore"></a>
               </div>
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Kabir.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Kabir Manghnani">
+                <a href="https://github.com/cabosanlucas">
+                <img src="{{url_for('static', filename='icons/Kabir.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Kabir Manghnani"></a>
               </div>
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Naveed.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Naveed Riaziat">
+                <a href="https://github.com/nriaziat">
+                <img src="{{url_for('static', filename='icons/Naveed.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Naveed Riaziat"></a>
               </div>
 
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
@@ -85,13 +92,16 @@
               </div>
 
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Nathan.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Chiranth Kishore">
+                <a href="https://github.com/NAN1248">
+                <img src="{{url_for('static', filename='icons/Nathan.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Nathan Narasimhan"></a>
               </div>
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Owen.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Kabir Manghnani">
+                <a href="https://github.com/owenli10">
+                <img src="{{url_for('static', filename='icons/Owen.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Owen Li"></a>
               </div>
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <img src="{{url_for('static', filename='icons/Warut.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Naveed Riaziat">
+                <a href="https://github.com/warut-vijit">
+                <img src="{{url_for('static', filename='icons/Warut.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Warut Vijit"></a>
               </div>
 
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
@@ -103,13 +113,20 @@
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
                 <br><h5><b>Warut Vijit</b><br><i>University of Illinois</i><br><small>Computer Engineering</small></h5>
               </div>
+            </div>
           </div>
 
           <div class="mastfoot">
             <div class="inner" style="padding-bottom:2.5%">
-              <p>legal advice web services | <a href="http://devpost.com">law --less</a> | by Warut, Kabir, Nathan, Chiranth, Naveed, Owen</p>
+              <p>legal advice web services |
+                <a href="http://devpost.com">law --less</a> | by
+                <a href="https://github.com/warut-vijit">Warut</a>,
+                <a href="https://github.com/cabosanlucas">Kabir</a>,
+                <a href="https://github.com/NAN1248">Nathan</a>,
+                <a href="https://github.com/Chiranth7954">Chiranth</a>,
+                <a href="https://github.com/nriaziat">Naveed</a>,
+                <a href="https://github.com/owenli10">Owen</a></p>
             </div>
-          </div>
 
         </div>
 

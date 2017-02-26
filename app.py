@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, url_for, redirect, jsonify
 from os import listdir,getcwd
 from os.path import isfile, join
 import json
+from pdf2txt import *
+from unigrams import calculate_unigrams
 
 app = Flask(__name__)
 
@@ -27,8 +29,18 @@ def home():
 
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
-    return str(type(request.files))
-
+    if request.method == "POST" :
+        file_key = request.files.keys()[0]
+        file_text = request.files[file_key] # of type FileStorage
+        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+        #keywords : dict k:v = words:floats
+        strings = calculate_unigrams(cleaned_string) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keywords)
+        out_file = open("output.txt", "w")
+        for string in strings:
+            out_file.write(string+".\n")
+        out_file.close() # persistent abstract
+        return "success"
+    
 @app.route('/diag',methods=['GET'])
 def diag():
     return jsonify(extensions)
@@ -46,4 +58,4 @@ def aboutus():
     return render_template("aboutus.html")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=80, debug=True)

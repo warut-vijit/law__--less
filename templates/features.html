@@ -20,8 +20,10 @@
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
 
-    <!-- Custom Google Font -->
+    <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -32,10 +34,9 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
 
-
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.jpg')}}">
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
 
     <div class="site-wrapper">
 
@@ -45,7 +46,9 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">law --less</h3>
+              <a href="/">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" style="float:left;margin-top: -10px">
+              </a>
               <nav>
                 <ul class="nav masthead-nav">
                   <li><a href="/">Home</a></li>
@@ -59,17 +62,27 @@
 
           <div class="inner cover">
 
-            <h2>1. Smart summarization algorithm.</h2>
-            <h2>2. Set desired summary length.</h2>
-            <h2>3. Completely open source.</h2>
+            <ul style="list-style-type:none;font-family: 'Lato', sans-serif">
+              <li><h2>> Minimal, simple user interface</h2></li>
+              <li><h2>> Elegant and modifiable summary algorithm</h2></li>
+              <li><h2>> Robustly handles server side requests</h2></li>
+              <li><h2>> Open source GUI contribute framework</h2></li>
+              <li><h2>> Diverse and versatile usecases</h2></li>
+            </ul>
 
           </div>
 
           <div class="mastfoot">
-            <div class="inner" style="padding-bottom:1%">
-              <p>legal advice web services | <a href="http://devpost.com">law --less</a> | by Warut, Kabir, Nathan, Chiranth, Naveed, Owen</p>
+            <div class="inner" style="padding-bottom:2.5%">
+              <p>legal advice web services |
+                <a href="http://devpost.com">law --less</a> | by
+                <a href="https://github.com/warut-vijit">Warut</a>,
+                <a href="https://github.com/cabosanlucas">Kabir</a>,
+                <a href="https://github.com/NAN1248">Nathan</a>,
+                <a href="https://github.com/Chiranth7954">Chiranth</a>,
+                <a href="https://github.com/nriaziat">Naveed</a>,
+                <a href="https://github.com/owenli10">Owen</a></p>
             </div>
-          </div>
 
         </div>
 
