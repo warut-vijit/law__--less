@@ -1,0 +1,37 @@
+div.extension-frame {
+    display:none;
+    height:30%;
+    width:100%;
+    min-height: 200px;
+    min-width: 200px;
+    box-shadow:4px 4px 7px black;
+    border: 1px solid black;
+    background-color: white;
+    bottom: 5%;
+}
+.black-text {
+    color: white;
+    border: 2px solid green;
+}
+.extension-close {
+<<<<<<< HEAD
+    color: black;
+}
+.extension-frame-title {
+    display:none;
+}
+=======
+    color: white;
+    position: absolute;
+    left: 320px;
+    bottom: 160px;
+    text-shadow:4px 4px 7px black;
+}
+.extension-frame-title {
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    left: 20px;
+    bottom: 175px;
+}
+>>>>>>> abeff8a98a1484bcb3e0595d7d6a34483c6349b3

@@ -36,6 +36,24 @@
     <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+    <script>
+      function get_key() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get-target');
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+          var DONE = 4; // readyState 4 means the request is done.
+          var OK = 200; // status 200 is a successful return.
+          if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+              console.log('Success: ' + xhr.responseText); // 'This is the returned text.'
+            } else {
+              console.log('Error: ' + xhr.status); // An error occurred during the request.
+            }
+          }
+        };
+      }
+    </script>
 
 
     <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
@@ -71,7 +89,7 @@
             <form action="/upload-target" class="dropzone black-text"></form>
             <div>{{extensions|safe}}</div>
             <div id="extensionFrame" class="extension-frame">
-              <b id="extensionFrameTitle" class="extension-frame-title"></b>
+              <p id="extensionFrameTitle" class="extension-frame-title"></p>
               <i class="material-icons extension-close" onclick="document.getElementById('extensionFrame').style.display='none';">clear</i>
             </div>
           </div>
