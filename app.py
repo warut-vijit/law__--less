@@ -3,8 +3,10 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
+import md5
 from pdf2txt import *
 from unigrams import calculate_unigrams
+from topic_analysis import *
 
 app = Flask(__name__)
 
@@ -34,7 +36,8 @@ def upload_target():
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        strings = calculate_unigrams(cleaned_string) # calculate most important sentences
+        keywords = get_top_n_words(cleaned_string , 5)
+        strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
         out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
         for string in strings:
             out_file.write(string+".")

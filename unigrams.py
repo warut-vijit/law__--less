@@ -1,6 +1,6 @@
 import math
 # where input is string
-def calculate_unigrams(input):
+def calculate_unigrams(input, keywords):
     sum = 0
     counts = {}
     lines = input.split(".")
@@ -10,7 +10,8 @@ def calculate_unigrams(input):
             counts[word.lower()] = 1 if word.lower() not in counts else counts[word.lower()]+1
     sum += len(counts.keys()) # laplacian smoothing
     for key in counts.keys():
-        counts[key] = math.log(float(counts[key]+1)/sum)
+        keyword_weight = 1.5 if key in [x[0].lower() for x in keywords] else 1.0
+        counts[key] = math.log(float(counts[key]+1)/sum*keyword_weight)
     unk = math.log(float(1)/sum)
     heap = []
     for line in lines:

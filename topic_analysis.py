@@ -25,7 +25,7 @@ def get_list_of_blocks(file_name):
 	#for line in f:
 	#	print(line)
 	files = []
-	
+
 	#TODO: check "rounding"
 	x = int(math.ceil(os.stat(file_name).st_size/5000.0))
 	print x
@@ -67,7 +67,7 @@ def get_response_for_list(list_of_bodys):
 		conn = httplib.HTTPSConnection(batch)
 		conn.request("POST", batch_keyphrase_url , request_body, header)
 		response = conn.getresponse()
-		
+
 		#read and store json response
 		result = response.read()
 		results.append(result)
@@ -98,7 +98,7 @@ def join_responses(responses):
 	return phrases
 
 def get_key_words_json_for_doc(filename):
-	try:
+	#try:
 		#get list of blocks
 		sub_docs = get_list_of_blocks(filename)
 		#get responses for these docs
@@ -106,16 +106,20 @@ def get_key_words_json_for_doc(filename):
 
 		#join responses and return top relevant query's
 		responses = join_responses(responses)
-
+		for doc in sub_docs:
+			os.remove(doc.name)
 		return responses
-
-	finally:
+		"""finally:
+		if(sub_docs != None):
 			for doc in sub_docs:
-				os.remove(doc.name)
-	
-def get_top_n_words(filename, n):
-	key_words = get_key_words_json_for_doc(filename)
+				os.remove(doc.name)"""
 
+def get_top_n_words(doc, n):
+	filename = "temp.txt"
+	print type(doc)
+	with open(filename, 'w') as file:
+		file.write(doc)
+		key_words = get_key_words_json_for_doc(filename)
 	words = []
 	for k, v in key_words.items():
 		words.append((k,v))
