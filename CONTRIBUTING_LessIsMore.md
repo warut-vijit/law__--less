@@ -1,12 +1,11 @@
-#Contibuting to [--Less is more]
+#Contibuting to --Less is more
 
 ## Welcome contributors to the project: 
 Chiranth Kishore, Kabir Manghnani, Nathan Narasimhan, Naveed Riaziat, Warut Vijitbenjaronk, Owen Li
 
 ## Short Links to Important Resources:
-* docs: handbook / roadmap (you'll learn more about this in the roadmapping session)
-* [Issue Tracker:](https://github.com/issues)
-* [communcations:](https://github.com/warut-vijit/law__--less)
+* [Issue Tracker](https://github.com/issues)
+* [Communication](https://github.com/warut-vijit/law__--less)
 
 ## Development environment details
 * pip install -r Requirements.txt
@@ -31,7 +30,7 @@ Must be something to help the user.
 Google Coding Standards (python, node.js, html/css)
 
 ## Code of Conduct
-
+[Code of Conduct](Code of Conduct.md)
 
 ## Recognition model
 Shoutouts on our website.
