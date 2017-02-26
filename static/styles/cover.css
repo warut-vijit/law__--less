@@ -63,7 +63,9 @@ body {
 .inner {
   padding: 30px;
 }
-
+tr {
+  display: inline-block;
+}
 
 /*
  * Header
