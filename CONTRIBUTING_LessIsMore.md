@@ -12,13 +12,14 @@ Owen Li
 * docs: handbook / roadmap (you'll learn more about this in the roadmapping session)
 * bugs: issue tracker / bug report tool
 * communcations: forum link, developer list, IRC/email, Slack, etc.
-## Testing
+
 ## Development environment details
+* pip install -r Requirements.txt
 
 ## How to submit changes: Pull Request protocol etc. 
-Be clear and specific
-Keep changes small - 1 bug per pull request. 
-We will generally accept all Pull Requests.
+* Be clear and specific
+* Keep changes small - 1 bug per pull request. 
+* We will generally accept all Pull Requests.
 
 ## How to report a bug: 
 * Things included in a Bug Report:
