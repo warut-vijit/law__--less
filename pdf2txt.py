@@ -7,9 +7,9 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 
 # function removes ampersand and replaces misformated data.
-# outputs end as xml
+# outputs end as text
 
-def convert(fname, pages = None):
+def pdf2text(fname, pages = None):
     if not pages:
         pagenums = set()
     else:
@@ -29,52 +29,40 @@ def convert(fname, pages = None):
     output.close
     return text
 
-def cleaner(filename):
+def cleaner(text, filename):
 
     # output file name appends a 'b'
 
-    output = filename[:-4] + 'b' + '.xml'
+    output = filename[:-4] + '.txt'
 
-    with open(filename) as xml:
-        with open(output, 'w+') as output:
-            for line in xml:
+    with open(output, 'w+') as output:
+        for line in text:
 
-                # iterates line by line through the xml and removes ampersands/errors
+            # iterates line by line through the text and removes ampersands/errors
 
-                line = line.replace('\"id=', 'id=\"')
-                line = line.replace('&', '')
-                line = line.replace('\n', '')
-                line = line.replace('[', '')
-                line = line.replace(']', '')
-                line = line.replace('\'', '')
-                line = line.replace('\"', '')
+            line = line.replace('\"id=', 'id=\"')
+            line = line.replace('&', '')
+            line = line.replace('\n', '')
+            line = line.replace('[', '')
+            line = line.replace(']', '')
+            line = line.replace('\'', '')
+            line = line.replace('\"', '')
+            line = line.replace('{', '')
+            line = line.replace('}', '')
 
-                output.write(line)
-
-def xmlToText(filename):
-
-    # convert xml input to .txt output
-
-    with open(filename) as inputFile:
-        with open(filename[:-4] + '.txt', 'w+') as output:
-            soup = BeautifulSoup(inputFile, 'xml')
-            sentences = soup.find_all('sentence')
-            for sentence in sentences:
-                output.write(sentence.text)
+            output.write(line)
 
 
 for filename in os.listdir(os.getcwd()): # searches through all files in working directory
 
-    # only uses .xml file
+    # only uses .pdf file
 
-    if filename[-4:] != '.xml':
+    if filename[-4:] != '.pdf':
         pass
     else:
-        cleaner(filename)
-        xmlToText(filename)
+        cleaner(pdf2text(filename), filename)
 
 for filename in os.listdir(os.getcwd()): # searches through all files in working directory
 
-    if filename[-4:] == '.xml':
-        print('deleting')
+    if filename[-4:] == '.pdf':
         os.remove(filename)
