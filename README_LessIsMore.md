@@ -19,7 +19,7 @@
     * [BUILD EXAMP
 
 ## Contributor Guide
-[LINK TO CONTRIBUTING.md]
+Contriubor guide for this project (./CONTRIBUTING_LessIsMore.md)
 
 ## License 
 See 'License' file.
