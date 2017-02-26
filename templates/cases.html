@@ -52,6 +52,13 @@
           }
         };
       }
+      function download() {
+        get_target();
+        var link = document.createElement("a");
+        link.href = 'data:text/plain;charset=utf-8,' + document.getElementById("output").innerHTML;
+        link.download = "law--less.txt";
+        link.click();
+      }
     </script>
 
     <!-- Bootstrap Dropzone JavaScript -->
@@ -81,6 +88,7 @@
                   <li><a href="/">Home</a></li>
                   <li class="active"><a href="#">Cases</a></li>
                   <li><a href="features">Features</a></li>
+                  <li><a href="contribute">Contribute</a></li>
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
@@ -91,13 +99,22 @@
           <!-- Content of slide -->
           <div class="inner cover">
             <form id="dropzone" onload="setListener()" action="/upload-target" class="dropzone black-text"></form>
+            <br>
             <input type="button" class="btn btn-large" onclick="get_target()" value="Load Briefing">
-            <div id="output"></div>
+            <input type="button" class="btn btn-large" onclick="download()" value="Download Briefing">
+            <br>
+
+            <div class="output-frame">
+              <p id="output"></p>
+            </div>
+
             <div>{{extensions|safe}}</div>
             <div id="extensionFrame" class="extension-frame">
               <p id="extensionFrameTitle" class="extension-frame-title"></p>
               <i class="material-icons extension-close" onclick="document.getElementById('extensionFrame').style.display='none';">clear</i>
             </div>
+
+
           </div>
 
           <!-- Footer with links to author GitHubs and other source information -->
