@@ -19,26 +19,23 @@ def get_header():
 	return headers
 
 
-def get_list_of_blocks(file_name):
-	# Path to file with JSON inputs.
-	f = open(file_name, 'r')
+def get_list_of_blocks(file_object):
 	#for line in f:
 	#	print(line)
 	files = []
 	
 	#TODO: check "rounding"
 	x = int(math.ceil(os.stat(file_name).st_size/5000.0))
-	print x
 	for block in xrange(x):
-		lines = f.readline(5000)
-		modFileName = str(block) + file_name
+		lines = file_object.readline(5000)
+		modFileName = str(block) + "file.txt"
 		with open(modFileName, 'a+') as temp:
 			#sprint sys.getsizeof(lines)
 			for line in lines:
 				#print line
 				temp.write(line)
 			files.append(temp)
-	f.close()
+	file_object.close()
 	return files
 
 #some shit
@@ -115,13 +112,11 @@ def get_key_words_json_for_doc(filename):
 	
 def get_top_n_words(filename, n):
 	key_words = get_key_words_json_for_doc(filename)
-
 	words = []
 	for k, v in key_words.items():
 		words.append((k,v))
 
-	words = sorted(words, key=lambda x: x[1])
+	words = sorted(words, key=lambda x: x[1], reverse=True)
+	return words[:n]
 
-	return words[-n:]
-
-print get_top_n_words('06_4.txt', 5)
+# usage: get_top_n_words(FileObject f, int n)
