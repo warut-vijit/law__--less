@@ -1,0 +1,5 @@
+ While k < 3 k += 3;   While k != 0 k -= 1;   Do  k += 3;  while k <3;  Do  k -= 1;  while k != 0;                        Task 3:  1.
+  Task 4:   PART B:  1.
+ Part C 1.
+ PART C: 1.
+       You would expect the control over time to settle into some set value.
