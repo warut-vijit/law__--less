@@ -19,23 +19,26 @@ def get_header():
 	return headers
 
 
-def get_list_of_blocks(file_object):
+def get_list_of_blocks(file_name):
+	# Path to file with JSON inputs.
+	f = open(file_name, 'r')
 	#for line in f:
 	#	print(line)
 	files = []
-	
+
 	#TODO: check "rounding"
 	x = int(math.ceil(os.stat(file_name).st_size/5000.0))
+	print x
 	for block in xrange(x):
-		lines = file_object.readline(5000)
-		modFileName = str(block) + "file.txt"
+		lines = f.readline(5000)
+		modFileName = str(block) + file_name
 		with open(modFileName, 'a+') as temp:
 			#sprint sys.getsizeof(lines)
 			for line in lines:
 				#print line
 				temp.write(line)
 			files.append(temp)
-	file_object.close()
+	f.close()
 	return files
 
 #some shit
@@ -64,7 +67,7 @@ def get_response_for_list(list_of_bodys):
 		conn = httplib.HTTPSConnection(batch)
 		conn.request("POST", batch_keyphrase_url , request_body, header)
 		response = conn.getresponse()
-		
+
 		#read and store json response
 		result = response.read()
 		results.append(result)
@@ -95,7 +98,7 @@ def join_responses(responses):
 	return phrases
 
 def get_key_words_json_for_doc(filename):
-	try:
+	#try:
 		#get list of blocks
 		sub_docs = get_list_of_blocks(filename)
 		#get responses for these docs
@@ -103,20 +106,26 @@ def get_key_words_json_for_doc(filename):
 
 		#join responses and return top relevant query's
 		responses = join_responses(responses)
-
+		for doc in sub_docs:
+			os.remove(doc.name)
 		return responses
-
-	finally:
+		"""finally:
+		if(sub_docs != None):
 			for doc in sub_docs:
-				os.remove(doc.name)
-	
-def get_top_n_words(filename, n):
+				os.remove(doc.name)"""
+
+def get_top_n_words(doc, n):
+	filename = "temp.txt"
+	with open(filename, "a+") as file:
+		for line in doc:
+			file.write(line)
 	key_words = get_key_words_json_for_doc(filename)
 	words = []
 	for k, v in key_words.items():
 		words.append((k,v))
 
-	words = sorted(words, key=lambda x: x[1], reverse=True)
-	return words[:n]
+	words = sorted(words, key=lambda x: x[1])
 
-# usage: get_top_n_words(FileObject f, int n)
+	return words[-n:]
+
+print get_top_n_words('06_4.txt', 5)
