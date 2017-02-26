@@ -37,6 +37,7 @@
 
     <!-- JavaScript HTTP Request -->
     <script>
+      var initialState = true;
       function call_api_generic(addr, params) {
           var address = addr+'?';
           for(var index=0;index<Object.keys(params).length;index++){
@@ -56,6 +57,13 @@
             }
           };
       }
+      function toggle_briefing () {
+        if(initialState){
+          get_target();
+          initialState=false;
+        }
+        document.getElementById("output").style.display = document.getElementById("output").style.display == "none" ? "block" : "none";
+      }
       function get_target() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get-target');
@@ -70,6 +78,13 @@
             }
           }
         };
+      }
+      function download() {
+        get_target();
+        var link = document.createElement("a");
+        link.href = 'data:text/plain;charset=utf-8,' + document.getElementById("output").innerHTML;
+        link.download = "law--less.txt";
+        link.click();
       }
     </script>
 
@@ -100,6 +115,7 @@
                   <li><a href="/">Home</a></li>
                   <li class="active"><a href="#">Cases</a></li>
                   <li><a href="features">Features</a></li>
+                  <li><a href="contribute">Contribute</a></li>
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
@@ -109,14 +125,22 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <form id="dropzone" onload="setListener()" action="/upload-target" class="dropzone black-text"></form>
-            <input type="button" class="btn btn-large" onclick="get_target()" value="Load Briefing">
-            <div id="output"></div>
+            <form id="dropzone" action="/upload-target" class="dropzone black-text"></form>
+            <br>
+            <input type="button" class="btn btn-large" onclick="toggle_briefing()" value="Load Briefing">
+            <input type="button" class="btn btn-large" onclick="download()" value="Download Briefing">
+            <br>
+
+            <div class="output-frame">
+              <p id="output" style="display:none"></p>
+            </div>
             <div>{{extensions|safe}}</div>
             <div id="extensionFrame" class="extension-frame">
               <p id="extensionFrameTitle" class="extension-frame-title"></p>
               <i class="material-icons extension-close" onclick="document.getElementById('extensionFrame').style.display='none';">clear</i>
             </div>
+
+
           </div>
 
           <!-- Footer with links to author GitHubs and other source information -->
