@@ -34,8 +34,12 @@ def upload_target():
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+<<<<<<< HEAD
         keywords = get_top_n_words(file_text , 5)
         strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keywords)
+=======
+        strings = calculate_unigrams(cleaned_string) # calculate most important sentences
+>>>>>>> master
         out_file = open("output.txt", "w")
         for string in strings:
             out_file.write(string+".")
@@ -44,12 +48,13 @@ def upload_target():
 
 @app.route('/get-target',methods=['GET'])
 def get_target():
-    summary = []
+    summary = ""
     in_file = open("output.txt", "r")
     for line in in_file.readlines():
-        summary.append(line)
+        summary += line
     in_file.close()
-    return jsonify(summary)
+    os.remove("output.txt")
+    return summary
 
 @app.route('/cases',methods=['GET'])
 def cases():
