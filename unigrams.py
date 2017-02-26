@@ -19,7 +19,7 @@ def calculate_unigrams(input, keywords):
         split_line = line.split(" ")
         for word in split_line: # generate probability of sentence
             product += unk if word.lower() not in counts else counts[word.lower()]
-        if len(line_split) > 4:
+        if len(split_line) > 4:
             heap.append( (line,product/len(line.split(" "))) )
     sorted_array = sorted( [ x for x in heap if any( [y.isalpha() for y in x[0]] ) ] , key=lambda line: line[1], reverse=True)
     return [x[0] for x in sorted_array[:5]]

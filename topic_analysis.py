@@ -116,10 +116,10 @@ def get_key_words_json_for_doc(filename):
 
 def get_top_n_words(doc, n):
 	filename = "temp.txt"
-	with open(filename, "a+") as file:
-		for line in doc:
-			file.write(line)
-	key_words = get_key_words_json_for_doc(filename)
+	print type(doc)
+	with open(filename, 'w') as file:
+		file.write(doc)
+		key_words = get_key_words_json_for_doc(filename)
 	words = []
 	for k, v in key_words.items():
 		words.append((k,v))
