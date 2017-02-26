@@ -37,13 +37,18 @@ def upload_target():
         strings = calculate_unigrams(cleaned_string) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keywords)
         out_file = open("output.txt", "w")
         for string in strings:
-            out_file.write(string+".\n")
+            out_file.write(string+".")
         out_file.close() # persistent abstract
         return "success"
 
-@app.route('/diag',methods=['GET'])
-def diag():
-    return jsonify(extensions)
+@app.route('/get-target',methods=['GET'])
+def get_target():
+    summary = []
+    in_file = open("output.txt", "r")
+    for line in in_file.readlines():
+        summary.append(line)
+    in_file.close()
+    return jsonify(summary)
 
 @app.route('/cases',methods=['GET'])
 def cases():

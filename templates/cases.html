@@ -37,7 +37,7 @@
 
     <!-- JavaScript HTTP Request -->
     <script>
-      function get_key() {
+      function get_target() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get-target');
         xhr.send(null);
@@ -47,8 +47,7 @@
           if (xhr.readyState === DONE) {
             if (xhr.status === OK) {
               console.log('Success: ' + xhr.responseText); // 'This is the returned text.'
-            } else {
-              console.log('Error: ' + xhr.status); // An error occurred during the request.
+              document.getElementById("output").innerHTML = xhr.responseText;
             }
           }
         };
@@ -91,7 +90,9 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <form action="/upload-target" class="dropzone black-text"></form>
+            <form id="dropzone" onload="setListener()" action="/upload-target" class="dropzone black-text"></form>
+            <input type="button" class="btn btn-large" onclick="get_target()" value="Load Briefing">
+            <div id="output"></div>
             <div>{{extensions|safe}}</div>
             <div id="extensionFrame" class="extension-frame">
               <p id="extensionFrameTitle" class="extension-frame-title"></p>
