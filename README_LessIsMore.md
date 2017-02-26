@@ -22,4 +22,4 @@
 [LINK TO CONTRIBUTING.md]
 
 ## License 
-(Some sort of permissive license)
+See 'License' file.
