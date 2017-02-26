@@ -13,13 +13,16 @@ div.extension-frame {
     color: black;
 }
 .extension-close {
+    color: white;
     position: absolute;
     left: 320px;
     bottom: 160px;
     text-shadow:4px 4px 7px black;
 }
 .extension-frame-title {
+    color: white;
     position: absolute;
+    font-size: 20px;
     left: 20px;
-    bottom: 170px;
+    bottom: 175px;
 }

@@ -27,8 +27,11 @@ def home():
 
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
-    return str(type(request.files))
-
+    if request.method == "POST" :
+        file_key = request.files.keys()[0]
+        file_text = request.files[file_key] # of type FileStorage
+        return "success"
+    
 @app.route('/diag',methods=['GET'])
 def diag():
     return jsonify(extensions)
@@ -46,4 +49,4 @@ def aboutus():
     return render_template("aboutus.html")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
