@@ -5,69 +5,123 @@ import sys
 import base64
 import json
 import time
+import os
+import math
 
-# Azure portal URL.
-base_url = 'https://westus.api.cognitive.microsoft.com/'
+def get_header():
+	# read key from file
+	account_key = ''
 
-# read key from file
-account_key = ''
+	with open('azure_key.txt') as file:
+		account_key = file.readline().strip()
 
-with open('azure_key.txt') as file:
-	account_key = file.readline().strip()
+	headers = {'Content-Type':'application/json', 'Ocp-Apim-Subscription-Key':account_key}
+	return headers
 
-headers = {'Content-Type':'application/json', 'Ocp-Apim-Subscription-Key':account_key}
 
-# Path to file with JSON inputs.
-file_path = '06_1.txt'
-f = open(file_path, 'r')
-input_text = f.read()
-print input_text
+def get_list_of_blocks(file_name):
+	# Path to file with JSON inputs.
+	f = open(file_name, 'r')
+	#for line in f:
+	#	print(line)
+	files = []
+	
+	#TODO: check "rounding"
+	x = int(math.ceil(os.stat(file_name).st_size/5000.0))
+	print x
+	for block in xrange(x):
+		lines = f.readline(5000)
+		modFileName = str(block) + file_name
+		with open(modFileName, 'a+') as temp:
+			#sprint sys.getsizeof(lines)
+			for line in lines:
+				#print line
+				temp.write(line)
+			files.append(temp)
+	f.close()
+	return files
 
-input_texts = '{\
-				"documents":[\
-				{\
-				"language": "en", \
-				"id" : "1",\
-				"text" :' + " '" + input_text + "' " + '}]}'
-print type(input_texts)
-num_detect_langs = 1;
-
-params = urllib.urlencode({
-})
-
-# Detect key phrases.
-batch = 'westus.api.cognitive.microsoft.com'
-batch_keyphrase_url = '/text/analytics/v2.0/keyPhrases?%s' % params
-
-#print batch_keyphrase_url
-
-conn = httplib.HTTPSConnection(batch)
-conn.request("POST", batch_keyphrase_url , input_texts, headers)
-response = conn.getresponse()
-#print response
-result = response.read()
-print result
-conn.close()
-
-obj = json.loads(result)
+#some shit
+"""obj = json.loads(result)
 for keyphrase_analysis in obj['documents']:
 	print('Key phrases ' + str(keyphrase_analysis['id']) + ': ' + ', '.join(map(str,keyphrase_analysis['keyPhrases'])))
-
 """
-# Detect language.
-language_detection_url = base_url + 'text/analytics/v2.0/languages' + ('?numberOfLanguagesToDetect=' + num_detect_langs if num_detect_langs > 1 else '')
-req = urllib2.Request(language_detection_url, input_texts, headers)
-response = urllib2.urlopen(req)
-result = response.read()
-obj = json.loads(result)
-for language in obj['documents']:
-    print('Languages: ' + str(language['id']) + ': ' + ','.join([lang['name'] for lang in language['detectedLanguages']]))
 
-# Detect sentiment.
-batch_sentiment_url = base_url + 'text/analytics/v2.0/sentiment'
-req = urllib2.Request(batch_sentiment_url, input_texts, headers) 
-response = urllib2.urlopen(req)
-result = response.read()
-obj = json.loads(result)
-for sentiment_analysis in obj['documents']:
-    print('Sentiment ' + str(sentiment_analysis['id']) + ' score: ' + str(sentiment_analysis['score'])) """
+def get_response_for_list(list_of_bodys):
+	#we should figure out wtf this does
+	params = urllib.urlencode({})
+
+	# set up access URL's
+	batch = 'westus.api.cognitive.microsoft.com'
+	batch_keyphrase_url = '/text/analytics/v2.0/keyPhrases?%s' % params
+
+	header = get_header()
+	#list of complied json results
+	results = []
+	print list_of_bodys
+	for block in list_of_bodys:
+		request_body = get_request_body(open(block.name).read())
+		block.close()
+		print sys.getsizeof(request_body)
+		#connect and request data for a singular block of a document
+		conn = httplib.HTTPSConnection(batch)
+		conn.request("POST", batch_keyphrase_url , request_body, header)
+		response = conn.getresponse()
+		
+		#read and store json response
+		result = response.read()
+		results.append(result)
+		conn.close()
+
+	return results
+
+def get_request_body(block):
+	request_body = '{\
+			"documents":[\
+			{\
+			"language": "en", \
+			"id" : "1",\
+			"text" :' + " '" + str(block) + "' " + '}]}'
+	return request_body
+
+def join_responses(responses):
+	phrases = {}
+	for doc in responses:
+		j_doc = json.loads(doc)
+		phrase_list = j_doc.get("documents")[0].get("keyPhrases")
+		for phrase in phrase_list:
+			#print phrase
+			if phrase in phrases:
+				phrases[phrase] +=1
+			else:
+				phrases[phrase] = 1
+	return phrases
+
+def get_key_words_json_for_doc(filename):
+	try:
+		#get list of blocks
+		sub_docs = get_list_of_blocks(filename)
+		#get responses for these docs
+		responses = get_response_for_list(sub_docs)
+
+		#join responses and return top relevant query's
+		responses = join_responses(responses)
+
+		return responses
+
+	finally:
+			for doc in sub_docs:
+				os.remove(doc.name)
+	
+def get_top_n_words(filename, n):
+	key_words = get_key_words_json_for_doc(filename)
+
+	words = []
+	for k, v in key_words.items():
+		words.append((k,v))
+
+	words = sorted(words, key=lambda x: x[1])
+
+	return words[-n:]
+
+print get_top_n_words('06_4.txt', 5)
