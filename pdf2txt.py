@@ -32,29 +32,23 @@ def pdf2text(fobject, pages = None):
     output.close
     return text
 
-def cleaner(text, filename):
-
-    # output file name appends a 'b'
-
-    output = filename[:-4] + '.txt'
-
-    with open(output, 'w+') as output:
-        for line in text:
-
-            # iterates line by line through the text and removes ampersands/errors
-
-            line = line.replace('\"id=', 'id=\"')
-            line = line.replace('&', '')
-            line = line.replace('\n', '')
-            line = line.replace('[', '')
-            line = line.replace(']', '')
-            line = line.replace('\'', '')
-            line = line.replace('\"', '')
-            line = line.replace('{', '')
-            line = line.replace('}', '')
-            line = line.replace('(', '')
-            line = line.replace(')', '')
-
-            output.write(line)
+def cleaner(text):
+    out_text = ""
+    for line in text:
+        # iterates line by line through the text and removes ampersands/errors
+        line = line.replace('\"id=', 'id=\"')
+        line = line.replace('&', '')
+        line = line.replace('\n', '')
+        line = line.replace('[', '')
+        line = line.replace(']', '')
+        line = line.replace('\'', '')
+        line = line.replace('\"', '')
+        line = line.replace('{', '')
+        line = line.replace('}', '')
+        line = line.replace('(', '')
+        line = line.replace(')', '')
+        out_text += line
+    return out_text
 
 # used as cleaner(pdf2text(file object), name)
+# returns long filtered string
