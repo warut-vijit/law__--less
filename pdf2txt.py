@@ -11,7 +11,7 @@ from pdfminer.pdfpage import PDFPage
 def pdf2text(fobject, pages = None):
 
     # converts pdf files to text using pdfminer
-    
+
     if not pages:
         pagenums = set()
     else:
@@ -54,6 +54,7 @@ def cleaner(text, filename):
             line = line.replace('}', '')
             line = line.replace('(', '')
             line = line.replace(')', '')
+            line = ''.join(i for i in line if ord(i) < 128)
 
             output.write(line)
 
