@@ -1,22 +1,25 @@
-# [NAME OF PROJECT]
+# [--less is more]
 
-[PROJECT DESCRIPTION]
-  * [PROJECT FEATURES] 
+[--less is more is a framework that reads giant documents and summarizes them using a summarization algorithm]
+  * Summarization algorithm 
+  * Open Source GUI contribute framework
+  * Machine Learning
 
 ## USAGE
-  * [USAGE EXAMPLE]
+  * [Law --Less]
+  *     Law --Less uses the --Less is More framework to read in legal documents, scanning for
+  *     the type of infraction, the law in question, and the punishment being faced, among other 
+  *     things. With a database of over 40,000 cases from a University of California at Irvine 
+  *     database, Law --Less can also return legal precedents from previous cases. 
   
 ## BUILD/INSTALLATION INSTRUCTIONS
-  * [PLATFORM 1]
+  * [OSX]
     * [BUILD EXAMPLE]
-  * [PLATFORM 2]
-    * [BUILD EXAMPLE]
-
-## [INTERFACES] _(if applicable)_ 
-
-## OTHER SOURCES OF DOCUMENTATION
+  * [Windows]
+    * [BUILD EXAMP
 
 ## Contributor Guide
 [LINK TO CONTRIBUTING.md]
 
 ## License 
+(Some sort of permissive license)
