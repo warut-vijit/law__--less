@@ -40,7 +40,7 @@ def upload_target():
             out_file.write(string+".\n")
         out_file.close() # persistent abstract
         return "success"
-    
+
 @app.route('/diag',methods=['GET'])
 def diag():
     return jsonify(extensions)
