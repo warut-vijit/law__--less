@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, url_for, redirect, jsonify
 from os import listdir,getcwd
 from os.path import isfile, join
+import md5
 import json
 import md5
 from pdf2txt import *
@@ -46,12 +47,15 @@ def upload_target():
 @app.route('/get-target',methods=['GET'])
 def get_target():
     summary = ""
-    in_file = open("output.txt", "r")
-    for line in in_file.readlines():
-        summary += line
-    in_file.close()
-    os.remove("output.txt")
-    return summary
+    try:
+        in_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "r")
+        for line in in_file.readlines():
+            summary += line
+        in_file.close()
+        os.remove(md5.new(request.headers["User-Agent"]).hexdigest()+".txt")
+        return summary
+    except IOError:
+        return ""
 
 @app.route('/cases',methods=['GET'])
 def cases():
@@ -60,6 +64,10 @@ def cases():
 @app.route('/features',methods=['GET'])
 def features():
     return render_template("features.html")
+
+@app.route('/contribute',methods=['GET'])
+def contribute():
+    return render_template("contribute.html")
 
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
