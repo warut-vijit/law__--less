@@ -58,8 +58,11 @@
           };
       }
       function toggle_briefing () {
-        if(initialState){get_target();initialState=false;}
-        document.getElementById("output").style.display = "block" if document.getElementById("output").style.display == "none" else "none"; 
+        if(initialState){
+          get_target();
+          initialState=false;
+        }
+        document.getElementById("output").style.display = document.getElementById("output").style.display == "none" ? "block" : "none"; 
       }
       function get_target() {
         var xhr = new XMLHttpRequest();
@@ -75,7 +78,6 @@
             }
           }
         };
-        toggle_briefing();
       }
     </script>
 
@@ -115,7 +117,7 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <form id="dropzone" onload="setListener()" action="/upload-target" class="dropzone black-text"></form>
+            <form id="dropzone" action="/upload-target" class="dropzone black-text"></form>
             <input type="button" class="btn btn-large" onclick="toggle_briefing()" value="Load Briefing">
             <div id="output" style="display:none"></div>
             <div>{{extensions|safe}}</div>

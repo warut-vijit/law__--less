@@ -43,12 +43,15 @@ def upload_target():
 @app.route('/get-target',methods=['GET'])
 def get_target():
     summary = ""
-    in_file = open("output.txt", "r")
-    for line in in_file.readlines():
-        summary += line
-    in_file.close()
-    os.remove("output.txt")
-    return summary
+    try:
+        in_file = open("output.txt", "r")
+        for line in in_file.readlines():
+            summary += line
+        in_file.close()
+        os.remove("output.txt")
+        return summary
+    except IOError:
+        return ""
 
 @app.route('/cases',methods=['GET'])
 def cases():
