@@ -34,7 +34,7 @@ def upload_target():
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        keywords = get_top_n_words( file_text , 5)
+        keywords = get_top_n_words(file_text , 5)
         strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keywords)
         out_file = open("output.txt", "w")
         for string in strings:
