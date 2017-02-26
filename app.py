@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, url_for, redirect, jsonify
 from os import listdir,getcwd
 from os.path import isfile, join
+import md5
 import json
 from pdf2txt import *
 from unigrams import calculate_unigrams
@@ -34,7 +35,7 @@ def upload_target():
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
         strings = calculate_unigrams(cleaned_string) # calculate most important sentences
-        out_file = open("output.txt", "w")
+        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
         for string in strings:
             out_file.write(string+".")
         out_file.close() # persistent abstract
@@ -44,11 +45,11 @@ def upload_target():
 def get_target():
     summary = ""
     try:
-        in_file = open("output.txt", "r")
+        in_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "r")
         for line in in_file.readlines():
             summary += line
         in_file.close()
-        os.remove("output.txt")
+        os.remove(md5.new(request.headers["User-Agent"]).hexdigest()+".txt")
         return summary
     except IOError:
         return ""

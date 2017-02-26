@@ -38,6 +38,7 @@
     <!-- JavaScript HTTP Request -->
     <script>
       var initialState = true;
+      var clientID = Math.floor(Math.random()*1000000)+""
       function call_api_generic(addr, params) {
           var address = addr+'?';
           for(var index=0;index<Object.keys(params).length;index++){
@@ -73,7 +74,6 @@
           var OK = 200; // status 200 is a successful return.
           if (xhr.readyState === DONE) {
             if (xhr.status === OK) {
-              console.log('Success: ' + xhr.responseText); // 'This is the returned text.'
               document.getElementById("output").innerHTML = xhr.responseText;
             }
           }
