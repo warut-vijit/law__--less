@@ -23,14 +23,14 @@
   ```
   python app.py
   ```
-  *Download click
-  *Download Flask
-  *Download itsdangerous
-  *Download Jinja2
-  *Download MarkupSafe
-  *Download pdfminer
-  *Download pycrypto
-  *Download Werkzeug
+  * Download click
+  * Download Flask
+  * Download itsdangerous
+  * Download Jinja2
+  * Download MarkupSafe
+  * Download pdfminer
+  * Download pycrypto
+  * Download Werkzeug
   
   * Setting Up Azure
     * 
