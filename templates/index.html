@@ -23,6 +23,7 @@
     <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -35,7 +36,7 @@
 
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.jpg')}}">
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
 
     <div class="site-wrapper">
 
@@ -56,19 +57,16 @@
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
+              <h5 class="masthead-brand" style="font-family: 'Lato', sans-serif;margin-left: -140px"><br><br><br><i>powered by --less is more</i></h5>
             </div>
           </div>
 
-          <div class="inner cover">
+          <div class="inner cover" id="container">
             <h1 class="cover-heading">Share legal representation to eligible clients effectively with strong defenses.</h1>
             <p class="lead">The mission of law --less is to assist in the assembly of pro-bono defense cases by analyzing previous trends in similar case files.</p>
-            <table style="width:100%; border: 1px empty">
-              <tr>
-                <th><a href="cases"><img src="{{url_for('static', filename='icons/cases_icon.png')}}" style:"width:100%" alt="Cases"></a></th>
-                <th><a href="features"><img src="{{url_for('static', filename='icons/features_icon.png')}}" style:"width:100%" alt="Features"></th>
-                <th><a href="aboutus"><img src="{{url_for('static', filename='icons/aboutus_icon.png')}}" style:"width:100%" alt="About Us"></a></th>
-              </tr>
-            </table>
+            <a href="cases"><img src="{{url_for('static', filename='icons/cases_icon.png')}}" style:"width:100%" alt="Cases"></a></th>
+            <a href="features"><img src="{{url_for('static', filename='icons/features_icon.png')}}" style:"width:100%" alt="Features"></th>
+            <a href="aboutus"><img src="{{url_for('static', filename='icons/aboutus_icon.png')}}" style:"width:100%" alt="About Us"></a></th>
           </div>
 
           <div class="mastfoot">

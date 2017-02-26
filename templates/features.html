@@ -23,6 +23,7 @@
     <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -35,7 +36,7 @@
 
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.jpg')}}">
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
 
     <div class="site-wrapper">
 
@@ -56,14 +57,19 @@
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
+              <h5 class="masthead-brand" style="font-family: 'Lato', sans-serif;margin-left: -140px"><br><br><br><i>powered by --less is more</i></h5>
             </div>
           </div>
 
           <div class="inner cover">
 
-            <h2>1. Smart summarization algorithm.</h2>
-            <h2>2. Set desired summary length.</h2>
-            <h2>3. Completely open source.</h2>
+            <ul style="list-style-type:none;font-family: 'Lato', sans-serif">
+              <li><h2>> Minimal, simple user interface</h2></li>
+              <li><h2>> Elegant and modifiable summary algorithm</h2></li>
+              <li><h2>> Robustly handles server side requests</h2></li>
+              <li><h2>> Open source GUI contribute framework</h2></li>
+              <li><h2>> Diverse and versatile usecases</h2></li>
+            </ul>
 
           </div>
 
