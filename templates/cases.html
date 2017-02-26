@@ -23,6 +23,9 @@
     <!-- Custom Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
+    <!-- Google Icon Set -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
 
@@ -35,6 +38,7 @@
 
     <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
     
   </head>
 
@@ -61,8 +65,12 @@
           </div>
 
           <div class="inner cover">
-            <form action="/upload-target" class="dropzone"></form>
+            <form action="/upload-target" class="dropzone black-text"></form>
             <div>{{extensions|safe}}</div>
+            <div id="extensionFrame" class="extension-frame">
+              <b id="extensionFrameTitle" class="extension-frame-title"></b>
+              <i class="material-icons extension-close" onclick="document.getElementById('extensionFrame').style.display='none';">clear</i>
+            </div>
           </div>
 
           <div class="mastfoot">
