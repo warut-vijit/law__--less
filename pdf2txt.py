@@ -1,5 +1,4 @@
 import os
-from bs4 import BeautifulSoup
 from cStringIO import StringIO
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -10,6 +9,9 @@ from pdfminer.pdfpage import PDFPage
 # outputs end as text
 
 def pdf2text(fname, pages = None):
+
+    # converts pdf files to text using pdfminer
+    
     if not pages:
         pagenums = set()
     else:
@@ -49,6 +51,8 @@ def cleaner(text, filename):
             line = line.replace('\"', '')
             line = line.replace('{', '')
             line = line.replace('}', '')
+            line = line.replace('(', '')
+            line = line.replace(')', '')
 
             output.write(line)
 
