@@ -1,4 +1,4 @@
-#Contibuting to [--Less is more]
+#Contibuting to --Less is more
 
 ## Welcome contributors to the project: 
 Chiranth Kishore, Kabir Manghnani, Nathan Narasimhan, Naveed Riaziat, Warut Vijitbenjaronk, Owen Li
