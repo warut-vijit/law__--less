@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, url_for, redirect, jsonify
 from os import listdir,getcwd
 from os.path import isfile, join
 import json
+from pdf2txt import *
 
 app = Flask(__name__)
 
@@ -30,6 +31,10 @@ def upload_target():
     if request.method == "POST" :
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
+        file_out = open("debug.txt", 'w')
+        file_out.write(str(type(file_text)))
+        file_out.close()
+        cleaner( pdf2text(file_text), "out.txt" ) # convert pdf to txt
         return "success"
     
 @app.route('/diag',methods=['GET'])

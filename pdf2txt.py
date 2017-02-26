@@ -8,7 +8,7 @@ from pdfminer.pdfpage import PDFPage
 # function removes ampersand and replaces misformated data.
 # outputs end as text
 
-def pdf2text(fname, pages = None):
+def pdf2text(fobject, pages = None):
 
     # converts pdf files to text using pdfminer
     
@@ -22,7 +22,8 @@ def pdf2text(fname, pages = None):
     converter = TextConverter(manager, output, laparams=LAParams())
     interpreter = PDFPageInterpreter(manager, converter)
 
-    infile = file(fname, 'rb')
+    #infile = file(fname, 'rb')
+    infile = fobject
     for page in PDFPage.get_pages(infile, pagenums):
         interpreter.process_page(page)
     infile.close()
@@ -56,17 +57,4 @@ def cleaner(text, filename):
 
             output.write(line)
 
-
-for filename in os.listdir(os.getcwd()): # searches through all files in working directory
-
-    # only uses .pdf file
-
-    if filename[-4:] != '.pdf':
-        pass
-    else:
-        cleaner(pdf2text(filename), filename)
-
-for filename in os.listdir(os.getcwd()): # searches through all files in working directory
-
-    if filename[-4:] == '.pdf':
-        os.remove(filename)
+# used as cleaner(pdf2text(file object), name)
