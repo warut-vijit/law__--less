@@ -1,9 +1,6 @@
 import os
 from bs4 import BeautifulSoup
 
-# function removes ampersand and replaces misformated data.
-# outputs end as xml
-
 def cleaner(filename):
 
     # output file name appends a 'b'
@@ -23,6 +20,7 @@ def cleaner(filename):
                 line = line.replace(']', '')
                 line = line.replace('\'', '')
                 line = line.replace('\"', '')
+
                 output.write(line)
 
 def xmlToText(filename):
