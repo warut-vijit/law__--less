@@ -47,6 +47,7 @@ def get_target():
     for line in in_file.readlines():
         summary += line
     in_file.close()
+    os.remove("output.txt")
     return summary
 
 @app.route('/cases',methods=['GET'])
