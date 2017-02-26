@@ -22,8 +22,6 @@
 
     <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Google Icon Set -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -36,8 +34,29 @@
     <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+
+    <!-- JavaScript HTTP Request -->
     <script>
-      function get_key() {
+      function call_api_generic(addr, params) {
+          var address = addr+'?';
+          for(var index=0;index<Object.keys(params).length;index++){
+              if(index>0){address+="&";}
+              address += Object.keys(params)[index]+"="+params[Object.keys(params)[index]]
+          }
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', address);
+          xhr.send(null);
+          xhr.onreadystatechange = function () {
+            var DONE = 4; // readyState 4 means the request is done.
+            var OK = 200; // status 200 is a successful return.
+            if (xhr.readyState === DONE) {
+              if (xhr.status === OK) {
+                return xhr.responseText;
+              }
+            }
+          };
+      }
+      function get_target() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get-target');
         xhr.send(null);
@@ -47,18 +66,18 @@
           if (xhr.readyState === DONE) {
             if (xhr.status === OK) {
               console.log('Success: ' + xhr.responseText); // 'This is the returned text.'
-            } else {
-              console.log('Error: ' + xhr.status); // An error occurred during the request.
+              document.getElementById("output").innerHTML = xhr.responseText;
             }
           }
         };
       }
     </script>
 
-
+    <!-- Bootstrap Dropzone JavaScript -->
     <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
+
   </head>
 
   <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
@@ -74,6 +93,8 @@
               <a href="/">
                 <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" style="float:left;margin-top: -10px">
               </a>
+
+              <!-- Navigation toolbar for insite navigation -->
               <nav>
                 <ul class="nav masthead-nav">
                   <li><a href="/">Home</a></li>
@@ -82,11 +103,15 @@
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
               </nav>
+
             </div>
           </div>
 
+          <!-- Content of slide -->
           <div class="inner cover">
-            <form action="/upload-target" class="dropzone black-text"></form>
+            <form id="dropzone" onload="setListener()" action="/upload-target" class="dropzone black-text"></form>
+            <input type="button" class="btn btn-large" onclick="get_target()" value="Load Briefing">
+            <div id="output"></div>
             <div>{{extensions|safe}}</div>
             <div id="extensionFrame" class="extension-frame">
               <p id="extensionFrameTitle" class="extension-frame-title"></p>
@@ -94,6 +119,7 @@
             </div>
           </div>
 
+          <!-- Footer with links to author GitHubs and other source information -->
           <div class="mastfoot">
             <div class="inner" style="padding-bottom:2.5%">
               <p>legal advice web services |
@@ -105,7 +131,6 @@
                 <a href="https://github.com/nriaziat">Naveed</a>,
                 <a href="https://github.com/owenli10">Owen</a></p>
             </div>
-
         </div>
 
       </div>
