@@ -18,7 +18,7 @@ def cleaner(filename):
                 line = line.replace('\n', '')
                 line = line.replace('[', '')
                 line = line.replace(']', '')
-                line = line.replace('\'', '')
+                line = line.replace("\'", '')
                 line = line.replace('\"', '')
 
                 output.write(line)
@@ -45,8 +45,10 @@ for filename in os.listdir(os.getcwd()): # searches through all files in working
         cleaner(filename)
         xmlToText(filename)
 
-for filename in os.listdir(os.getcwd()): # searches through all files in working directory
+# uncomment in order to delete xml when done converting
+'''for filename in os.listdir(os.getcwd()): # searches through all files in working directory
 
     if filename[-4:] == '.xml':
         print('deleting')
         os.remove(filename)
+'''
