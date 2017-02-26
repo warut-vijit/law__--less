@@ -39,6 +39,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
@@ -57,10 +58,12 @@ body {
   margin-left: auto;
 }
 
+
 /* Padding for spacing */
 .inner {
   padding: 30px;
 }
+
 
 /*
  * Header
