@@ -12,7 +12,7 @@ def get_header():
 	# read key from file
 	account_key = ''
 
-	with open('azure_key.txt') as file:
+	with open('summarizer/azure_key.txt') as file:
 		account_key = file.readline().strip()
 
 	headers = {'Content-Type':'application/json', 'Ocp-Apim-Subscription-Key':account_key}
