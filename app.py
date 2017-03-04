@@ -4,9 +4,9 @@ from os.path import isfile, join
 import md5
 import json
 import md5
-from pdf2txt import *
-from unigrams import calculate_unigrams
-from topic_analysis import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams 
+from summarizer.topic_analysis import *
 
 app = Flask(__name__)
 
