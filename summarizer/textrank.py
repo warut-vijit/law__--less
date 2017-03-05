@@ -44,8 +44,6 @@ def textrank(adj_matrix, d):
     return vectors
 
 
-
-
 ###########################Silly Test###########################################
 # vec = textrank(test_adj_matrix, .80)
 # print vec

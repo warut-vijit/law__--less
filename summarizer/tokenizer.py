@@ -40,7 +40,16 @@ def stem(tokenized_list):
 		stemmed.append(w_l)
 	return stemmed
 
+"""
+	doc          :    the string to be tokenized stemmed and cleaned
+	languange    :    the language the document is in
+	returns      :    a list of tokenized, stemmed, and cleaned sentances
+"""
+def clean_document_and_return_sentances(doc, language='english'):
+	sentances = tokenize_text(doc, language)
+	return stem(remove_stopwords_and_clean(sentances))
+
 if __name__ == '__main__':
-	sens = tokenize_text("text mining is an important aspect of 410. As is text retrival. This sentence is unrelated.")
+	sens = "text mining is an important aspect of 410. As is text retrival. This sentence is unrelated."
 	print sens
-	print stem(remove_stopwords_and_clean(sens))
+	print clean_document_and_return_sentances(sens)
