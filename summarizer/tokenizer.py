@@ -3,6 +3,7 @@ import nltk as nltk
 from nltk.data import load
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+import re
 
 """
 	doc          :    the document to be tokenized by sentance
@@ -10,8 +11,10 @@ from nltk.stem.porter import PorterStemmer
 	returns      :    a list of sentences
 """
 def tokenize_text(doc, language = 'english'):
-	tokenizer = load('tokenizers/punkt/{0}.pickle'.format(language))
-	sen = tokenizer.tokenize(doc)
+	#tokenizer = load('tokenizers/punkt/{0}.pickle'.format(language))
+	#s = re.compile('[.!?]')
+	sen = re.compile("[!?.]").split(doc)
+	#sen = doc.split('.')
 	return sen
 
 """
@@ -50,6 +53,7 @@ def clean_document_and_return_sentances(doc, language='english'):
 	return stem(remove_stopwords_and_clean(sentances))
 
 if __name__ == '__main__':
-	sens = "text mining is an important aspect of 410. As is text retrival. This sentence is unrelated."
-	print sens
+	sens = "text mining is an important aspect of 410? As is text retrival. This sentence is unrelated."
+	#print sens
+	print tokenize_text(sens)
 	print clean_document_and_return_sentances(sens)
