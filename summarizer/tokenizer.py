@@ -18,7 +18,7 @@ def tokenize_text(doc, language = 'english'):
 	return sen
 
 """
-	sentances    :    a list of sentences as returned by the tokenizer 
+	sentances    :    a list of sentences as returned by the tokenizer
 	returns      :    a list of sentences with stopwords and punctuation removed
 """
 def remove_stopwords_and_clean(sentances):
@@ -29,7 +29,7 @@ def remove_stopwords_and_clean(sentances):
 	return cleaned_sentances
 
 """
-	tokenized_list_of_lists    :    a list of sentences with stopwords and punctuation removed 
+	tokenized_list_of_lists    :    a list of sentences with stopwords and punctuation removed
 	returns                    :    a list of the given sentences with each word stemmed
 """
 def stem(tokenized_list):
@@ -53,7 +53,7 @@ def clean_document_and_return_sentances(doc, language='english'):
 	return stem(remove_stopwords_and_clean(sentances))
 
 if __name__ == '__main__':
-	sens = "text mining is an important aspect of 410? As is text retrival. This sentence is unrelated."
-	#print sens
-	print tokenize_text(sens)
+	nltk.download()
+	sens = "text mining is an important aspect of 410. As is text retrival. This sentence is unrelated."
+	print sens
 	print clean_document_and_return_sentances(sens)

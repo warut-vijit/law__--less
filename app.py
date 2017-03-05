@@ -5,7 +5,7 @@ import md5
 import json
 import md5
 from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams 
+from summarizer.unigrams import calculate_unigrams
 from summarizer.topic_analysis import *
 from summarizer.textrank import *
 from summarizer.graph_builder import *
@@ -41,8 +41,8 @@ def upload_target():
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
         #keywords = get_top_n_words(cleaned_string , 5)
         #strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
-        print cleaned_string
         sentences = tokenize_text(cleaned_string)
+        print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
         strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
         out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
