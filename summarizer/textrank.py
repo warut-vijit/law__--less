@@ -43,6 +43,23 @@ def textrank(adj_matrix, d):
     values, vectors = spl.eig(tr_matrix, left=True, right=False)
     return vectors
 
+'''
+s_array: A list of sentences where each sentence is a list of terms
+scores : sentence scores
+n      : Number of sentences to return
+returns: n best sentences
+'''
+def get_n_best_sentences(s_array, scores, n):
+    #just in case
+    if n > len(s_array):
+        n = len(s_array)
+    #make them into score, sentence tuples
+    score_sentence = [(scores[i] , s_array[i]) for i in range(len(s_array))]
+    #sort these tuples
+    sorted_score_sentence = sorted(score_sentence, key=lambda x: x[0])
+    #grab the n best
+    best_n = [sorted_score_sentence[i][1] for i in range(n)]
+    return best_n
 ###########################This is effectively the main#########################
 '''
 adj_matrix: A matrix where each sentence is adjacent by some weight
@@ -51,11 +68,11 @@ s_array   : A list of sentences where each sentence is a list of terms
 returns   : An array where each index of the array has a score and that index is
 the same as the order in which the sentence was passed in
 '''
-def run_testrank_and_return_scores(adj_matrix, s_array, d):
+def run_textrank_and_return_n_sentences(adj_matrix, s_array, d, n):
     eigen_vectors =  textrank(adj_matrix, d)
     scores = get_sentence_scores(s_array, eigen_vectors)
-    return scores
-
+    best_sentences = get_n_best_sentences( s_array, scores, n)
+    return best_sentences
 
 ###########################Silly Test###########################################
 # vec = textrank(test_adj_matrix, .80)
