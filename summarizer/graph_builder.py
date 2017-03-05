@@ -1,6 +1,5 @@
 import numpy as np
 
-
 '''
 num_sentences_in_doc: An integer representing the number of sentences in the doc
 returns             : A zero initialized numpy matrix
