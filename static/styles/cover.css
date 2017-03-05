@@ -177,3 +177,18 @@ body {
     width: 700px;
   }
 }
+
+
+/*
+ * Extension bar
+ */
+ 
+.ext-div {
+  position:absolute;
+  left:30px;
+  top:30%;
+}
+.ext-div > input, .ext-div > form > input {
+  min-width: 130px;
+  margin: 5px;
+}

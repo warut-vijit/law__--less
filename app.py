@@ -22,7 +22,7 @@ def get_extensions():
             config_json = json.loads(config_text)
             script = open(join('static', 'scripts', 'extensions', extension, extension+".js")).read()
             html_inject += "<script>"+script+"</script>\n"
-            html_inject += "<a onclick='"+str(config_json["function"])+"()'>"+str(config_json["name"])+"</a>\n"
+            html_inject += "<input type='button' onclick='"+str(config_json["function"])+"()' class='btn btn-extend' value='"+str(config_json["name"])+"'></br>\n"
     return html_inject
 
 # endpoints
