@@ -14,8 +14,8 @@ def build_probability_matrix(len_adj_matrix):
 '''
 s_array: A list of sentences where each sentence is a list of terms
 vecs   : A list of eigen vectors that contain textrank scores
-returns: An array where each index of the array has a score and that index is the same as the order
-in which the sentence was passed in
+returns: An array where each index of the array has a score and that index is
+        the same as the order in which the sentence was passed in
 '''
 def get_sentence_scores(s_array, vecs):
     scores = []
@@ -29,7 +29,7 @@ def get_sentence_scores(s_array, vecs):
 adj_matrix  : A matrix where each sentence is adjacent by some weight
 d           : A dampening factor
 returns     : A list of eigen vectors that contain textrank scores, the indicies
-of these values are the same as the s_array
+            of these values are the same as the s_array
 '''
 def textrank(adj_matrix, d):
 
@@ -43,7 +43,18 @@ def textrank(adj_matrix, d):
     values, vectors = spl.eig(tr_matrix, left=True, right=False)
     return vectors
 
-
+###########################This is effectively the main#########################
+'''
+adj_matrix: A matrix where each sentence is adjacent by some weight
+d         : A dampening factor
+s_array   : A list of sentences where each sentence is a list of terms
+returns   : An array where each index of the array has a score and that index is
+the same as the order in which the sentence was passed in
+'''
+def run_testrank_and_return_scores(adj_matrix, s_array, d):
+    eigen_vectors =  textrank(adj_matrix, d)
+    scores = get_sentence_scores(s_array, eigen_vectors)
+    return scores
 
 
 ###########################Silly Test###########################################
