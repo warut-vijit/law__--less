@@ -56,7 +56,7 @@ def get_n_best_sentences(s_array, scores, n):
     #make them into score, sentence tuples
     score_sentence = [(scores[i] , s_array[i]) for i in range(len(s_array))]
     #sort these tuples
-    sorted_score_sentence = sorted(score_sentence, key=lambda x: x[0])
+    sorted_score_sentence = sorted(score_sentence, key=lambda x: x[0], reverse=True)
     #grab the n best
     best_n = [sorted_score_sentence[i][1] for i in range(n)]
     return best_n
