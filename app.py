@@ -3,15 +3,18 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
-import md5
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 
 app = Flask(__name__)
+
+'''
+Endpoints for user interface delivery and document processing
+'''
 
 # initialize extensions
 print listdir('static/scripts/extensions')
@@ -41,6 +44,7 @@ def upload_target():
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
         #keywords = get_top_n_words(cleaned_string , 5)
         #strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
+        
         sentences = tokenize_text(cleaned_string)
         print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
@@ -79,6 +83,26 @@ def contribute():
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     return render_template("aboutus.html")
+
+'''
+Endpoints for distributing extensions
+'''
+
+@app.route('/market',methods=['GET'])
+def market():
+    return render_template("market.html")
+
+@app.route('/market/getextensions/',methods=['GET'])
+def getextensions():
+    offset = int(request.args.get('offset')) if 'offset' in request.args and request.args.get('offset').isdigit() else 0
+    maxsize = int(request.args.get('maxsize')) if 'maxsize' in request.args and request.args.get('maxsize').isdigit() else 10
+    returned_extensions = []
+    for extension in extensions[offset:offset+maxsize]:
+        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
+        config_json = json.loads(config_text)
+        ext_object = {"name":extension, "author":config_json["author"], "description":config_json["description"]}
+        returned_extensions.append(ext_object) 
+    return jsonify(returned_extensions)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging

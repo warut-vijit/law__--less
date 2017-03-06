@@ -1,5 +1,7 @@
 {
     "name": "State Laws",
     "version": "1.0.1",
-    "function": "state_laws"
+    "function": "state_laws",
+    "author": "nobody...yet",
+    "description": "Gets state laws related to the current case."
 }
