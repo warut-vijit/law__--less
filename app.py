@@ -74,4 +74,4 @@ def aboutus():
     return render_template("aboutus.html")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
