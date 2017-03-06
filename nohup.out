@@ -1,0 +1,1116 @@
+['state_laws', 'police_reports']
+Traceback (most recent call last):
+  File "app.py", line 73, in <module>
+    app.run(host='0.0.0.0', port=80, debug=True)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/flask/app.py", line 841, in run
+    run_simple(host, port, self, **options)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 691, in run_simple
+    s.bind((hostname, port))
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 13] Permission denied
+unknown command: python
+['state_laws', 'police_reports']
+Traceback (most recent call last):
+  File "app.py", line 73, in <module>
+    app.run(host='0.0.0.0', port=80, debug=True)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/flask/app.py", line 841, in run
+    run_simple(host, port, self, **options)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 691, in run_simple
+    s.bind((hostname, port))
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 13] Permission denied
+['state_laws', 'police_reports']
+Traceback (most recent call last):
+  File "app.py", line 73, in <module>
+    app.run(host='0.0.0.0', port=80, debug=True)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/flask/app.py", line 841, in run
+    run_simple(host, port, self, **options)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 691, in run_simple
+    s.bind((hostname, port))
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+socket.error: [Errno 13] Permission denied
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 239-355-551
+72.36.113.251 - - [26/Feb/2017 16:31:35] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:31:49] "GET /cases HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:31:50] "GET /features HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:31:51] "GET /contribute HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:31:52] "GET /aboutus HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:31:58] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:32:07] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:36:29] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:36:35] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:36:35] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:42] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:42] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:45] "GET / HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:45] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:45] "GET /static/styles/cover.css HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:45] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:36:46] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:46] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:46] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:36:46] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:46] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:36:46] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:36:46] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:36:46] "GET /static/icons/logo.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:47] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:47] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+64.233.172.129 - - [26/Feb/2017 16:36:47] "GET /static/icons/background.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/styles/cover.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:48] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:49] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:36:54] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:36:54] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+64.233.172.131 - - [26/Feb/2017 16:36:54] "GET / HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:01] "GET /cases HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:02] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.css HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:02] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.js HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:02] "GET /static/styles/styles.css HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:04] "GET /features HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:06] "GET /cases HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:36] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:39] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:45] "GET / HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:45] "GET /contribute HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:45] "GET /contribute HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:37:45] "GET /contribute HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:45] "GET /aboutus HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:45] "GET /static/icons/Chiranth.jpg HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:37:45] "GET /static/icons/Naveed.jpg HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:45] "GET /static/icons/Owen.jpg HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 16:37:45] "GET /static/icons/Kabir.jpg HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:45] "GET /static/icons/Nathan.jpg HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:45] "GET /static/icons/Warut.jpg HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:37:52] "GET /cases HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/styles/cover.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/logo.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/background.png HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:37:54] "GET /static/icons/background.png HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:37:55] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:04] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:05] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:08] "GET /contribute HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:08] "GET /contribute HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:38:09] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:12] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:14] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:14] "GET /contribute HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:20] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:23] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:38:23] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:38:23] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+64.233.172.129 - - [26/Feb/2017 16:38:24] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:26] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:38:27] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.52 - - [26/Feb/2017 16:38:35] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:38:45] "GET /contribute HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:39:02] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/styles/cover.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/logo.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/background.png HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:39] "GET /static/icons/background.png HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:46] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:46] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:46] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:46] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:47] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:48] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:50] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:51] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:51] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:53] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:54] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:55] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:56] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/background.png HTTP/1.1" 304 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 198, in execute
+    write(b'')
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:57] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:58] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:41:59] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:00] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:01] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:03] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:04] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:05] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/background.png HTTP/1.1" 304 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 198, in execute
+    write(b'')
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:06] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:07] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/styles/cover.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/styles/bootstrap.min.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/logo.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/contribute_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/cases_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/features_icon.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/background.png HTTP/1.1" 304 -
+130.126.255.208 - - [26/Feb/2017 16:42:08] "GET /static/icons/aboutus_icon.png HTTP/1.1" 304 -
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 239-355-551
+130.126.255.208 - - [26/Feb/2017 16:49:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:49:42] "GET /contribute HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:49:42] "GET /contribute HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 290, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 318, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 331, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 652, in __init__
+    self.handle()
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 228, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 259, in handle_one_request
+    self.raw_requestline = self.rfile.readline()
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:50:46] "GET /favicon.ico HTTP/1.1" 404 -
+130.126.255.52 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET /features HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET /features HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.52 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET /features HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+64.233.172.131 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+72.36.113.19 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/SocketServer.py", line 290, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 318, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 331, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 652, in __init__
+    self.handle()
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 228, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 259, in handle_one_request
+    self.raw_requestline = self.rfile.readline()
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+64.233.172.129 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+72.36.113.19 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+64.233.172.133 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+72.36.113.19 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+64.233.172.129 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 16:51:32] "GET / HTTP/1.1" 200 -
+ * Detected change in '/home/NAN1248/HackIllinois2017/app.py', reloading
+['state_laws', 'police_reports']
+----------------------------------------
+Exception happened during processing of request from ('130.126.255.208', 59037)
+----------------------------------------
+----------------------------------------
+Exception happened during processing of request from ('130.126.255.208', 60689)
+----------------------------------------
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 239-355-551
+130.126.255.208 - - [26/Feb/2017 16:52:15] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:52:18] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 16:52:21] "GET / HTTP/1.1" 200 -
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 239-355-551
+130.126.255.52 - - [26/Feb/2017 16:57:00] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:57:24] "GET /cases HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:57:33] "POST /upload-target HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:57:35] "GET /get-target HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:57:52] "GET /get-target HTTP/1.1" 200 -
+130.126.255.183 - - [26/Feb/2017 16:58:23] "GET / HTTP/1.1" 200 -
+130.126.255.183 - - [26/Feb/2017 16:58:23] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:58:29] "GET /features HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:58:31] "GET /contribute HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:58:33] "GET /aboutus HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:58:37] "GET /cases HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 16:58:39] "GET /get-target HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 16:59:41] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:59:56] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:59:56] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 16:59:56] "GET /aboutus HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:59:57] "GET / HTTP/1.1" 200 -
+72.36.113.251 - - [26/Feb/2017 16:59:58] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:16] "GET / HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:27] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:27] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:31] "GET / HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/styles/cover.css HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:31] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:32] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:33] "GET /cases HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:35] "GET /features HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:36] "GET /contribute HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/logo.png HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:36] "GET /static/icons/background.png HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:37] "GET /features HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:00:40] "GET /contribute HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:42] "GET /cases HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:42] "GET /static/styles/styles.css HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:42] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.css HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:42] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.js HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:43] "GET /features HTTP/1.1" 200 -
+72.36.113.58 - - [26/Feb/2017 17:00:44] "GET /cases HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:01:03] "GET / HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:01:16] "GET /static/scripts/extensions/police_reports/config.json HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:02:05] "GET /static/scripts/extensions/police_reports/police_reports.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /contribute HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.52 - - [26/Feb/2017 17:02:05] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /aboutus HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET / HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:05] "GET / HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Owen.jpg HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Kabir.jpg HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Chiranth.jpg HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Naveed.jpg HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Nathan.jpg HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:05] "GET /static/icons/Warut.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/styles/cover.css HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:05] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/logo.png HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:06] "GET /static/icons/background.png HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:29] "GET /cases HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:30] "GET /cases HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:30] "GET /cases HTTP/1.1" 200 -
+Error on request:
+Traceback (most recent call last):
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 205, in run_wsgi
+    execute(self.server.app)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 196, in execute
+    write(data)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 161, in write
+    self.send_response(int(code), msg)
+  File "/home/NAN1248/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 272, in send_response
+    self.wfile.write(hdr.encode('ascii'))
+IOError: [Errno 104] Connection reset by peer
+130.126.255.52 - - [26/Feb/2017 17:02:30] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:30] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.js HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:30] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.css HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:30] "GET /static/styles/styles.css HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:31] "GET /contribute HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:31] "GET /features HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:32] "GET /contribute HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:32] "GET /aboutus HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:33] "GET /aboutus HTTP/1.1" 200 -
+130.126.255.208 - - [26/Feb/2017 17:02:41] "GET /aboutus HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:41] "GET /features HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:41] "GET /cases HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:41] "GET /features HTTP/1.1" 200 -
+130.126.255.52 - - [26/Feb/2017 17:02:41] "GET / HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:41] "GET /features HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:02:41] "GET /contribute HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:45] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/styles/bootstrap.min.css HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/styles/ie10-viewport-bug-workaround.css HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/styles/cover.css HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/scripts/bootstrap.min.js HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/scripts/ie10-viewport-bug-workaround.js HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/scripts/ie-emulation-modes-warning.js HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/icons/features_icon.png HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:46] "GET /static/icons/logo.png HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:50] "GET /static/icons/cases_icon.png HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:50] "GET /static/icons/contribute_icon.png HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:50] "GET /static/icons/aboutus_icon.png HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:02:50] "GET /static/icons/background.png HTTP/1.1" 200 -
+72.36.113.48 - - [26/Feb/2017 17:02:58] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:09] "GET /cases HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:10] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.css HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:10] "GET /static/styles/styles.css HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:15] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.js HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:23] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:25] "GET /cases HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:31] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:33] "GET /features HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:42] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:44] "GET /aboutus HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Chiranth.jpg HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Kabir.jpg HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Naveed.jpg HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Owen.jpg HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Nathan.jpg HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:03:45] "GET /static/icons/Warut.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:03:45] "GET /features HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /aboutus HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Chiranth.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Kabir.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Naveed.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Nathan.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Owen.jpg HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:03] "GET /static/icons/Warut.jpg HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 17:04:04] "GET / HTTP/1.1" 200 -
+64.233.172.131 - - [26/Feb/2017 17:04:07] "GET /features HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:20] "GET /features HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:23] "GET /contribute HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:23] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:27] "GET / HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:30] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:34] "GET /cases HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:39] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:43] "GET /cases HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:46] "GET /cases HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:46] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.css HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:46] "GET /static/styles/styles.css HTTP/1.1" 200 -
+72.36.113.2 - - [26/Feb/2017 17:04:46] "GET /static/scripts/dropzone-4.3.0/dist/dropzone.js HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:54] "GET / HTTP/1.1" 200 -
+162.226.242.239 - - [26/Feb/2017 17:04:56] "GET /contribute HTTP/1.1" 200 -
+<type 'str'>
+0
+[]
+[]
+['state_laws', 'police_reports']
+<type 'str'>
+0
+[]
+[]
+['state_laws', 'police_reports']
+<type 'str'>
+0
+[]
