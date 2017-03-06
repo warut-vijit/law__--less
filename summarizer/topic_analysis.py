@@ -7,12 +7,16 @@ import json
 import time
 import os
 import math
+import hashlib
+
+# memoize previous searches for runtime
+memoized = {}
 
 def get_header():
 	# read key from file
 	account_key = ''
 
-	with open('azure_key.txt') as file:
+	with open('summarizer/azure_key.txt') as file:
 		account_key = file.readline().strip()
 
 	headers = {'Content-Type':'application/json', 'Ocp-Apim-Subscription-Key':account_key}
@@ -115,17 +119,21 @@ def get_key_words_json_for_doc(filename):
 				os.remove(doc.name)"""
 
 def get_top_n_words(doc, n):
-	filename = "temp.txt"
-	print type(doc)
-	with open(filename, 'w') as file:
-		file.write(doc)
-		key_words = get_key_words_json_for_doc(filename)
-	words = []
-	for k, v in key_words.items():
-		words.append((k,v))
+	dochash = hashlib.sha224(doc).hexdigest()
+	if dochash in memoized:
+		return memoized[dochash]
+	else:
+		filename = "temp.txt"
+		with open(filename, 'w') as file:
+			file.write(doc)
+			key_words = get_key_words_json_for_doc(filename)
+		words = []
+		for k, v in key_words.items():
+			words.append((k,v))
 
-	words = sorted(words, key=lambda x: x[1])
+		words = sorted(words, key=lambda x: x[1])
 
-	return words[-n:]
+		memoized[dochash] = words[-n:]
+		return words[-n:]
 
 print get_top_n_words('06_4.txt', 5)

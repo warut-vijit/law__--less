@@ -4,9 +4,9 @@ from os.path import isfile, join
 import md5
 import json
 import md5
-from pdf2txt import *
-from unigrams import calculate_unigrams
-from topic_analysis import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams 
+from summarizer.topic_analysis import *
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def get_extensions():
             config_json = json.loads(config_text)
             script = open(join('static', 'scripts', 'extensions', extension, extension+".js")).read()
             html_inject += "<script>"+script+"</script>\n"
-            html_inject += "<a onclick='"+str(config_json["function"])+"()'>"+str(config_json["name"])+"</a>\n"
+            html_inject += "<input type='button' onclick='"+str(config_json["function"])+"()' class='btn btn-extend' value='"+str(config_json["name"])+"'></br>\n"
     return html_inject
 
 # endpoints

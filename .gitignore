@@ -4,8 +4,13 @@ corpus.zip
 corpus
 Requirements.txt
 pdfminer-20140328
-unigrams.pyc
-pdf2text.pyc
+summarizer/unigrams.pyc
+summarizer/__init__.pyc
+summarizer/topic_analysis.pyc
+temp.txt
+input_cleaning/pdf2text.pyc
+input_cleaning/pdf2txt.pyc
+input_cleaning/__init__.pyc
 app.pyc
-xmlCleaner.pyc
+input_cleaning/xmlCleaner.pyc
 
