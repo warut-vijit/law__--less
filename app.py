@@ -3,14 +3,18 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
+
 #from input_cleaning.pdf2txt import *
 #from summarizer.unigrams import calculate_unigrams
 #from summarizer.topic_analysis import *
 #from summarizer.textrank import *
 #from summarizer.graph_builder import *
 #from summarizer.tokenizer import *
+from sqlalchemy.sql.expression import func
+from models import db, Extension
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 '''
 Endpoints for user interface delivery and document processing
@@ -20,7 +24,7 @@ Endpoints for user interface delivery and document processing
 print listdir('static/scripts/extensions')
 extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
 
-def get_extensions():
+def init_extensions():
     html_inject = ""
     for extension in extensions:
         if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
@@ -45,14 +49,15 @@ def upload_target():
         #keywords = get_top_n_words(cleaned_string , 5)
         #strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
         
-        sentences = tokenize_text(cleaned_string)
-        print sentences
-        adj_matrix = create_sentence_adj_matrix(sentences)
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
-        for string in strings:
-            out_file.write(string+".")
-        out_file.close() # persistent abstract
+        #remove this before merge
+        #sentences = tokenize_text(cleaned_string)
+        #print sentences
+        #adj_matrix = create_sentence_adj_matrix(sentences)
+        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+        #out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
+        #for string in strings:
+        #    out_file.write(string+".")
+        #out_file.close() # persistent abstract
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -70,7 +75,7 @@ def get_target():
 
 @app.route('/cases',methods=['GET'])
 def cases():
-    return render_template("cases.html", extensions=get_extensions())
+    return render_template("cases.html", extensions=init_extensions())
 
 @app.route('/features',methods=['GET'])
 def features():
@@ -104,5 +109,16 @@ def getextensions():
         returned_extensions.append(ext_object) 
     return jsonify(returned_extensions)
 
+'''
+Interact with database
+'''
+
+@app.route('/market/countextensions/',methods=['GET'])
+def countextensiions():
+    return str(Extension.query.count())
+
+db.init_app(app)
+db.create_all(app=app)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging

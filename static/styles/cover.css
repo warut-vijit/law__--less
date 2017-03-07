@@ -192,3 +192,11 @@ body {
   min-width: 130px;
   margin: 5px;
 }
+
+/*
+ * Extensions table
+ */
+
+.market-table > div:first-child {
+  border-bottom: 1px solid white;
+}

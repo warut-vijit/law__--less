@@ -24,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
+    <!-- Google material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
 
@@ -62,10 +65,37 @@
             <div>
               <h2>--less Extension Marketplace</h2>
             </div>
-            <table style="width:100%;min-height:500px;max-height:800px;">
-              <tr ng-repeat="extension in extensions"><td>
-                <div class="col-sm-3">
-                  <a>{{extension.name}}</a>
+            <div> <!-- menu -->
+              <i class="material-icons" ng-click="previous_batch()">navigate_before</i>
+              <i class="material-icons" ng-click="next_batch()">navigate_next</i>
+              <!--<span>{{indices}}</span>-->
+              <input type="button" class="btn btn-large" value="Select All" ng-click="select_all()">
+              <input type="button" class="btn btn-large" value="Download">
+            </div>
+            <div style="width:100%;min-height:500px;max-height:800px;" class="market-table">
+              <div class="col-sm-12">
+                <div class="col-sm-1">
+                  <p>Select</p>
+                </div>
+                <div class="col-sm-2">
+                  <a>Extension Name</a>
+                </div>
+                <div class="col-sm-7">
+                  <div class="col-sm-2 col-xs-6">Field</div>
+                  <div class="col-sm-2 col-xs-6">Rating</div>
+                  <div class="col-sm-8"></div>
+                  <p>Description</p>
+                </div>
+                <div class="col-sm-2">
+                  <p>Author</p>
+                </div>
+              </div>
+              <div ng-repeat="extension in extensions track by $index" class="col-sm-12">
+                <div class="col-sm-1">
+                  <input type="checkbox" name="{{extension.name}}" class="checkbox">
+                </div>
+                <div class="col-sm-2">
+                  <a class="expand-link">{{extension.name}}</a>
                 </div>
                 <div class="col-sm-7">
                   <div class="col-sm-2 col-xs-6">Field</div>
@@ -76,8 +106,8 @@
                 <div class="col-sm-2">
                   <p>{{extension.author}}</p>
                 </div>
-              </td></tr>
-            </table>
+              </div>
+            </div>
           </div>
           {% endraw %}
 
