@@ -3,21 +3,24 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
-import md5
+
 from input_cleaning.pdf2txt import *
 from summarizer.unigrams import calculate_unigrams
 from summarizer.topic_analysis import *
 from summarizer.textrank import *
 from summarizer.graph_builder import *
 from summarizer.tokenizer import *
+from sqlalchemy.sql.expression import func
+from models import db, Extension
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# initialize extensions
-print listdir('static/scripts/extensions')
-extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
+'''
+Endpoints for user interface delivery and document processing
+'''
 
-def get_extensions():
+def init_extensions():
     html_inject = ""
     for extension in extensions:
         if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
@@ -41,6 +44,7 @@ def upload_target():
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
         #keywords = get_top_n_words(cleaned_string , 5)
         #strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
+        
         sentences = tokenize_text(cleaned_string)
         print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
@@ -66,7 +70,7 @@ def get_target():
 
 @app.route('/cases',methods=['GET'])
 def cases():
-    return render_template("cases.html", extensions=get_extensions())
+    return render_template("cases.html", extensions=init_extensions())
 
 @app.route('/features',methods=['GET'])
 def features():
@@ -79,6 +83,60 @@ def contribute():
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     return render_template("aboutus.html")
+
+'''
+Endpoints for distributing extensions
+'''
+
+@app.route('/market',methods=['GET'])
+def market():
+    return render_template("market.html")
+
+@app.route('/market/getextensions/',methods=['GET'])
+def getextensions():
+    offset = int(request.args.get('offset')) if 'offset' in request.args and request.args.get('offset').isdigit() else 0
+    maxsize = int(request.args.get('maxsize')) if 'maxsize' in request.args and request.args.get('maxsize').isdigit() else 10
+    return jsonify([ext.get_dict() for ext in Extension.query.offset(offset).limit(maxsize).all()])
+
+'''
+Interact with database
+'''
+
+@app.route('/market/countextensions/',methods=['GET'])
+def countextensions():
+    return str(Extension.query.count())
+
+@app.route('/market/vote',methods=['GET'])
+def vote():
+    if 'id' in request.args and 'rating_points' in request.args and 'total_ratings' in request.args:
+        rating = request.args.get('rating_points')
+        total  = request.args.get('total_ratings')
+        Extension.query.get( request.args.get('id') ).rating_points = rating
+        Extension.query.get( request.args.get('id') ).total_ratings = total
+        db.session.commit()
+        return "success"
+
+'''
+Initialize database with local extensions
+'''
+db.app = app
+db.init_app(app)
+db.create_all(app=app)
+#db.create_all(app=app)
+extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
+for extension in extensions:
+    if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
+        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
+        config_json = json.loads(config_text)
+        ext_object = Extension(
+            name=extension,
+            author=config_json["author"],
+            description=config_json["description"],
+            rating_points = 0,
+            total_ratings = 0
+        )
+        db.session.add(ext_object)
+        db.session.commit() 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging

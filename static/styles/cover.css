@@ -192,3 +192,34 @@ body {
   min-width: 130px;
   margin: 5px;
 }
+
+/*
+ * Extensions table
+ */
+
+.market-table > div:first-child {
+  border-bottom: 3px solid white;
+}
+
+.nav_bar i,span {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.market-table > div.ext-row {
+  padding: 3px;
+  border-bottom: 1px solid white;
+  text-align: center;
+}
+
+.market-table > div.ext-row:hover {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.redstyle {
+  color: #c44b4b;
+}
+
+.greenstyle {
+  color: #98c229;
+}
