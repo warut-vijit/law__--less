@@ -20,10 +20,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Endpoints for user interface delivery and document processing
 '''
 
-# initialize extensions
-print listdir('static/scripts/extensions')
-extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
-
 def init_extensions():
     html_inject = ""
     for extension in extensions:
@@ -101,24 +97,47 @@ def market():
 def getextensions():
     offset = int(request.args.get('offset')) if 'offset' in request.args and request.args.get('offset').isdigit() else 0
     maxsize = int(request.args.get('maxsize')) if 'maxsize' in request.args and request.args.get('maxsize').isdigit() else 10
-    returned_extensions = []
-    for extension in extensions[offset:offset+maxsize]:
-        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-        config_json = json.loads(config_text)
-        ext_object = {"name":extension, "author":config_json["author"], "description":config_json["description"]}
-        returned_extensions.append(ext_object) 
-    return jsonify(returned_extensions)
+    return jsonify([ext.get_dict() for ext in Extension.query.offset(offset).limit(maxsize).all()])
 
 '''
 Interact with database
 '''
 
 @app.route('/market/countextensions/',methods=['GET'])
-def countextensiions():
+def countextensions():
     return str(Extension.query.count())
 
+@app.route('/market/vote',methods=['GET'])
+def vote():
+    if 'id' in request.args and 'rating_points' in request.args and 'total_ratings' in request.args:
+        rating = request.args.get('rating_points')
+        total  = request.args.get('total_ratings')
+        Extension.query.get( request.args.get('id') ).rating_points = rating
+        Extension.query.get( request.args.get('id') ).total_ratings = total
+        db.session.commit()
+        return "success"
+
+'''
+Initialize database with local extensions
+'''
+db.app = app
 db.init_app(app)
 db.create_all(app=app)
+#db.create_all(app=app)
+extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
+for extension in extensions:
+    if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
+        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
+        config_json = json.loads(config_text)
+        ext_object = Extension(
+            name=extension,
+            author=config_json["author"],
+            description=config_json["description"],
+            rating_points = 0,
+            total_ratings = 0
+        )
+        db.session.add(ext_object)
+        db.session.commit() 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging

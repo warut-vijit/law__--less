@@ -1,30 +1,48 @@
 var app = angular.module('marketApp', []);
 app.controller('marketCtrl', function($scope, $http) {
-    var position = 0;
-    var total_extensions = 0;
+    $scope.position = 0;
+    $scope.total_extensions = 0;
     $scope.extensions = "";
 
     //initialize list
     get_batch(0);
+    get_total_extensions();
     
     $scope.previous_batch = function() {
-        position = Math.max(position-10, 0);
+        $scope.position = Math.max($scope.position-10, 0);
+        get_batch($scope.position)
+        console.log("Backtracked to position "+$scope.position)
     }
     $scope.next_batch = function() {
-        position = Math.min(position+10, total_extensions);
+        $scope.position = Math.min($scope.position+10, $scope.total_extensions);
+        get_batch($scope.position)
+        console.log("Advanced to position "+$scope.position)
+    }
+    $scope.vote = function(extension, value) {
+        extension.rating_points += value;
+        extension.total_ratings += 1; // add vote
+        put_vote(extension["id"], extension.rating_points, extension.total_ratings);
+        console.log("Vote submitted, value set to "+rating_points);    
     }
 
     // helper functions
     $scope.select_all = function() {
-        alert("selecting");
-        document.getElementsByClassName("checkbox").forEach(function(element){
-            element.value = true;
-        });
+        var checkboxes = document.getElementsByClassName("checkbox");
+        for(var index = 0; index<checkboxes.length; index++){
+            checkboxes[index].checked = true;
+        }
+    }
+    $scope.end_batch = function() {
+        return Math.min($scope.position+10, $scope.total_extensions)
     }
 
     // backend calls
     function get_batch(offset) {
-        $http.get("/market/getextensions")
+        $http({
+            url: "/market/getextensions",
+            method: "GET",
+            params: {offset: offset}
+        })
         .then(function(response) {
             console.log("response received: "+response.data);
             $scope.extensions = response.data;
@@ -37,10 +55,22 @@ app.controller('marketCtrl', function($scope, $http) {
         $http.get("/market/countextensions")
         .then(function(response) {
             console.log("response received: "+response.data);
-            total_extensions = response.data;
+            $scope.total_extensions = response.data;
         }, function(response) {
             //Second function handles error
-            console.log("error fetching extensions");
+            console.log("error counting extensions");
+        });
+    }
+    function put_vote(id, rating_points, total_ratings) {
+        $http({
+            url: "/market/vote",
+            method: "GET",
+            params: {id: id, rating_points: rating_points, total_ratings: total_ratings}
+        })
+        .then(function(response){
+            console.log("successfully voted for extension id "+id);
+        }, function(response){
+            console.log("error occurred while voting");
         });
     }
 });
