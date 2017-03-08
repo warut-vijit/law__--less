@@ -4,12 +4,12 @@ from os.path import isfile, join
 import md5
 import json
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension
 
@@ -45,15 +45,14 @@ def upload_target():
         #keywords = get_top_n_words(cleaned_string , 5)
         #strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
         
-        #remove this before merge
-        #sentences = tokenize_text(cleaned_string)
-        #print sentences
-        #adj_matrix = create_sentence_adj_matrix(sentences)
-        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        #out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
-        #for string in strings:
-        #    out_file.write(string+".")
-        #out_file.close() # persistent abstract
+        sentences = tokenize_text(cleaned_string)
+        print sentences
+        adj_matrix = create_sentence_adj_matrix(sentences)
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
+        for string in strings:
+            out_file.write(string+".")
+        out_file.close() # persistent abstract
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -140,4 +139,4 @@ for extension in extensions:
         db.session.commit() 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
