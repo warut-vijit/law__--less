@@ -4,12 +4,43 @@ from nltk.data import load
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+"""
+	text         :    the document to be tokenized by sentance
+	languange    :    the language the document is in
+	returns      :    a list of sentences
+"""
+def tokenize_text(text, language = 'english'):
+	#regex patterns for specfic edge cases
+	caps = "([A-Z])"
+	prefixes = "(Mr|St|Mrs|Ms|Dr)[.]"
+	suffixes = "(Inc|Ltd|Jr|Sr|Co)"
+	starters = "(Mr|Mrs|Ms|Dr|He\s|She\s|It\s|They\s|Their\s|Our\s|We\s|But\s|However\s|That\s|This\s|Wherever)"
+	acronyms = "([A-Z][.][A-Z][.](?:[A-Z][.])?)"
+	websites = "[.](com|net|org|io|gov)"
 
-def tokenize_text(doc, language = 'english'):
-	#PunktSentenceTokenizer.tokenize(doc)
-	tokenizer = load('tokenizers/punkt/{0}.pickle'.format(language))
-	sen = tokenizer.tokenize(doc)
-	return sen
+	text = " " + text + "  "
+	text = text.replace("\n"," ")
+	text = re.sub(prefixes,"\\1<prd>",text)
+	text = re.sub(websites,"<prd>\\1",text)
+	if "Ph.D" in text: text = text.replace("Ph.D.","Ph<prd>D<prd>")
+	text = re.sub("\s" + caps + "[.] "," \\1<prd> ",text)
+	text = re.sub(acronyms+" "+starters,"\\1<stop> \\2",text)
+	text = re.sub(caps + "[.]" + caps + "[.]" + caps + "[.]","\\1<prd>\\2<prd>\\3<prd>",text)
+	text = re.sub(caps + "[.]" + caps + "[.]","\\1<prd>\\2<prd>",text)
+	text = re.sub(" "+suffixes+"[.] "+starters," \\1<stop> \\2",text)
+	text = re.sub(" "+suffixes+"[.]"," \\1<prd>",text)
+	text = re.sub(" " + caps + "[.]"," \\1<prd>",text)
+	if "\"" in text: text = text.replace(".\"","\".")
+	if "!" in text: text = text.replace("!\"","\"!")
+	if "?" in text: text = text.replace("?\"","\"?")
+	text = text.replace(".",".<stop>")
+	text = text.replace("?","?<stop>")
+	text = text.replace("!","!<stop>")
+	text = text.replace("<prd>",".")
+	sentences = text.split("<stop>")
+	sentences = sentences[:-1]
+	sentences = [s.strip() for s in sentences]
+	return sentences
 
 def stem(tokenized_list_of_lists):
 	stemmer = PorterStemmer()
@@ -29,10 +60,8 @@ def remove_stopwords(sentances):
 		cleaned_sentances.append([x for x in sentance.lower().split() if x not in stop])
 	return cleaned_sentances
 
-#nltk.download()
-sens = tokenize_text("text mining is an important aspect of 410. As is text retrival. This sentence is unrelated.")
-print sens
-print stem(remove_stopwords(sens))
-
-#stemmer = PorterStemmer()
-#print stemmer.stem("running.")
+if __name__ == '__main__':
+	#nltk.download()
+	sens = "text mining is an important aspect of 410. As is text retrival. This sentence is unrelated."
+	print sens
+	print tokenize_text(sens)
