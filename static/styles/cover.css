@@ -133,6 +133,21 @@ body {
   vertical-align: bottom;
 }
 
+/*
+ * Search bar
+ */
+
+.search-box {
+  font-size: 18px;
+  padding: 3px;
+  border: 1px solid green;
+  background-color: #252525;
+}
+
+.search-suggest {
+  font-size: 11px;
+}
+
 
 /*
  * Footer
