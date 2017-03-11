@@ -26,12 +26,14 @@ def get_sentence_scores(s_array, vecs):
     return scores
 
 '''
-adj_matrix  : A matrix where each sentence is adjacent by some weight
-d           : A dampening factor
-returns     : A list of eigen vectors that contain textrank scores, the indicies
+adj_matrix    : A matrix where each sentence is adjacent by some weight
+d             : A dampening factor
+epsilon       : threshold of convergance
+maxIterations : max iterations before convergance is assumed
+returns       : A list of eigen vectors that contain textrank scores, the indicies
             of these values are the same as the s_array
 '''
-def textrank(adj_matrix, d):
+def textrank(adj_matrix, d, epsilon=0.00001, maxIterations=1000):
 
     #creating the random jumping matrix -- filled with 1/N
     prob_matrix = build_probability_matrix(len(adj_matrix))
@@ -39,9 +41,24 @@ def textrank(adj_matrix, d):
     #creating the textrank matrix using dampening
     tr_matrix = d * adj_matrix + (1 - d) * prob_matrix
 
-    #using scipy left eigenvector to grab scores
-    values, vectors = spl.eig(tr_matrix, left=True, right=False)
+    #old_state = np.copy(tr_matrix)
+
+    power_matrix = np.empty_like(tr_matrix)
+    power_matrix.fill(.25)
+
+    for iteration in range(maxIterations):
+        old_state = np.copy(tr_matrix)
+        tr_matrix = tr_matrix.dot(power_matrix)
+        delta = tr_matrix - old_state
+        if np.sum(np.abs(tr_matrix - old_state)) < epsilon:
+            break
+
+    vectors = []
+    for vec in tr_matrix.T:
+        vectors.append(vec)
     return vectors
+    #using scipy left eigenvector to grab scores
+    #values, vectors = spl.eig(tr_matrix, left=True, right=False)
 
 '''
 s_array: A list of sentences where each sentence is a list of terms

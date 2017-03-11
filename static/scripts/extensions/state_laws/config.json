@@ -3,5 +3,6 @@
     "version": "1.0.1",
     "function": "state_laws",
     "author": "nobody...yet",
-    "description": "Gets state laws related to the current case."
+    "description": "Gets state laws related to the current case.",
+    "field": "Law"
 }

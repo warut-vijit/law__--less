@@ -41,6 +41,11 @@
 
     <script src="{{url_for('static', filename='scripts/market.js')}}"></script>
 
+    <!-- Bootstrap Dropzone JavaScript -->
+    <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
+
   </head>
 
   <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
@@ -71,6 +76,7 @@
               <span>{{position}} - {{end_batch()}} of {{total_extensions}}</span>
               <i ng-click="select_all()">Select All</i>
               <i ng-click="download()">Download</i>
+              <i ng-click="upload_ext()">Upload</i>
             </div>
             <div style="width:100%;min-height:500px;max-height:800px;" class="market-table">
               <div class="col-sm-12">
@@ -90,15 +96,15 @@
                   <p>Author</p>
                 </div>
               </div>
-              <div ng-repeat="extension in extensions track by $index" class="col-sm-12 ext-row">
+              <div ng-repeat="extension in extensions track by $index" class="col-sm-12 dropdown ext-row">
                 <div class="col-sm-1">
                   <input type="checkbox" name="{{extension.name}}" class="checkbox">
                 </div>
                 <div class="col-sm-2">
-                  <a class="expand-link">{{extension.name}}</a>
+                  <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
                 </div>
                 <div class="col-sm-7">
-                  <div class="col-sm-2 col-xs-6">Field</div>
+                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
                   <div class="col-sm-2 col-xs-6">
                     <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
                     <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
@@ -110,6 +116,24 @@
                 <div class="col-sm-2">
                   <p>{{extension.author}}</p>
                 </div>
+              </div>
+              <div ng-show="expand || upload_active" class="blanket-ext"></div>
+              <div ng-show="expand" class="expand-ext">
+                <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                <h4>{{expanded_ext.name}}</h4>
+                <span style="float:left">Javascript</span>
+              </div>
+              <div ng-show="upload_active" class="expand-ext">
+                <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                <h4>Upload Extension</h4>
+                <form id="dropzone" action="/upload-ext" class="dropzone black-text"></form>
+                </br></br>
+                <center>
+                  <table>
+                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>config.json</td></tr>
+                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>JS script</td></tr>
+                  </table>
+                </center>
               </div>
             </div>
           </div>
