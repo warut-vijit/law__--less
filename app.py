@@ -51,7 +51,6 @@ def upload_target():
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-   
         sentences = tokenize_text(cleaned_string)
         print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
@@ -145,6 +144,7 @@ for extension in extensions:
             name=extension,
             author=config_json["author"],
             description=config_json["description"],
+            field=config_json["field"],
             rating_points = 0,
             total_ratings = 0
         )
