@@ -17,6 +17,11 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 '''
+Queries for weighting (will move to database)
+'''
+queries = {}
+
+'''
 Endpoints for user interface delivery and document processing
 '''
 
@@ -39,12 +44,14 @@ def home():
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
     if request.method == "POST" :
+        # query text entered in search box, if any
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        query_text = queries[addr_hash] if addr_hash in queries else ""
+        
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        keywords = get_top_n_words(cleaned_string , 5)
-        strings = calculate_unigrams(cleaned_string, keywords) # calculate most important sentences, possibly calculate_unigrams(cleaned_string, keyword        out_file = open("output.txt", "w")
-        
+   
         sentences = tokenize_text(cleaned_string)
         print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
@@ -72,7 +79,8 @@ def get_target():
 def cases():
     if request.method == 'POST':
         query = request.form["query"]
-        return render_template("cases.html", extensions=init_extensions(), query=query, popup="block")
+        queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
+        return render_template("cases.html", extensions=init_extensions(), popup="none")
     else:
         return render_template("cases.html", extensions=init_extensions(), popup="none")
     
