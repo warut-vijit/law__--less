@@ -133,6 +133,21 @@ body {
   vertical-align: bottom;
 }
 
+/*
+ * Search bar
+ */
+
+.search-box {
+  font-size: 18px;
+  padding: 3px;
+  border: 1px solid green;
+  background-color: #252525;
+}
+
+.search-suggest {
+  font-size: 11px;
+}
+
 
 /*
  * Footer
@@ -222,4 +237,30 @@ body {
 
 .greenstyle {
   color: #98c229;
+}
+
+.expand-ext {
+  position: fixed;
+  left: 30%;
+  top: 20%;
+  width: 40%;
+  height: 60%;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding: 5px;
+  z-index: 2;
+  background-color: #252525;
+}
+
+.blanket-ext {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.close-ext {
+  float: right;
 }

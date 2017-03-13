@@ -125,6 +125,12 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
+            <form action="cases" style="margin-bottom:30px" method="post">
+              <input type="text" class="search-box col-sm-9" name="query"><span class="search-suggest">press <b>ENTER</b> to search</span></br>
+            </form>
+            <div style="display: {{popup}}">
+              You searched for: <b>{{query}}</b>
+            </div>
             <form id="dropzone" action="/upload-target" class="dropzone black-text"></form>
             <br>
             <input type="button" class="btn btn-large" onclick="toggle_briefing()" value="Load Briefing">
@@ -157,10 +163,8 @@
                 <a href="https://github.com/nriaziat">Naveed</a>,
                 <a href="https://github.com/owenli10">Owen</a></p>
             </div>
-        </div>
-
+          </div>
       </div>
-
     </div>
   </body>
 </html>

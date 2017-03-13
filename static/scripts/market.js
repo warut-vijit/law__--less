@@ -3,6 +3,9 @@ app.controller('marketCtrl', function($scope, $http) {
     $scope.position = 0;
     $scope.total_extensions = 0;
     $scope.extensions = "";
+    $scope.expanded_ext;
+    $scope.expand = false;
+    $scope.upload_active = false;
 
     //initialize list
     get_batch(0);
@@ -23,6 +26,19 @@ app.controller('marketCtrl', function($scope, $http) {
         extension.total_ratings += 1; // add vote
         put_vote(extension["id"], extension.rating_points, extension.total_ratings);
         console.log("Vote submitted, value set to "+rating_points);    
+    }
+    $scope.expand_ext = function(extension) {
+        $scope.expanded_ext = extension;
+        $scope.expand = true;
+    }
+    $scope.close_ext = function() {
+        console.log("Closing menu");
+        $scope.expanded_ext = "";
+        $scope.expand = false;
+        $scope.upload_active = false;
+    }
+    $scope.upload_ext = function() {
+        $scope.upload_active = true;
     }
 
     // helper functions
