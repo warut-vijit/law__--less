@@ -139,4 +139,4 @@ for extension in extensions:
         db.session.commit() 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, debug=True, threaded=True) #debug=True can be added for debugging
