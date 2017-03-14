@@ -79,22 +79,37 @@ def cases():
     if request.method == 'POST':
         query = request.form["query"]
         queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-        return render_template("cases.html", extensions=init_extensions(), popup="none")
+        response = render_template("cases.html", extensions=init_extensions(), popup="none")
     else:
-        return render_template("cases.html", extensions=init_extensions(), popup="none")
-    
+        response = render_template("cases.html", extensions=init_extensions(), popup="none")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+    response.headers["Expires"] = "0" # Proxies.
+    return response
 
 @app.route('/features',methods=['GET'])
 def features():
-    return render_template("features.html")
+    response = render_template("features.html")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+    response.headers["Expires"] = "0" # Proxies.
+    return response
 
 @app.route('/contribute',methods=['GET'])
 def contribute():
-    return render_template("contribute.html")
+    response = render_template("contribute.html")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+    response.headers["Expires"] = "0" # Proxies.
+    return response
 
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
-    return render_template("aboutus.html")
+    response = render_template("aboutus.html")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+    response.headers["Expires"] = "0" # Proxies.
+    return response
 
 '''
 Endpoints for distributing extensions
@@ -102,7 +117,11 @@ Endpoints for distributing extensions
 
 @app.route('/market',methods=['GET'])
 def market():
-    return render_template("market.html")
+    response = render_template("market.html")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
+    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
+    response.headers["Expires"] = "0" # Proxies.
+    return response
 
 @app.route('/market/getextensions/',methods=['GET'])
 def getextensions():
@@ -152,4 +171,4 @@ for extension in extensions:
         db.session.commit() 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True, threaded=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
