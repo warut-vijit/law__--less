@@ -3,15 +3,16 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
+import logging
 
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
-from models import db, Extension
+from models import db, Extension, User
 
 import SMTPMail
 
@@ -19,9 +20,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 '''
-Queries for weighting (will move to database)
+Queries and active users
 '''
 queries = {}
+users = {}
 
 '''
 Endpoints for user interface delivery and document processing
@@ -47,6 +49,7 @@ def home():
 def upload_target():
     if request.method == "POST" :
         # query text entered in search box, if any
+
         #addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
         #query_text = queries[addr_hash] if addr_hash in queries else ""
 
@@ -74,7 +77,8 @@ def upload_target():
         files = [file_name]
 
         SMTPMail.send_mail(bot_address, bot_password, send_to, subject, text, files)
-        #
+        ###
+        
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -95,9 +99,7 @@ def cases():
     if request.method == 'POST':
         query = request.form["query"]
         queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-        response = render_template("cases.html", extensions=init_extensions(), popup="none")
-    else:
-        response = render_template("cases.html", extensions=init_extensions(), popup="none")
+    response = render_template("cases.html", extensions=init_extensions(), popup="none")
     return response
 
 @app.route('/features',methods=['GET'])
@@ -147,6 +149,38 @@ def vote():
         Extension.query.get( request.args.get('id') ).total_ratings = total
         db.session.commit()
         return "success"
+
+'''
+Login system, interacts with database
+'''
+
+@app.route('/login/getcredentials')
+def getcredentials():
+    addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+    return jsonify(users[addr_hash]) if addr_hash in users else ""
+
+@app.route('/login/verify')
+def verify():
+    q = User.query.filter(User.name==request.args.get("username")).first()
+    if q is not None:
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        users[addr_hash] = q
+        return "success"
+    return "fail"
+
+@app.route('/login/signup')
+def signup():
+    q = User.query.filter(User.username==request.args.get("username")).first()
+    if q is not None:
+        return "fail"
+    user_object = User(
+        name=request.args.get("name"),
+        username=request.args.get("username"),
+        password_hash=md5.new(request.args.get("password")).hexdigest()
+    )
+    db.session.add(user_object)
+    db.session.commit()
+    return "success"
 
 '''
 Initialize database with local extensions
