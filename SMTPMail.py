@@ -5,6 +5,7 @@ from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from email.Utils import COMMASPACE
 from email import Encoders
+import BotCredentials
 
 def prepare_attachment(attachment):
     """Prepares the attachment and sets necessary fields for sending"""
@@ -29,7 +30,7 @@ def send_mail(bot_address, bot_password, send_to, subject, body, files):
         msg.attach(prepare_attachment(attachment))
 
     # send the email
-    SERVER = "smtp.gmail.com"
+    SERVER = "mail.privateemail.com"
     SERVER_EXTENSION = "587"
     smtp = smtplib.SMTP(SERVER, SERVER_EXTENSION)
     smtp.starttls()
@@ -38,11 +39,11 @@ def send_mail(bot_address, bot_password, send_to, subject, body, files):
     smtp.close()
 
 if __name__=="__main__":
-    bot_address = "emberuiucbot@gmail.com"
-    bot_password = "emberbotproject123"
-    send_to = ["kabir@manghnani.com"]
+    bot_address = BotCredentials.bot_username
+    bot_password = BotCredentials.bot_password
+    send_to = ["redacted"]
     subject = "Hello, this is the subject"
-    text = ""
-    files = ["kabir_manghnani.jpg"]
+    text = "This is the body."
+    files = []
 
     send_mail(bot_address, bot_password, send_to, subject, text, files)

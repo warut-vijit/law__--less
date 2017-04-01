@@ -4,6 +4,7 @@ from os.path import isfile, join
 import md5
 import json
 import logging
+import BotCredentials
 
 from input_cleaning.pdf2txt import *
 from summarizer.unigrams import calculate_unigrams
@@ -68,8 +69,6 @@ def upload_target():
         out_file.close() # persistent abstract
 
         # send email here
-        bot_address = "emberuiucbot@gmail.com"
-        bot_password = "emberbotproject123"
         if len(active_email) > 0:
             send_to = [active_email[0]]
             active_email.pop(0)
@@ -79,7 +78,8 @@ def upload_target():
                 text += sen + "\n"
             files = [file_name]
 
-            SMTPMail.send_mail(bot_address, bot_password, send_to, subject, text, files)
+            SMTPMail.send_mail(BotCredentials.bot_username, BotCredentials.bot_password, 
+                send_to, subject, text, files)
         ###
         
         return "success"
