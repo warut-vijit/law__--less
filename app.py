@@ -5,12 +5,12 @@ import md5
 import json
 import logging
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User
 
@@ -24,6 +24,7 @@ Queries and active users
 '''
 queries = {}
 users = {}
+active_email = []
 
 '''
 Endpoints for user interface delivery and document processing
@@ -50,8 +51,8 @@ def upload_target():
     if request.method == "POST" :
         # query text entered in search box, if any
 
-        #addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
-        #query_text = queries[addr_hash] if addr_hash in queries else ""
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        query_text = queries[addr_hash] if addr_hash in queries else ""
 
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
@@ -69,14 +70,16 @@ def upload_target():
         # send email here
         bot_address = "emberuiucbot@gmail.com"
         bot_password = "emberbotproject123"
-        send_to = ["kabir@manghnani.com"]
-        subject = "Here is your summary!"
-        text = ""
-        for sen in strings:
-            text += sen + "\n"
-        files = [file_name]
+        if len(active_email) > 0:
+            send_to = [active_email[0]]
+            active_email.pop(0)
+            subject = "Here is your summary!"
+            text = ""
+            for sen in strings:
+                text += sen + "\n"
+            files = [file_name]
 
-        SMTPMail.send_mail(bot_address, bot_password, send_to, subject, text, files)
+            SMTPMail.send_mail(bot_address, bot_password, send_to, subject, text, files)
         ###
         
         return "success"
@@ -97,8 +100,12 @@ def get_target():
 @app.route('/cases',methods=['GET', 'POST']) # post method for handling queries
 def cases():
     if request.method == 'POST':
-        query = request.form["query"]
-        queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
+        if "query" in request.form:
+            query = request.form["query"]
+            queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
+        elif "email" in request.form:
+            email = request.form["email"]
+            active_email.append(email)
     response = render_template("cases.html", extensions=init_extensions(), popup="none")
     return response
 

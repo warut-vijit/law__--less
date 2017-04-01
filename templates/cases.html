@@ -125,12 +125,19 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <form action="cases" style="margin-bottom:30px" method="post">
-              <input type="text" class="search-box col-sm-9" name="query"><span class="search-suggest">press <b>ENTER</b> to search</span></br>
+            <form action="cases" style="margin-top:30px" method="post">
+              <input type="text" class="search-box col-sm-9" name="query" placeholder="Enter a term to focus your summary!">
+                <span class="search-suggest">press <b>ENTER</b> to search</span></br>
             </form>
             <div style="display: {{popup}}">
               You searched for: <b>{{query}}</b>
             </div>
+            <form action="cases" style = "margin-top:30px" method="post">
+              <input type="text" class="search-box col-sm-9" name="email" placeholder="Enter your email address to receive your summary!">
+                <span class="search-suggest">press <b>ENTER</b> to submit</span></br>
+            </form>
+            <br>
+            <br>
             <form id="dropzone" action="/upload-target" class="dropzone black-text"></form>
             <br>
             <input type="button" class="btn btn-large" onclick="toggle_briefing()" value="Load Briefing">
