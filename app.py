@@ -3,23 +3,25 @@ from os import listdir,getcwd
 from os.path import isfile, join
 import md5
 import json
+import logging
 
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
-from models import db, Extension
+from models import db, Extension, User
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 '''
-Queries for weighting (will move to database)
+Queries and active users
 '''
 queries = {}
+users = {}
 
 '''
 Endpoints for user interface delivery and document processing
@@ -48,17 +50,17 @@ def upload_target():
         addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
         query_text = queries[addr_hash] if addr_hash in queries else ""
         
-        file_key = request.files.keys()[0]
-        file_text = request.files[file_key] # of type FileStorage
-        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        sentences = tokenize_text(cleaned_string)
-        print sentences
-        adj_matrix = create_sentence_adj_matrix(sentences)
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
-        for string in strings:
-            out_file.write(string+".")
-        out_file.close() # persistent abstract
+        #file_key = request.files.keys()[0]
+        #file_text = request.files[file_key] # of type FileStorage
+        #cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+        #sentences = tokenize_text(cleaned_string)
+        #print sentences
+        #adj_matrix = create_sentence_adj_matrix(sentences)
+        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+        #out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
+        #for string in strings:
+        #    out_file.write(string+".")
+        #out_file.close() # persistent abstract
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -79,36 +81,22 @@ def cases():
     if request.method == 'POST':
         query = request.form["query"]
         queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-        response = render_template("cases.html", extensions=init_extensions(), popup="none")
-    else:
-        response = render_template("cases.html", extensions=init_extensions(), popup="none")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
+    response = render_template("cases.html", extensions=init_extensions(), popup="none")
     return response
 
 @app.route('/features',methods=['GET'])
 def features():
     response = render_template("features.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/contribute',methods=['GET'])
 def contribute():
     response = render_template("contribute.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     response = render_template("aboutus.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 '''
@@ -118,9 +106,6 @@ Endpoints for distributing extensions
 @app.route('/market',methods=['GET'])
 def market():
     response = render_template("market.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/market/getextensions/',methods=['GET'])
@@ -146,6 +131,38 @@ def vote():
         Extension.query.get( request.args.get('id') ).total_ratings = total
         db.session.commit()
         return "success"
+
+'''
+Login system, interacts with database
+'''
+
+@app.route('/login/getcredentials')
+def getcredentials():
+    addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+    return jsonify(users[addr_hash]) if addr_hash in users else ""
+
+@app.route('/login/verify')
+def verify():
+    q = User.query.filter(User.name==request.args.get("username")).first()
+    if q is not None:
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        users[addr_hash] = q
+        return "success"
+    return "fail"
+
+@app.route('/login/signup')
+def signup():
+    q = User.query.filter(User.username==request.args.get("username")).first()
+    if q is not None:
+        return "fail"
+    user_object = User(
+        name=request.args.get("name"),
+        username=request.args.get("username"),
+        password_hash=md5.new(request.args.get("password")).hexdigest()
+    )
+    db.session.add(user_object)
+    db.session.commit()
+    return "success"
 
 '''
 Initialize database with local extensions

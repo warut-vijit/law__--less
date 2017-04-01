@@ -21,3 +21,18 @@ class Extension(db.Model):
             "total_ratings":self.total_ratings,
             "field":self.field
         }
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+    username = db.Column(db.String(120))
+    password_hash = db.Column(db.String(256))
+
+    def get_user(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "username":self.username,
+            "password_hash":self.password_hash
+        }
