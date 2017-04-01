@@ -13,6 +13,8 @@ from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension
 
+import SMTPMail
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -45,9 +47,9 @@ def home():
 def upload_target():
     if request.method == "POST" :
         # query text entered in search box, if any
-        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
-        query_text = queries[addr_hash] if addr_hash in queries else ""
-        
+        #addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        #query_text = queries[addr_hash] if addr_hash in queries else ""
+
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
@@ -55,10 +57,24 @@ def upload_target():
         print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
         strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
+        file_name = md5.new(request.headers["User-Agent"]).hexdigest()+".txt"
+        out_file = open(file_name, "w")
         for string in strings:
             out_file.write(string+".")
         out_file.close() # persistent abstract
+
+        # send email here
+        bot_address = "emberuiucbot@gmail.com"
+        bot_password = "emberbotproject123"
+        send_to = ["kabir@manghnani.com"]
+        subject = "Here is your summary!"
+        text = ""
+        for sen in strings:
+            text += sen + "\n"
+        files = [file_name]
+
+        SMTPMail.send_mail(bot_address, bot_password, send_to, subject, text, files)
+        #
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -82,33 +98,21 @@ def cases():
         response = render_template("cases.html", extensions=init_extensions(), popup="none")
     else:
         response = render_template("cases.html", extensions=init_extensions(), popup="none")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/features',methods=['GET'])
 def features():
     response = render_template("features.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/contribute',methods=['GET'])
 def contribute():
     response = render_template("contribute.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     response = render_template("aboutus.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 '''
@@ -118,9 +122,6 @@ Endpoints for distributing extensions
 @app.route('/market',methods=['GET'])
 def market():
     response = render_template("market.html")
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate" # HTTP 1.1.
-    response.headers["Pragma"] = "no-cache" # HTTP 1.0.
-    response.headers["Expires"] = "0" # Proxies.
     return response
 
 @app.route('/market/getextensions/',methods=['GET'])
@@ -168,7 +169,7 @@ for extension in extensions:
             total_ratings = 0
         )
         db.session.add(ext_object)
-        db.session.commit() 
+        db.session.commit()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
