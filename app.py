@@ -4,15 +4,18 @@ from os.path import isfile, join
 import md5
 import json
 import logging
+import BotCredentials
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User
+
+import SMTPMail
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -22,6 +25,7 @@ Queries and active users
 '''
 queries = {}
 users = {}
+active_email = []
 
 '''
 Endpoints for user interface delivery and document processing
@@ -47,20 +51,37 @@ def home():
 def upload_target():
     if request.method == "POST" :
         # query text entered in search box, if any
+
         addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
         query_text = queries[addr_hash] if addr_hash in queries else ""
+
+        file_key = request.files.keys()[0]
+        file_text = request.files[file_key] # of type FileStorage
+        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+        sentences = tokenize_text(cleaned_string)
+        print sentences
+        adj_matrix = create_sentence_adj_matrix(sentences)
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+        file_name = md5.new(request.headers["User-Agent"]).hexdigest()+".txt"
+        out_file = open(file_name, "w")
+        for string in strings:
+            out_file.write(string+".")
+        out_file.close() # persistent abstract
+
+        # send email here
+        if len(active_email) > 0:
+            send_to = [active_email[0]]
+            active_email.pop(0)
+            subject = "Here is your summary!"
+            text = ""
+            for sen in strings:
+                text += sen + "\n"
+            files = [file_name]
+
+            SMTPMail.send_mail(BotCredentials.bot_username, BotCredentials.bot_password, 
+                send_to, subject, text, files)
+        ###
         
-        #file_key = request.files.keys()[0]
-        #file_text = request.files[file_key] # of type FileStorage
-        #cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        #sentences = tokenize_text(cleaned_string)
-        #print sentences
-        #adj_matrix = create_sentence_adj_matrix(sentences)
-        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        #out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
-        #for string in strings:
-        #    out_file.write(string+".")
-        #out_file.close() # persistent abstract
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -79,8 +100,12 @@ def get_target():
 @app.route('/cases',methods=['GET', 'POST']) # post method for handling queries
 def cases():
     if request.method == 'POST':
-        query = request.form["query"]
-        queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
+        if "query" in request.form:
+            query = request.form["query"]
+            queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
+        elif "email" in request.form:
+            email = request.form["email"]
+            active_email.append(email)
     response = render_template("cases.html", extensions=init_extensions(), popup="none")
     return response
 
@@ -187,7 +212,7 @@ for extension in extensions:
             total_ratings = 0
         )
         db.session.add(ext_object)
-        db.session.commit() 
+        db.session.commit()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
