@@ -4,7 +4,6 @@ app.controller('loginCtrl', function($scope, $http) {
     $scope.showLoginWindow = false;
     $scope.showSignupWindow = false;
 
-    $scope.get_credentials();
     $scope.get_credentials = function() {
         $http.get("/login/getcredentials")
         .then(function(response) {
@@ -20,6 +19,8 @@ app.controller('loginCtrl', function($scope, $http) {
             console.log("Error acquiring credentials.");
         });
     };
+
+    $scope.get_credentials();
 
     $scope.login = function() {
         console.log("Login window open");
@@ -81,6 +82,7 @@ app.controller('loginCtrl', function($scope, $http) {
             }
             else{
                 $scope.showSignupWindow = false;
+                $scope.get_credentials();
             }
         }, function(response) {
             //Second function handles error
