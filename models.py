@@ -29,7 +29,7 @@ class User(db.Model):
     username = db.Column(db.String(120))
     password_hash = db.Column(db.String(256))
 
-    def get_user(self):
+    def get_dict(self):
         return {
             "id":self.id,
             "name":self.name,

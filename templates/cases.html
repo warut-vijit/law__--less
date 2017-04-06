@@ -23,6 +23,9 @@
     <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
+    <!-- CDN for AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
     <!-- Google Icon Set -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -34,6 +37,9 @@
     <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+
+    <script src="{{url_for('static', filename='scripts/login.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
 
     <!-- JavaScript HTTP Request -->
     <script>
@@ -118,6 +124,46 @@
                   <li><a href="contribute">Contribute</a></li>
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
+                {% raw %}
+                <div style="position:absolute;top:90px;right:-50px;list-style-type:none;" ng-app="loginApp" ng-controller="loginCtrl">
+                  <div ng-hide="loginActive">
+                    <input type="button" class="btn btn-large" value="Log In" ng-click="login()">
+                    <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
+                  </div>
+                  <div ng-hide="!loginActive">
+                    <h6>Welcome, {{user.name}}
+                  </div>
+                  <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+                  <div ng-show="showLoginWindow" class="expand-ext">
+                    <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                    <h3>Log In</h3>
+                    <center>
+                      <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
+                      <h4>Username</h4><input id="username" type="text">
+                      </br>
+                      <h4>Password</h4><input id="password" type="password">
+                      </br>
+                      <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
+                      <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
+                    </center>
+                  </div>
+                  <div ng-show="showSignupWindow" class="expand-ext">
+                    <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                    <h3>Sign Up</h3>
+                    <center>
+                      <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
+                      <h4>Name</h4><input id="name" type="text">
+                      </br>
+                      <h4>Username</h4><input id="username" type="text">
+                      </br>
+                      <h4>Password</h4><input id="password" type="password">
+                      </br>
+                      <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
+                      <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
+                    </center>
+                  </div>
+                </div>
+                {% endraw %}
               </nav>
 
             </div>

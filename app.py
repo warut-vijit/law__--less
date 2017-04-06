@@ -144,7 +144,7 @@ def getcredentials():
 @app.route('/login/verify')
 def verify():
     q = User.query.filter(User.name==request.args.get("username")).first()
-    if q is not None:
+    if q is not None and q['password_hash'] == md5.new(request.args.get("password")).hexdigest():
         addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
         users[addr_hash] = q
         return "success"
@@ -160,6 +160,8 @@ def signup():
         username=request.args.get("username"),
         password_hash=md5.new(request.args.get("password")).hexdigest()
     )
+    addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+    users[addr_hash] = user_object.get_dict()
     db.session.add(user_object)
     db.session.commit()
     return "success"
