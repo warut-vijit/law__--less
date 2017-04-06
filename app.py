@@ -70,7 +70,7 @@ def upload_target():
 
         # send email here
         if len(active_email) > 0:
-            send_to = [active_email[0]]
+            send_to = [active_email[0].lower()]
             active_email.pop(0)
             subject = "Here is your summary!"
             text = ""
