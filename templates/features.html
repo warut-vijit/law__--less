@@ -12,13 +12,13 @@
     <title>law --less</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{url_for('static', filename='styles/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{url_for('static', filename='styles/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
 
     <!-- CDN for AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -52,7 +52,7 @@
           <div class="masthead clearfix">
             <div class="inner">
               <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" style="float:left;margin-top: -10px">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
               </a>
 
               <!-- Navigation toolbar for insite navigation -->
@@ -64,7 +64,6 @@
                   <li><a href="contribute">Contribute</a></li>
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
-
                 {% raw %}
                 <div style="position:absolute;top:90px;right:-50px;list-style-type:none;" ng-app="loginApp" ng-controller="loginCtrl">
                   <div ng-hide="loginActive">
@@ -106,7 +105,6 @@
                 </div>
                 {% endraw %}
               </nav>
-
             </div>
           </div>
 

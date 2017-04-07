@@ -12,13 +12,13 @@
     <title>law --less</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{url_for('static', filename='styles/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{url_for('static', filename='styles/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{url_for('static', filename='styles/cover.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
 
     <!-- CDN for AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -51,7 +51,7 @@
           <div class="masthead clearfix">
             <div class="inner">
               <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" style="float:left;margin-top: -10px">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
               </a>
 
               <!-- Navigation toolbar for insite navigation -->
@@ -63,7 +63,6 @@
                   <li><a href="contribute">Contribute</a></li>
                   <li class="active"><a href="#">About Us</a></li>
                 </ul>
-
                 {% raw %}
                 <div style="position:absolute;top:90px;right:-50px;list-style-type:none;" ng-app="loginApp" ng-controller="loginCtrl">
                   <div ng-hide="loginActive">
@@ -111,8 +110,11 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-              <br><br>
-            <div id ="images">
+            <div id="team-title">
+              <h3>Meet Our Interdisciplinary Team</h3>
+            </div>
+
+            <div id ="about-images">
               <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
                 <a href="https://github.com/Chiranth7954">
                 <img src="{{url_for('static', filename='icons/Chiranth.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Chiranth Kishore"></a>
@@ -138,7 +140,6 @@
 
               <!-- Filler space between rows -->
               <div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" style="background-color-color:0,0,0,1;">
-                <h3>Meet Our Interdisciplinary Team</h3>
                 <br>
               </div>
 
@@ -177,7 +178,7 @@
                 <a href="https://github.com/NAN1248">Nathan</a>,
                 <a href="https://github.com/Chiranth7954">Chiranth</a>,
                 <a href="https://github.com/nriaziat">Naveed</a>,
-                <a href="https://github.com/owenli10">Owen</a></p>
+                <a href="https://github.com/owenli10">Owen</a>
             </div>
         </div>
 
