@@ -20,25 +20,32 @@ function call_api_generic(addr, params) {
     };
 }
 function toggle_briefing () {
-if(initialState){
-    get_target();
-    initialState=false;
+    if(initialState){
+        get_target();
+        initialState=false;
+    }
+    document.getElementById("output").style.display = document.getElementById("output").style.display == "none" ? "block" : "none";
 }
-document.getElementById("output").style.display = document.getElementById("output").style.display == "none" ? "block" : "none";
+function encryptxor (key, message) {
+    var message_out = "";
+    for(var x=0; x<message.length; x++){
+        message_out += String.fromCharCode(message.charCodeAt(x) ^ key.charCodeAt(x%key.length));
+    }
+    return message_out;
 }
 function get_target() {
-var xhr = new XMLHttpRequest();
-xhr.open('GET', '/get-target');
-xhr.send(null);
-xhr.onreadystatechange = function () {
-    var DONE = 4; // readyState 4 means the request is done.
-    var OK = 200; // status 200 is a successful return.
-    if (xhr.readyState === DONE) {
-    if (xhr.status === OK) {
-        document.getElementById("output").innerHTML = xhr.responseText;
-    }
-    }
-};
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/get-target');
+    xhr.send(null);
+    xhr.onreadystatechange = function () {
+        var DONE = 4; // readyState 4 means the request is done.
+        var OK = 200; // status 200 is a successful return.
+        if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+                document.getElementById("output").innerHTML = encryptxor("imaginecup2017", xhr.responseText);
+            }
+        }
+    };
 }
 function download() {
 get_target();

@@ -15,6 +15,7 @@ from summarizer.graph_builder import *
 from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User
+from utils import encryptxor
 
 import SMTPMail
 
@@ -94,7 +95,7 @@ def get_target():
             summary += line
         in_file.close()
         os.remove(md5.new(request.headers["User-Agent"]).hexdigest()+".txt")
-        return summary
+        return encryptxor("imaginecup2017", summary)
     except IOError:
         return ""
 
