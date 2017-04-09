@@ -4,6 +4,8 @@ app.controller('loginCtrl', function($scope, $http) {
     $scope.showLoginWindow = false;
     $scope.showSignupWindow = false;
 
+    $scope.cases = [{name:"Jean Valjean"}, {name:"Marius Pontmercy"}, {name:"Gavroche"}, {name:"Javert"}];
+
     $scope.get_credentials = function() {
         $http.get("/login/getcredentials")
         .then(function(response) {
@@ -13,6 +15,8 @@ app.controller('loginCtrl', function($scope, $http) {
             else{
                 $scope.loginActive = true;
                 $scope.user = response.data;
+                $scope.user_since_formatted = $scope.user.since.replace(/00:00:00.*/, '');
+                $scope.user_ends_formatted = $scope.user.ends.replace(/00:00:00.*/, '');
             }
             console.log("response received: "+response.data);
         }, function(response) {
@@ -35,6 +39,7 @@ app.controller('loginCtrl', function($scope, $http) {
     }
 
     $scope.close_ext = function() {
+        console.log("Closing window");
         $scope.showLoginWindow = false;
         $scope.showSignupWindow = false;
     };

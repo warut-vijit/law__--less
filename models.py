@@ -28,11 +28,15 @@ class User(db.Model):
     name = db.Column(db.String(50), unique=True)
     username = db.Column(db.String(120))
     password_hash = db.Column(db.String(256))
+    since = db.Column(db.DateTime)
+    ends = db.Column(db.DateTime)
 
     def get_dict(self):
         return {
             "id":self.id,
             "name":self.name,
             "username":self.username,
-            "password_hash":self.password_hash
+            "password_hash":self.password_hash,
+            "since":self.since,
+            "ends":self.ends
         }

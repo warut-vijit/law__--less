@@ -139,28 +139,15 @@ body {
  * Search bar
  */
 
-.search-box {
+.search-box, .email-box {
   font-size: 18px;
   padding: 3px;
   border: 1px solid green;
   background-color: #252525;
+  z-index: -1;
 }
 
-.search-suggest {
-  font-size: 11px;
-}
-
-/*
- *  Email box
- */
-.email-box {
-  font-size: 18px;
-  padding: 3px;
-  border: 1px solid green;
-  background-color: #252525;
-}
-
-.email-suggest {
+.search-suggest, .email-suggest {
   font-size: 11px;
 }
 
@@ -294,3 +281,12 @@ body {
   margin-top: 10%;
  }
 
+/**
+ * styles for Profile.html
+ */
+
+.case-li {
+  border: 1px solid green;
+  padding: 5px;
+  margin-top: 20px;
+}

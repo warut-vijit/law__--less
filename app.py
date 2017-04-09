@@ -5,6 +5,7 @@ import md5
 import json
 import logging
 import BotCredentials
+import datetime
 
 from input_cleaning.pdf2txt import *
 from summarizer.unigrams import calculate_unigrams
@@ -114,9 +115,9 @@ def features():
     response = render_template("features.html")
     return response
 
-@app.route('/contribute',methods=['GET'])
-def contribute():
-    response = render_template("contribute.html")
+@app.route('/profile',methods=['GET'])
+def profile():
+    response = render_template("profile.html")
     return response
 
 @app.route('/aboutus',methods=['GET'])
@@ -183,7 +184,9 @@ def signup():
     user_object = User(
         name=request.args.get("name"),
         username=request.args.get("username"),
-        password_hash=md5.new(request.args.get("password")).hexdigest()
+        password_hash=md5.new(request.args.get("password")).hexdigest(),
+        since=datetime.date.today(),
+        ends=datetime.date.today() + datetime.timedelta(days=365)
     )
     addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
     users[addr_hash] = user_object.get_dict()

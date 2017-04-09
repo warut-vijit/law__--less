@@ -39,7 +39,6 @@
     <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
 
     <script src="{{url_for('static', filename='scripts/login.js')}}"></script>
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
 
     <!-- JavaScript HTTP Request -->
     <script src="{{url_for('static', filename='scripts/cases.js')}}"></script>
@@ -71,11 +70,11 @@
                   <li><a href="/">Home</a></li>
                   <li class="active"><a href="#">Cases</a></li>
                   <li><a href="features">Features</a></li>
-                  <li><a href="contribute">Contribute</a></li>
+                  <li><a href="profile">User Profile</a></li>
                   <li><a href="aboutus">About Us</a></li>
                 </ul>
                 {% raw %}
-                <div style="position:absolute;top:90px;right:-50px;list-style-type:none;" ng-app="loginApp" ng-controller="loginCtrl">
+                <div style="position:absolute;top:90px;right:-50px;list-style-type:none;z-index:10;" ng-app="loginApp" ng-controller="loginCtrl">
                   <div ng-hide="loginActive">
                     <input type="button" class="btn btn-large" value="Log In" ng-click="login()">
                     <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
