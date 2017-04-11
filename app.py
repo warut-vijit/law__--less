@@ -8,11 +8,11 @@ import BotCredentials
 import datetime
 
 from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User
 from utils import encryptxor
@@ -57,18 +57,18 @@ def upload_target():
         addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
         query_text = queries[addr_hash] if addr_hash in queries else ""
 
-        file_key = request.files.keys()[0]
-        file_text = request.files[file_key] # of type FileStorage
-        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-        sentences = tokenize_text(cleaned_string)
-        print sentences
-        adj_matrix = create_sentence_adj_matrix(sentences)
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        file_name = md5.new(request.headers["User-Agent"]).hexdigest()+".txt"
-        out_file = open(file_name, "w")
-        for string in strings:
-            out_file.write(string+".")
-        out_file.close() # persistent abstract
+        #file_key = request.files.keys()[0]
+        #file_text = request.files[file_key] # of type FileStorage
+        #cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+        #sentences = tokenize_text(cleaned_string)
+        #print sentences
+        #adj_matrix = create_sentence_adj_matrix(sentences)
+        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+        #file_name = md5.new(request.headers["User-Agent"]).hexdigest()+".txt"
+        #out_file = open(file_name, "w")
+        #for string in strings:
+        #    out_file.write(string+".")
+        #out_file.close() # persistent abstract
 
         # send email here
         if len(active_email) > 0:
@@ -219,4 +219,4 @@ for extension in extensions:
         db.session.commit()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging

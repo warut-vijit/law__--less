@@ -2,6 +2,14 @@
  * Globals
  */
 
+:root {
+  --navyblue: #09163B;
+  --grey: #D3D1CD;
+  --scarlet: #F63C3D;
+  --darkblue: #061326;
+  --iceberg: #D6FAFA;
+}
+
 /* Links */
 a,
 a:focus,
@@ -34,10 +42,9 @@ body {
   height: 100%;
 }
 body {
-  color: #fff;
+  color: #777;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 
@@ -47,8 +54,6 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -109,8 +114,27 @@ body {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: var(--grey);
+  border-bottom-color: #777;
+}
+
+.custom-nav > li > a {
+  color: var(--grey) !important;
+}
+
+.custom-nav > li > a:hover,
+.custom-nav > li > a:focus {
+  color: #fff !important;
+  border-bottom: 3px solid var(--iceberg) !important;
+  margin-top: 1px;
+}
+
+.custom-nav > li.market {
+  background-color: var(--scarlet);
+}
+
+.custom-navbar-top {
+  background-color: var(--darkblue);
 }
 
 /*

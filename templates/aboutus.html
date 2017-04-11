@@ -23,9 +23,6 @@
     <!-- CDN for AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-    <!-- Custom Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
 
@@ -40,7 +37,7 @@
 
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
+  <body style="font-family: 'Segoe UI', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
 
     <div class="site-wrapper">
 
@@ -71,7 +68,7 @@
                     <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
                   </div>
                   <div ng-hide="!loginActive">
-                    <h6>Welcome, {{user.name}}
+                    <h6>Welcome, {{user.name}}</h6>
                   </div>
                   <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
                   <div ng-show="showLoginWindow" class="expand-ext">
