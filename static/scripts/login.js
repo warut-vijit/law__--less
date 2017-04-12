@@ -109,4 +109,27 @@ app.controller('loginCtrl', function($scope, $http) {
         });
     }
 
+    $scope.query_summary = function($event) {
+        if($event.key=="Enter"){
+            $http({
+                url: "/cases",
+                method: "POST",
+                params: {
+                    query: document.getElementById("query").value 
+                }
+            }).then(function(response){
+                //TODO: Update hierarchy with response data
+                document.getElementById("query").value = "";
+                document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";
+                setTimeout(function(){
+                    document.getElementById("query").style.borderLeft = "3px solid var(--darkblue)";
+                    document.getElementById("main").focus();
+                }, 500);
+                console.log("Successfully queried summary.");
+            }, function(error){
+                console.log("Error occurred while querying summary.");
+            });
+        }
+    }
+
 });

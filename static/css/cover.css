@@ -20,6 +20,14 @@ a:hover {
   opacity: 0.5;
 }
 
+.custom-dropzone {
+  position:relative;
+  top:50px;
+  height:170px;
+  width:250px;
+  margin:8px;
+}
+
 .extension-pane {
   border-right: var(--navyblue) 2px solid;
 }
@@ -35,7 +43,11 @@ a:hover {
 }
 
 .main-pane {
-  min-height: 400px;
+  min-height: 300px;
+  resize: vertical !important;
+  overflow: auto !important;
+  border-bottom: var(--navyblue) 2px solid;
+  max-height: 70%;
 }
 
 i {
@@ -43,11 +55,16 @@ i {
 }
 
 .cases-content {
-  border: var(--grey) 1px solid;
+  border: var(--navyblue) 1px solid;
   margin: 5px;
   padding: 10px;
-  min-width: 200px;
-  min-height: 100px;
+  min-height: 100px !important;
+}
+
+.summary-hierarchy {
+  border-left: var(--navyblue) 2px solid;
+  resize: horizontal !important;
+  overflow: auto !important;
 }
 
 /* Custom default button */
@@ -200,10 +217,13 @@ body {
  */
 
 .search-box, .email-box {
-  font-size: 18px;
-  padding: 3px;
-  border: 1px solid #09163B;
-  background-color: #252525;
+  color: var(--navyblue);
+  font-size: 16px;
+  margin: 3px !important;
+  padding: 5px !important;
+  border: 0px;
+  border-left: 3px solid var(--darkblue);
+  background-color: #fff;
   z-index: -1;
 }
 

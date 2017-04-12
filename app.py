@@ -103,12 +103,14 @@ def get_target():
 @app.route('/cases',methods=['GET', 'POST']) # post method for handling queries
 def cases():
     if request.method == 'POST':
-        if "query" in request.form:
-            query = request.form["query"]
+        if "query" in request.args:
+            query = request.args.get('query')
             queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-        elif "email" in request.form:
-            email = request.form["email"]
+            return "success"
+        elif "email" in request.args:
+            email = request.args.get('email')
             active_email.append(email)
+            return "success"
     response = render_template("cases.html")
     return response
 

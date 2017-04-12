@@ -63,6 +63,11 @@
                       <img src="{{url_for('static', filename='icons/logo.png')}}" width="165px" height="60px" alt="LL" id="logo">
                 </a>
               </div>
+              <div class="navbar navbar-default navbar-fixed-top" style="background-color:#eee;height:50px;top:100px;padding:7px;">
+                <div style="float:left;margin-left:30px;">
+                  <i class="material-icons">search </i><input id="query" ng-keypress="query_summary($event)" type="text" class="search-box" name="query" placeholder="Query the summary">
+                </div>
+              </div>
               <nav class="navbar navbar-default navbar-fixed-top custom-navbar-top" style="top: 50px;max-height:53px;height:53px">
                 <div class="container">
                   <div class="navbar-collapse collapse">
@@ -121,21 +126,45 @@
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <div style="position:absolute;top:110px;left:0px;" class="container">
+            <div style="position:absolute;top:160px;left:0px;" class="container">
               <div class="col-sm-3 extension-pane" ng-init="get_extensions()">
-                <div ng-repeat="extension in extensions" class="extension-btn">
-                  <h5><b>{{extension.name}}</b> {{extension.author}}<i class="material-icons">keyboard_arrow_right</i></h5></br>
-                  <p style="font-size: 12px">{{extension.description}}</p>
+                <div style="border-bottom: var(--navyblue) 2px solid" class="row">
+                  <h6 style="float:left">Upload New Case File</h6></br>
+                  <div ng-repeat="extension in extensions" class="extension-btn">
+                    <h5><b>{{extension.name}}</b> {{extension.author}}<i class="material-icons">keyboard_arrow_right</i></h5></br>
+                    <p style="font-size: 12px">{{extension.description}}</p>
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 30px">
+                  <h6 style="float:left">Upload New Case File</h6>
+                  <center>
+                    <form id="dropzone" action="/upload-target" class="dropzone custom-dropzone" style="text-align:center"></form>
+                  </center>
                 </div>
               </div>
-              <div class="col-sm-9 main-pane">
-                <div class="row">
-                  <div class="col-sm-6 cases-content"></div>
-                  <div class="col-sm-6 cases-content"></div>
+              <div class="col-sm-7" style="overflow: hidden;max-height: 100%;" id="main">
+                <div class="main-pane row">
+                  
                 </div>
                 <div class="row">
-                  <div class="col-sm-6 cases-content"></div>
-                  <div class="col-sm-6 cases-content"></div>
+                  <h6 style="float:left;margin-left:30px;">Extensions</h6>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="summary-hierarchy">
+                  <ul>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                    <li>carl</li>
+                  </ul>
                 </div>
               </div>
             </div>
