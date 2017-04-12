@@ -11,7 +11,7 @@ div.extension-frame {
 }
 .black-text {
     color: white;
-    border: 2px solid green;
+    border: 2px solid #09163B;
 }
 .extension-close {
     color: black;

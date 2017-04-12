@@ -47,8 +47,8 @@
 
   </head>
 
-  <body style="font-family: 'Segoe UI', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
-
+  <body style="font-family: 'Segoe UI', sans-serif" >
+    <div ng-app="loginApp" ng-controller="loginCtrl">
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -57,67 +57,90 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
-              </a>
-
               <!-- Navigation toolbar for insite navigation -->
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="/">Home</a></li>
-                  <li class="active"><a href="#">Cases</a></li>
-                  <li><a href="features">Features</a></li>
-                  <li><a href="profile">User Profile</a></li>
-                  <li><a href="aboutus">About Us</a></li>
-                  <li><a href="sponsors">Sponsors</a></li>
-                </ul>
-                {% raw %}
-                <div style="position:absolute;top:90px;right:-50px;list-style-type:none;z-index:10;" ng-app="loginApp" ng-controller="loginCtrl">
-                  <div ng-hide="loginActive">
-                    <input type="button" class="btn btn-large" value="Log In" ng-click="login()">
-                    <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
-                  </div>
-                  <div ng-hide="!loginActive">
-                    <h6>Welcome, {{user.name}}
-                  </div>
-                  <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
-                  <div ng-show="showLoginWindow" class="expand-ext">
-                    <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                    <h3>Log In</h3>
-                    <center>
-                      <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
-                      <h4>Username</h4><input id="username" type="text">
-                      </br>
-                      <h4>Password</h4><input id="password" type="password">
-                      </br>
-                      <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
-                      <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
-                    </center>
-                  </div>
-                  <div ng-show="showSignupWindow" class="expand-ext">
-                    <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                    <h3>Sign Up</h3>
-                    <center>
-                      <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
-                      <h4>Name</h4><input id="name" type="text">
-                      </br>
-                      <h4>Username</h4><input id="username" type="text">
-                      </br>
-                      <h4>Password</h4><input id="password" type="password">
-                      </br>
-                      <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
-                      <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
-                    </center>
+              <div class="navbar navbar-default navbar-fixed-top" style="background-color:var(--darkblue);height:60px;">
+                <a class="navbar-brand" href="/">
+                      <img src="{{url_for('static', filename='icons/logo.png')}}" width="165px" height="60px" alt="LL" id="logo">
+                </a>
+              </div>
+              <nav class="navbar navbar-default navbar-fixed-top custom-navbar-top" style="top: 50px;max-height:53px;height:53px">
+                <div class="container">
+                  <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav custom-nav">
+                      <li><a href="home"><i class="material-icons">home</i> Home</a></li>
+                      <li><a href="cases"><i class="material-icons">pageview</i> Cases</a></li>
+                      <li><a href="features"><i class="material-icons">loupe</i> Features</a></li>
+                      <li><a href="profile"><i class="material-icons">account_box</i> User Profile</a></li>
+                      <li><a href="aboutus"><i class="material-icons">group</i> About Us</a></li>
+                      <li><a href="sponsors"><i class="material-icons">group_add</i> Sponsors</a></li>
+                      <li class="market"><a href="market"><i class="material-icons">card_travel</i> Market</a></li>
+                    </ul>
+                    {% raw %}
+                      <ul class="nav navbar-nav navbar-right custom-nav" ng-hide="loginActive">
+                        <li><a ng-click="login()">Log In</a></li>
+                        <li><a ng-click="show_signup()">Sign Up</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right" ng-hide="!loginActive">
+                        <li><h5><a href="profile">Welcome, {{user.name}}</a></h5></li>
+                      </ul>
+                      <!-- login and signup dialogs -->
+                      <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+                      <div ng-show="showLoginWindow" class="expand-ext">
+                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                        <h3>Log In</h3>
+                        <center>
+                          <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
+                          <h4>Username</h4><input id="username" type="text">
+                          </br>
+                          <h4>Password</h4><input id="password" type="password">
+                          </br>
+                          <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
+                          <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
+                        </center>
+                      </div>
+                      <div ng-show="showSignupWindow" class="expand-ext">
+                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                        <h3>Sign Up</h3>
+                        <center>
+                          <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
+                          <h4>Name</h4><input id="name" type="text">
+                          </br>
+                          <h4>Username</h4><input id="username" type="text">
+                          </br>
+                          <h4>Password</h4><input id="password" type="password">
+                          </br>
+                          <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
+                          <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
+                        </center>
+                      </div>
                   </div>
                 </div>
-                {% endraw %}
               </nav>
             </div>
           </div>
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <form action="cases" style="margin-top:30px" method="post">
+            <div style="position:absolute;top:110px;left:0px;" class="container">
+              <div class="col-sm-3 extension-pane" ng-init="get_extensions()">
+                <div ng-repeat="extension in extensions" class="extension-btn">
+                  <h5><b>{{extension.name}}</b> {{extension.author}}<i class="material-icons">keyboard_arrow_right</i></h5></br>
+                  <p style="font-size: 12px">{{extension.description}}</p>
+                </div>
+              </div>
+              <div class="col-sm-9 main-pane">
+                <div class="row">
+                  <div class="col-sm-6 cases-content"></div>
+                  <div class="col-sm-6 cases-content"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 cases-content"></div>
+                  <div class="col-sm-6 cases-content"></div>
+                </div>
+              </div>
+            </div>
+            {% endraw %}
+            <!--<form action="cases" style="margin-top:30px" method="post">
               <input type="text" class="search-box col-sm-9" name="query" placeholder="Enter a term to focus your summary!">
                 <span class="search-suggest">press <b>ENTER</b> to search</span></br>
             </form>
@@ -146,7 +169,7 @@
             <div id="extensionFrame" class="extension-frame">
               <p id="extensionFrameTitle" class="extension-frame-title"></p>
               <i class="material-icons extension-close" onclick="document.getElementById('extensionFrame').style.display='none';">clear</i>
-            </div>
+            </div>-->
           </div>
 
           <!-- Footer with links to author GitHubs and other source information -->
@@ -163,6 +186,7 @@
             </div>
           </div>
       </div>
+    </div>
     </div>
   </body>
 </html>

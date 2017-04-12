@@ -95,4 +95,18 @@ app.controller('loginCtrl', function($scope, $http) {
         });
     };
 
+    // Special functions for cases
+    $scope.get_extensions = function() {
+        $http({
+            url: "/market/getextensions/",
+            method: "GET"
+        }).then(function(response){
+            //console.log("Successfully fetched "+reponse.length+" extensions.");
+            $scope.extensions = response.data;
+            console.log($scope.extensions);
+        }, function(error){
+            console.log("Error occurred while fetching extensions.");
+        });
+    }
+
 });

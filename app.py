@@ -46,6 +46,7 @@ def init_extensions():
 
 # endpoints
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template("index.html")
 
@@ -108,7 +109,7 @@ def cases():
         elif "email" in request.form:
             email = request.form["email"]
             active_email.append(email)
-    response = render_template("cases.html", extensions=init_extensions(), popup="none")
+    response = render_template("cases.html")
     return response
 
 @app.route('/features',methods=['GET'])
@@ -124,6 +125,11 @@ def profile():
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     response = render_template("aboutus.html")
+    return response
+
+@app.route('/sponsors',methods=['GET'])
+def sponsors():
+    response = render_template("sponsors.html")
     return response
 
 '''

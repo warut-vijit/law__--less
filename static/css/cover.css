@@ -4,7 +4,7 @@
 
 :root {
   --navyblue: #09163B;
-  --grey: #D3D1CD;
+  --grey: #D1D4DD;
   --scarlet: #F63C3D;
   --darkblue: #061326;
   --iceberg: #D6FAFA;
@@ -20,6 +20,35 @@ a:hover {
   opacity: 0.5;
 }
 
+.extension-pane {
+  border-right: var(--navyblue) 2px solid;
+}
+
+.extension-btn {
+  margin: 5px !important;
+  padding: 10px !important;
+  padding-right: 20px;
+}
+
+.extension-btn:hover {
+  background-color: #C1C2CE;
+}
+
+.main-pane {
+  min-height: 400px;
+}
+
+i {
+  vertical-align: middle !important;
+}
+
+.cases-content {
+  border: var(--grey) 1px solid;
+  margin: 5px;
+  padding: 10px;
+  min-width: 200px;
+  min-height: 100px;
+}
 
 /* Custom default button */
 .btn-default,
@@ -40,6 +69,7 @@ a:hover {
 html,
 body {
   height: 100%;
+  background-color: var(--grey) !important;
 }
 body {
   color: #777;
@@ -120,6 +150,7 @@ body {
 
 .custom-nav > li > a {
   color: var(--grey) !important;
+  padding-right: 20px;
 }
 
 .custom-nav > li > a:hover,
@@ -127,6 +158,11 @@ body {
   color: #fff !important;
   border-bottom: 3px solid var(--iceberg) !important;
   margin-top: 1px;
+}
+
+.custom-nav > li > a > i {
+  color: var(--iceberg) !important;
+  vertical-align: middle;
 }
 
 .custom-nav > li.market {
@@ -166,7 +202,7 @@ body {
 .search-box, .email-box {
   font-size: 18px;
   padding: 3px;
-  border: 1px solid green;
+  border: 1px solid #09163B;
   background-color: #252525;
   z-index: -1;
 }
@@ -310,7 +346,7 @@ body {
  */
 
 .case-li {
-  border: 1px solid green;
+  border: 1px solid #09163B;
   padding: 5px;
   margin-top: 20px;
 }
