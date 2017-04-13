@@ -26,13 +26,7 @@ function toggle_briefing () {
     }
     document.getElementById("output").style.display = document.getElementById("output").style.display == "none" ? "block" : "none";
 }
-function encryptxor (key, message) {
-    var message_out = "";
-    for(var x=0; x<message.length; x++){
-        message_out += String.fromCharCode(message.charCodeAt(x) ^ key.charCodeAt(x%key.length));
-    }
-    return message_out;
-}
+
 function get_target() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/get-target');

@@ -3,6 +3,8 @@ app.controller('loginCtrl', function($scope, $http) {
     $scope.loginActive = false;
     $scope.showLoginWindow = false;
     $scope.showSignupWindow = false;
+    $scope.summaryActive = false;
+    $scope.summary = "";
 
     $scope.cases = [{name:"Jean Valjean"}, {name:"Marius Pontmercy"}, {name:"Gavroche"}, {name:"Javert"}];
 
@@ -130,6 +132,29 @@ app.controller('loginCtrl', function($scope, $http) {
                 console.log("Error occurred while querying summary.");
             });
         }
+    }
+
+    $scope.get_target = function() {
+        $http({
+            url: "/get-target",
+            method: "GET",
+        }).then(function(response){
+            if(response.data!=""){
+                console.log(response.data);
+                $scope.summaryActive = true;
+                $scope.summary = encryptxor("imaginecup2017", response.data);
+            }
+        }, function(error){
+            console.log("Error occurred while retrieving summary.");
+        });
+    }
+
+    function encryptxor (key, message) {
+        var message_out = "";
+        for(var x=0; x<message.length; x++){
+            message_out += String.fromCharCode(message.charCodeAt(x) ^ key.charCodeAt(x%key.length));
+        }
+        return message_out;
     }
 
 });

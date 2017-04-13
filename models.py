@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 db = SQLAlchemy()
 
 class Extension(db.Model):
@@ -30,6 +32,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(256))
     since = db.Column(db.DateTime)
     ends = db.Column(db.DateTime)
+    documents = db.relationship('Document', backref='user', lazy='dynamic')
 
     def get_dict(self):
         return {
@@ -38,5 +41,13 @@ class User(db.Model):
             "username":self.username,
             "password_hash":self.password_hash,
             "since":self.since,
-            "ends":self.ends
+            "ends":self.ends,
+            "documents":self.documents.count()
         }
+
+class Document(db.Model):
+    __tablename__ = 'documents'
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    text = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

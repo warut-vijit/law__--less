@@ -88,36 +88,6 @@
                       <ul class="nav navbar-nav navbar-right" ng-hide="!loginActive">
                         <li><h5><a href="profile">Welcome, {{user.name}}</a></h5></li>
                       </ul>
-                      <!-- login and signup dialogs -->
-                      <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
-                      <div ng-show="showLoginWindow" class="expand-ext">
-                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                        <h3>Log In</h3>
-                        <center>
-                          <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
-                          <h4>Username</h4><input id="username" type="text">
-                          </br>
-                          <h4>Password</h4><input id="password" type="password">
-                          </br>
-                          <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
-                          <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
-                        </center>
-                      </div>
-                      <div ng-show="showSignupWindow" class="expand-ext">
-                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                        <h3>Sign Up</h3>
-                        <center>
-                          <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
-                          <h4>Name</h4><input id="name" type="text">
-                          </br>
-                          <h4>Username</h4><input id="username" type="text">
-                          </br>
-                          <h4>Password</h4><input id="password" type="password">
-                          </br>
-                          <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
-                          <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
-                        </center>
-                      </div>
                   </div>
                 </div>
               </nav>
@@ -144,7 +114,8 @@
               </div>
               <div class="col-sm-7" style="overflow: hidden;max-height: 100%;" id="main">
                 <div class="main-pane row">
-                  
+                  <h5 ng-hide="summaryActive" ng-click="get_target()">No case file is currently active. Click here to fetch one from the server.</h5>
+                  <h6 ng-show="summaryActive">{{summary}}</h6>
                 </div>
                 <div class="row">
                   <h6 style="float:left;margin-left:30px;">Extensions</h6>
@@ -167,6 +138,43 @@
                   </ul>
                 </div>
               </div>
+            </div>
+            <!-- warning dialog -->
+            <div ng-hide="loginActive || showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+            <div ng-hide="loginActive || showLoginWindow || showSignupWindow" class="expand-ext">
+              <h3>You are not signed in.</br>Please sign in or create an account to use.</h3>
+              <input type="button" class="btn btn-large" ng-click="login()" value="Log In">
+              <input type="button" class="btn btn-large" ng-click="show_signup()" value="Sign Up">
+            </div>
+            <!-- login and signup dialogs -->
+            <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+            <div ng-show="showLoginWindow" class="expand-ext">
+              <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+              <h3>Log In</h3>
+              <center>
+                <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
+                <h4>Username</h4><input id="username" type="text">
+                </br>
+                <h4>Password</h4><input id="password" type="password">
+                </br>
+                <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
+                <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
+              </center>
+            </div>
+            <div ng-show="showSignupWindow" class="expand-ext">
+              <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+              <h3>Sign Up</h3>
+              <center>
+                <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
+                <h4>Name</h4><input id="name" type="text">
+                </br>
+                <h4>Username</h4><input id="username" type="text">
+                </br>
+                <h4>Password</h4><input id="password" type="password">
+                </br>
+                <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
+                <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
+              </center>
             </div>
             {% endraw %}
             <!--<form action="cases" style="margin-top:30px" method="post">
