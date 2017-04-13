@@ -149,6 +149,15 @@ app.controller('loginCtrl', function($scope, $http) {
         });
     }
 
+    $scope.download_summary = function() {
+        if($scope.summaryActive) {
+            var link = document.createElement("a");
+            link.href = 'data:text/plain;charset=utf-8,' + $scope.summary;
+            link.download = "law--less.txt";
+            link.click();
+        }
+    }
+
     function encryptxor (key, message) {
         var message_out = "";
         for(var x=0; x<message.length; x++){
