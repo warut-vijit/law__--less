@@ -83,15 +83,15 @@ def create_sentence_adj_matrix(s_array):
 #         ['The', 'fox','waking', 'it']]
 # unique_test = find_unique_terms(test)
 # print unique_test
-#
+
 # test_doc_m = initialize_doc_matrix(len(test),len(unique_test))
 # print test_doc_m
-#
+
 # test_doc_m = build_doc_matrix(test,test_doc_m,unique_test)
 # print test_doc_m
-#
+
 # test_adj_matrix = initialize_adj_matrix( len( test_doc_m ))
 # print test_adj_matrix
-#
+
 # test_adj_matrix = build_adj_matrix(test_adj_matrix, test_doc_m)
 # print test_adj_matrix
