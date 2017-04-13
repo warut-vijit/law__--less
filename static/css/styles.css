@@ -38,3 +38,9 @@ div.extension-frame {
 .extension-frame-title {
     display:none;
 }
+
+.logintext {
+    margin: 10px;
+    font-size: 16pt;
+    color: black;
+}

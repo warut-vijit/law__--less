@@ -25,6 +25,7 @@
 
     <!-- Custom Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
 
     <!-- Just for debugging purposes -->
     <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
@@ -61,8 +62,8 @@
                   <li><a href="cases">Cases</a></li>
                   <li><a href="features">Features</a></li>
                   <li><a href="profile">User Profile</a></li>
-                  <li class="active"><a href="#">About Us</a></li>
-                  <li><a href="sponsors">Sponsors</a></li>
+                  <li><a href="aboutus">About Us</a></li>
+                  <li class="active"><a href="#">Sponsors</a></li>
                 </ul>
                 {% raw %}
                 <div style="position:absolute;top:90px;right:-50px;list-style-type:none;" ng-app="loginApp" ng-controller="loginCtrl">
@@ -105,68 +106,19 @@
                 </div>
                 {% endraw %}
               </nav>
-
             </div>
           </div>
 
           <!-- Content of slide -->
           <div class="inner cover">
-            <div id="team-title">
-              <h3>Meet Our Interdisciplinary Team</h3>
-            </div>
-
-            <div id ="about-images">
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/Chiranth7954">
-                <img src="{{url_for('static', filename='icons/Chiranth.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Chiranth Kishore"></a>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/cabosanlucas">
-                <img src="{{url_for('static', filename='icons/Kabir.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Kabir Manghnani"></a>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/nriaziat">
-                <img src="{{url_for('static', filename='icons/Naveed.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Naveed Riaziat"></a>
-              </div>
-
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Chiranth Kishore</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h5>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Kabir Manghnani</b><br><i>University of Illinois</i><br><small>Computer Science</small></h5>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Naveed Riaziat</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h5>
-              </div>
-
-              <!-- Filler space between rows -->
-              <div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1" style="background-color-color:0,0,0,1;">
-                <br>
-              </div>
-
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/NAN1248">
-                <img src="{{url_for('static', filename='icons/Nathan.jpg')}}" class="img-responsive img-circle" style:"width:100%;height:20px;" alt="Nathan Narasimhan"></a>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/owenli10">
-                <img src="{{url_for('static', filename='icons/Owen.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Owen Li"></a>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <a href="https://github.com/warut-vijit">
-                <img src="{{url_for('static', filename='icons/Warut.jpg')}}" class="img-responsive img-circle" style:"width:100%" alt="Warut Vijit"></a>
-              </div>
-
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Nathan Narasimhan</b><br><i>University of Illinois</i><br><small>Computer Engineering</small></h5>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Owen Li</b><br><i>Purdue University</i><br><small>Mechanical Engineering</small></h5>
-              </div>
-              <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
-                <br><h5><b>Warut Vijit</b><br><i>University of Illinois</i><br><small>Computer Engineering</small></h5>
-              </div>
-            </div>
+            <ul style="list-style-type:none;font-family: 'Lato', sans-serif">
+              <li><h2><u>Faculty Support</u></h2></li>
+              <li><h2>&#10004 Professor Sanmi Koyejo (Deep Learning Expert)</h2></li>
+              <li><h2>&#10004 Professor Cheng Xiang Zhai (Text Mining and Analysis Expert)</h2></li>
+              <br>
+              <li><h2><u>Corporate Support</u></h2></li>
+              <li><h2>&#10004 Twilio (Web Hosting Services)</h2></li>
+            </ul>
           </div>
 
           <!-- Footer with links to author GitHubs and other source information -->
@@ -179,7 +131,7 @@
                 <a href="https://github.com/NAN1248">Nathan</a>,
                 <a href="https://github.com/Chiranth7954">Chiranth</a>,
                 <a href="https://github.com/nriaziat">Naveed</a>,
-                <a href="https://github.com/owenli10">Owen</a>
+                <a href="https://github.com/owenli10">Owen</a></p>
             </div>
         </div>
 

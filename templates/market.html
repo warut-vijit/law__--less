@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="legal advice web services for pro-bono cases">
+    <meta name="author" content="Warut, Kabir, Nathan, Chiranth, Naveed, Owen">
+
+    <title>law --less</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
+
+    <!-- Custom Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300i" rel="stylesheet">
+
+    <!-- CDN for AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!-- Google material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Just for debugging purposes -->
+    <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+
+    <script src="{{url_for('static', filename='scripts/market.js')}}"></script>
+
+    <!-- Bootstrap Dropzone JavaScript -->
+    <script src = "{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='scripts/dropzone-4.3.0/dist/dropzone.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+    <!--<script src="{{url_for('static', filename='scripts/login.js')}}"></script>-->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+  </head>
+
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container" style="width:900px">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <a href="/">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
+              </a>
+            </div>
+          </div>
+
+          <!-- Content of slide -->
+          {% raw %}
+          <div class="inner cover" ng-app="marketApp" ng-controller="marketCtrl">
+            <div>
+              <h2>--less Extension Marketplace</h2>
+            </div>
+            <div class="nav_bar"> <!-- menu -->
+              <i class="material-icons" ng-click="previous_batch()">navigate_before</i>
+              <i class="material-icons" ng-click="next_batch()">navigate_next</i>
+              <span>{{position}} - {{end_batch()}} of {{total_extensions}}</span>
+              <i ng-click="select_all()">Select All</i>
+              <i ng-click="download()">Download</i>
+              <i ng-click="upload_ext()">Upload</i>
+            </div>
+            <div style="width:100%;min-height:500px;max-height:800px;" class="market-table">
+              <div class="col-sm-12">
+                <div class="col-sm-1">
+                  <p>Select</p>
+                </div>
+                <div class="col-sm-2">
+                  <a>Extension Name</a>
+                </div>
+                <div class="col-sm-7">
+                  <div class="col-sm-2 col-xs-6">Field</div>
+                  <div class="col-sm-2 col-xs-6">Rating</div>
+                  <div class="col-sm-8"></div>
+                  <p>Description</p>
+                </div>
+                <div class="col-sm-2">
+                  <p>Author</p>
+                </div>
+              </div>
+              <div ng-repeat="extension in extensions track by $index" class="col-sm-12 dropdown ext-row">
+                <div class="col-sm-1">
+                  <input type="checkbox" name="{{extension.name}}" class="checkbox">
+                </div>
+                <div class="col-sm-2">
+                  <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
+                </div>
+                <div class="col-sm-7">
+                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
+                  <div class="col-sm-2 col-xs-6">
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
+                    <b ng-class="{greenstyle: extension.rating_points>0, redstyle: extension.rating_points<0}">{{extension.rating_points}}</b>
+                  </div>
+                  <div class="col-sm-8"></div>
+                  <p>{{extension.description}}</p>
+                </div>
+                <div class="col-sm-2">
+                  <p>{{extension.author}}</p>
+                </div>
+              </div>
+              <div ng-show="expand || upload_active" class="blanket-ext"></div>
+              <div ng-show="expand" class="expand-ext">
+                <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                <h4>{{expanded_ext.name}}</h4>
+                <span style="float:left">Javascript</span>
+              </div>
+              <div ng-show="upload_active" class="expand-ext">
+                <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                <h4>Upload Extension</h4>
+                <form id="dropzone" action="/upload-ext" class="dropzone black-text"></form>
+                </br></br>
+                <center>
+                  <table>
+                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>config.json</td></tr>
+                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>JS script</td></tr>
+                  </table>
+                </center>
+              </div>
+            </div>
+          </div>
+          {% endraw %}
+
+          <!-- Footer with links to author GitHubs and other source information -->
+          <div class="mastfoot">
+            <div class="inner" style="padding-bottom:2.5%">
+              <p>legal advice web services |
+                <a href="https://devpost.com/software/less-is-more-fdztjn">law --less</a> | by
+                <a href="https://github.com/warut-vijit">Warut</a>,
+                <a href="https://github.com/cabosanlucas">Kabir</a>,
+                <a href="https://github.com/NAN1248">Nathan</a>,
+                <a href="https://github.com/Chiranth7954">Chiranth</a>,
+                <a href="https://github.com/nriaziat">Naveed</a>,
+                <a href="https://github.com/owenli10">Owen</a></p>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>

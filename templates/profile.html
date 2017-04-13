@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="legal advice web services for pro-bono cases">
+    <meta name="author" content="Warut, Kabir, Nathan, Chiranth, Naveed, Owen">
+
+    <title>law --less</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
+
+    <!-- Custom Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Google material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CDN for AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!-- Just for debugging purposes -->
+    <script src="{{url_for('static', filename='scripts/ie-emulation-modes-warning.js')}}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='scripts/bootstrap.min.js')}}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{url_for('static', filename='scripts/ie10-viewport-bug-workaround.js')}}"></script>
+
+    <script src="{{url_for('static', filename='scripts/login.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+  </head>
+
+  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <!--TODO (warut-vijit): Clean this up -->
+        <div class="cover-container" ng-app="loginApp" ng-controller="loginCtrl">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <a href="/">
+                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
+              </a>
+              {% raw %}
+              <!-- Navigation toolbar for insite navigation -->
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="cases">Cases</a></li>
+                  <li><a href="features">Features</a></li>
+                  <li class="active"><a href="#">User Profile</a></li>
+                  <li><a href="aboutus">About Us</a></li>
+                  <li><a href="sponsors">Sponsors</a></li>
+                </ul>
+              </nav>
+              <div style="position:absolute;top:90px;right:-50px;list-style-type:none;">
+                <div ng-hide="loginActive">
+                  <input type="button" class="btn btn-large" value="Log In" ng-click="login()">
+                  <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
+                </div>
+                <div ng-hide="!loginActive">
+                  <h6>Welcome, {{user.name}}</h6>
+                </div>
+                <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+                <div ng-show="showLoginWindow" class="expand-ext">
+                  <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                  <h3>Log In</h3>
+                  <center>
+                    <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
+                    <h4>Username</h4><input id="username" type="text">
+                    </br>
+                    <h4>Password</h4><input id="password" type="password">
+                    </br>
+                    <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
+                    <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
+                  </center>
+                </div>
+                <div ng-show="showSignupWindow" class="expand-ext">
+                  <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                  <h3>Sign Up</h3>
+                  <center>
+                    <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
+                    <h4>Name</h4><input id="name" type="text">
+                    </br>
+                    <h4>Username</h4><input id="username" type="text">
+                    </br>
+                    <h4>Password</h4><input id="password" type="password">
+                    </br>
+                    <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
+                    <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
+                  </center>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Content of slide -->
+          <div class="inner cover" ng-show="loginActive">
+            <h3 style="margin-bottom: 30px">Welcome back, {{user.name}}</h3>
+            <div class="col-sm-4">
+              {% endraw %}<img src="{{url_for('static', filename='icons/default-user-image.png')}}" width="100%" height="100%" alt="Profile" id="logo">{% raw %}
+              <p>Member since: \n {{user_since_formatted}}</p>
+              <p>Subscription ends: \n {{user_ends_formatted}}</p>
+            </div>
+            <div class="col-sm-8">
+              <h4>Cases</h4>
+              <ul style="list-style-type:none">
+                <li ng-repeat="case in cases" class="case-li">
+                  <p>{{case.name}}<i class="material-icons" style="float:right">keyboard_arrow_down</i></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="inner cover" ng-hide="loginActive">
+            <h3>You are not logged in. Please log in to proceed.</h3>
+          </div>
+
+          <!-- Footer with links to author GitHubs and other source information -->
+          <div class="mastfoot">
+            <div class="inner" style="padding-bottom:2.5%">
+              <p>legal advice web services |
+                <a href="https://devpost.com/software/less-is-more-fdztjn">law --less</a> | by
+                <a href="https://github.com/warut-vijit">Warut</a>,
+                <a href="https://github.com/cabosanlucas">Kabir</a>,
+                <a href="https://github.com/NAN1248">Nathan</a>,
+                <a href="https://github.com/Chiranth7954">Chiranth</a>,
+                <a href="https://github.com/nriaziat">Naveed</a>,
+                <a href="https://github.com/owenli10">Owen</a></p>
+            </div>
+        </div>
+        {% endraw %}
+
+      </div>
+
+    </div>
+  </body>
+</html>
