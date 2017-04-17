@@ -33,17 +33,6 @@ active_email = []
 Endpoints for user interface delivery and document processing
 '''
 
-def init_extensions():
-    html_inject = ""
-    for extension in extensions:
-        if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
-            config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-            config_json = json.loads(config_text)
-            script = open(join('static', 'scripts', 'extensions', extension, extension+".js")).read()
-            html_inject += "<script>"+script+"</script>\n"
-            html_inject += "<input type='button' onclick='"+str(config_json["function"])+"()' class='btn btn-extend' value='"+str(config_json["name"])+"'></br>\n"
-    return html_inject
-
 # endpoints
 @app.route('/')
 @app.route('/home')
@@ -177,6 +166,11 @@ def vote():
         db.session.commit()
         return "success"
 
+@app.route('/market/uploadextension/',methods=['POST'])
+def uploadextension():
+    #TODO: Flesh out extension uploading, connect to extension upload dialog in templates/market.html
+    return "success"
+
 '''
 Login system, interacts with database
 '''
@@ -223,18 +217,23 @@ db.create_all(app=app)
 extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
 for extension in extensions:
     if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
-        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-        config_json = json.loads(config_text)
-        ext_object = Extension(
-            name=extension,
-            author=config_json["author"],
-            description=config_json["description"],
-            field=config_json["field"],
-            rating_points = 0,
-            total_ratings = 0
-        )
-        db.session.add(ext_object)
-        db.session.commit()
+        try:
+            config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
+            code_text = open(join('static', 'scripts', 'extensions', extension, extension+'.json')).read()
+            config_json = json.loads(config_text)
+            ext_object = Extension(
+                name=extension,
+                author=config_json["author"],
+                description=config_json["description"],
+                field=config_json["field"],
+                rating_points = 0,
+                total_ratings = 0,
+                code = code_text
+            )
+            db.session.add(ext_object)
+            db.session.commit()
+        except IOError:
+            logging.error("Failed to upload extension file %s" % extension")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging

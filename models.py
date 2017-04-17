@@ -11,6 +11,7 @@ class Extension(db.Model):
     description = db.Column(db.String(200))
     rating_points = db.Column(db.Integer)
     total_ratings = db.Column(db.Integer)
+    code = db.Column(db.Text)
     field = db.Column(db.String(50)) # will be replaced with foreign key soon
     
     def get_dict(self):
@@ -21,7 +22,8 @@ class Extension(db.Model):
             "description":self.description,
             "rating_points":self.rating_points,
             "total_ratings":self.total_ratings,
-            "field":self.field
+            "field":self.field,
+            "code":self.code
         }
 
 class User(db.Model):
