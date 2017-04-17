@@ -20,9 +20,6 @@
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
 
-    <!-- Custom Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
     <!-- Google material icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -43,7 +40,7 @@
 
   </head>
 
-  <body style="font-family: 'Roboto', sans-serif" background="{{url_for('static', filename='icons/background.png')}}">
+  <body style="font-family: 'Segoe UI', sans-serif">
 
     <div class="site-wrapper">
 
@@ -54,59 +51,68 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
-              </a>
-              {% raw %}
+              
               <!-- Navigation toolbar for insite navigation -->
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="cases">Cases</a></li>
-                  <li><a href="features">Features</a></li>
-                  <li class="active"><a href="#">User Profile</a></li>
-                  <li><a href="aboutus">About Us</a></li>
-                  <li><a href="sponsors">Sponsors</a></li>
-                </ul>
-              </nav>
-              <div style="position:absolute;top:90px;right:-50px;list-style-type:none;">
-                <div ng-hide="loginActive">
-                  <input type="button" class="btn btn-large" value="Log In" ng-click="login()">
-                  <input type="button" class="btn btn-large" value="Sign Up" ng-click="show_signup()">
-                </div>
-                <div ng-hide="!loginActive">
-                  <h6>Welcome, {{user.name}}</h6>
-                </div>
-                <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
-                <div ng-show="showLoginWindow" class="expand-ext">
-                  <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                  <h3>Log In</h3>
-                  <center>
-                    <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
-                    <h4>Username</h4><input id="username" type="text">
-                    </br>
-                    <h4>Password</h4><input id="password" type="password">
-                    </br>
-                    <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
-                    <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
-                  </center>
-                </div>
-                <div ng-show="showSignupWindow" class="expand-ext">
-                  <i class="material-icons close-ext" ng-click="close_ext()">close</i>
-                  <h3>Sign Up</h3>
-                  <center>
-                    <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
-                    <h4>Name</h4><input id="name" type="text">
-                    </br>
-                    <h4>Username</h4><input id="username" type="text">
-                    </br>
-                    <h4>Password</h4><input id="password" type="password">
-                    </br>
-                    <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
-                    <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
-                  </center>
-                </div>
+              <div class="navbar navbar-default navbar-fixed-top" style="background-color:var(--darkblue);height:60px;">
+                <a class="navbar-brand" href="/">
+                      <img src="{{url_for('static', filename='icons/logo.png')}}" width="165px" height="60px" alt="LL" id="logo">
+                </a>
               </div>
+              <nav class="navbar navbar-default navbar-fixed-top custom-navbar-top" style="top: 50px;max-height:53px;height:53px">
+                <div class="container">
+                  <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav custom-nav">
+                      <li><a href="home"><i class="material-icons">home</i> Home</a></li>
+                      <li><a href="cases"><i class="material-icons">pageview</i> Cases</a></li>
+                      <li><a href="features"><i class="material-icons">loupe</i> Features</a></li>
+                      <li><a href="profile"><i class="material-icons">account_box</i> User Profile</a></li>
+                      <li><a href="aboutus"><i class="material-icons">group</i> About Us</a></li>
+                      <li><a href="sponsors"><i class="material-icons">group_add</i> Sponsors</a></li>
+                      <li class="market"><a href="market"><i class="material-icons">card_travel</i> Market</a></li>
+                    </ul>
+                    {% raw %}
+                    <div ng-app="loginApp" ng-controller="loginCtrl">
+                      <ul class="nav navbar-nav navbar-right custom-nav" ng-hide="loginActive">
+                        <li><a ng-click="login()">Log In</a></li>
+                        <li><a ng-click="show_signup()">Sign Up</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right" ng-hide="!loginActive">
+                        <li><h5><a href="profile">Welcome, {{user.name}}</a></h5></li>
+                      </ul>
+                      <!-- login and signup dialogs -->
+                      <div ng-show="showLoginWindow || showSignupWindow" class="blanket-ext"></div>
+                      <div ng-show="showLoginWindow" class="expand-ext">
+                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                        <h3>Log In</h3>
+                        <center>
+                          <h4 ng-show="showFailMessage" style="color:red">Your username or password is incorrect. Please try again.</h4>
+                          <h4>Username</h4><input id="username" type="text">
+                          </br>
+                          <h4>Password</h4><input id="password" type="password">
+                          </br>
+                          <input type="button" class="btn btn-large" ng-click="verify()" value="Confirm!">
+                          <input type="button" class="btn btn-large" ng-click="show_signup()" value="Create Account">
+                        </center>
+                      </div>
+                      <div ng-show="showSignupWindow" class="expand-ext">
+                        <i class="material-icons close-ext" ng-click="close_ext()">close</i>
+                        <h3>Sign Up</h3>
+                        <center>
+                          <h4 ng-show="showFailMessage" style="color:red">Your username conflicts with an existing user. Please choose a different one.</h4>
+                          <h4>Name</h4><input id="name" type="text">
+                          </br>
+                          <h4>Username</h4><input id="username" type="text">
+                          </br>
+                          <h4>Password</h4><input id="password" type="password">
+                          </br>
+                          <input type="button" class="btn btn-large" ng-click="signup()" value="Confirm!">
+                          <input type="button" class="btn btn-large" ng-click="login()" value="Use Existing Account">
+                        </center>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
 
             </div>
           </div>
@@ -114,10 +120,11 @@
           <!-- Content of slide -->
           <div class="inner cover" ng-show="loginActive">
             <h3 style="margin-bottom: 30px">Welcome back, {{user.name}}</h3>
+            {% endraw %}
             <div class="col-sm-4">
-              {% endraw %}<img src="{{url_for('static', filename='icons/default-user-image.png')}}" width="100%" height="100%" alt="Profile" id="logo">{% raw %}
-              <p>Member since: \n {{user_since_formatted}}</p>
-              <p>Subscription ends: \n {{user_ends_formatted}}</p>
+              <img src="{{url_for('static', filename='icons/default-user-image.png')}}" width="100%" height="100%" alt="Profile" id="logo">{% raw %}
+              <p><b>Member since: </b></br> {{user_since_formatted}}</p>
+              <p><b>Subscription ends: </b></br> {{user_ends_formatted}}</p>
             </div>
             <div class="col-sm-8">
               <h4>Cases</h4>

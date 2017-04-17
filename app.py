@@ -14,7 +14,7 @@ from summarizer.textrank import *
 from summarizer.graph_builder import *
 from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
-from models import db, Extension, User
+from models import db, Extension, User, Document
 from utils import encryptxor
 
 import SMTPMail
@@ -46,29 +46,37 @@ def init_extensions():
 
 # endpoints
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template("index.html")
 
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
     if request.method == "POST" :
-        # query text entered in search box, if any
-
         addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        if addr_hash not in users:  # user is not authenticated
+            logging.warning("Rejected unauthenticated upload attempt.")
+            return "fail"
+        # get user's id as doc backref
+        user_name = users[addr_hash]['name']
+        user_id = User.query.filter_by(name=user_name).first().id
+        # query text entered in search box, if any
         query_text = queries[addr_hash] if addr_hash in queries else ""
 
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
         sentences = tokenize_text(cleaned_string)
-        print sentences
         adj_matrix = create_sentence_adj_matrix(sentences)
         strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-        file_name = md5.new(request.headers["User-Agent"]).hexdigest()+".txt"
-        out_file = open(file_name, "w")
-        for string in strings:
-            out_file.write(string+".")
-        out_file.close() # persistent abstract
+        doctext = "\n".join(strings)
+        doc_obj = Document(
+            user_id=user_id,
+            text=doctext
+        )
+        db.session.add(doc_obj)
+        db.session.commit()
+        logging.warning("Successfully uploaded document for user %s" % user_name)
 
         # send email here
         if len(active_email) > 0:
@@ -88,27 +96,32 @@ def upload_target():
 
 @app.route('/get-target',methods=['GET'])
 def get_target():
-    summary = ""
-    try:
-        in_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "r")
-        for line in in_file.readlines():
-            summary += line
-        in_file.close()
-        os.remove(md5.new(request.headers["User-Agent"]).hexdigest()+".txt")
-        return encryptxor("imaginecup2017", summary)
-    except IOError:
+    addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+    if addr_hash not in users:
+        logging.warning("Rejected unauthorized summary request.")
         return ""
+    # get user's id as doc backref
+    user_name = users[addr_hash]['name']
+    user_id = User.query.filter_by(name=user_name).first().id
+    doc_obj = Document.query.filter_by(user_id=user_id).order_by(Document.created_at.desc()).first()
+    if doc_obj is not None:
+        logging.warning("Successfully retrieved summary for user %s" % user_name)
+        return encryptxor("imaginecup2017", doc_obj.text)
+    logging.warning("Could not located a summary for user %s" % user_name)
+    return ""
 
 @app.route('/cases',methods=['GET', 'POST']) # post method for handling queries
 def cases():
     if request.method == 'POST':
-        if "query" in request.form:
-            query = request.form["query"]
+        if "query" in request.args:
+            query = request.args.get('query')
             queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-        elif "email" in request.form:
-            email = request.form["email"]
+            return "success"
+        elif "email" in request.args:
+            email = request.args.get('email')
             active_email.append(email)
-    response = render_template("cases.html", extensions=init_extensions(), popup="none")
+            return "success"
+    response = render_template("cases.html")
     return response
 
 @app.route('/features',methods=['GET'])
@@ -124,6 +137,11 @@ def profile():
 @app.route('/aboutus',methods=['GET'])
 def aboutus():
     response = render_template("aboutus.html")
+    return response
+
+@app.route('/sponsors',methods=['GET'])
+def sponsors():
+    response = render_template("sponsors.html")
     return response
 
 '''
@@ -219,4 +237,4 @@ for extension in extensions:
         db.session.commit()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, threaded=True) #debug=True can be added for debugging
+    app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging
