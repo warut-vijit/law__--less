@@ -57,9 +57,28 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
-              </a>
+
+              <!-- Navigation toolbar for insite navigation -->
+              <div class="navbar navbar-default navbar-fixed-top" style="background-color:var(--darkblue);height:60px;">
+                <a class="navbar-brand" href="/">
+                  <img src="{{url_for('static', filename='icons/logo.png')}}" width="165px" height="60px" alt="LL" id="logo">
+                </a>
+              </div>
+              <nav class="navbar navbar-default navbar-fixed-top custom-navbar-top" style="top: 50px;max-height:53px;height:53px">
+                <div class="container">
+                  <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav custom-nav">
+                      <li><a href="home"><i class="material-icons">home</i> Home</a></li>
+                      <li><a href="cases"><i class="material-icons">pageview</i> Cases</a></li>
+                      <li><a href="features"><i class="material-icons">loupe</i> Features</a></li>
+                      <li><a href="profile"><i class="material-icons">account_box</i> User Profile</a></li>
+                      <li><a href="aboutus"><i class="material-icons">group</i> About Us</a></li>
+                      <li><a href="sponsors"><i class="material-icons">group_add</i> Sponsors</a></li>
+                      <li class="market"><a href="market"><i class="material-icons">card_travel</i> Market</a></li>
+                    </ul>
+                  </div>
+              </nav>
+
             </div>
           </div>
 
