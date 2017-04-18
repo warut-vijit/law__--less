@@ -58,6 +58,7 @@ def upload_target():
         sentences = tokenize_text(cleaned_string)
         adj_matrix = create_sentence_adj_matrix(sentences)
         strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+	strings = ["Hello, friend user.", "This will have real analysis soon."]
         doctext = "\n".join(strings)
         doc_obj = Document(
             user_id=user_id,
@@ -219,7 +220,7 @@ for extension in extensions:
     if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
         try:
             config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-            code_text = open(join('static', 'scripts', 'extensions', extension, extension+'.json')).read()
+            code_text = open(join('static', 'scripts', 'extensions', extension, extension+'.js')).read()
             config_json = json.loads(config_text)
             ext_object = Extension(
                 name=extension,
@@ -233,7 +234,7 @@ for extension in extensions:
             db.session.add(ext_object)
             db.session.commit()
         except IOError:
-            logging.error("Failed to upload extension file %s" % extension")
+            logging.error("Failed to upload extension file %s" % extension)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging
