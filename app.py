@@ -8,12 +8,12 @@ import subprocess as spr
 import BotCredentials
 import datetime
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor
@@ -44,51 +44,44 @@ def home():
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
     if request.method == "POST" :
-        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
-        if addr_hash not in users:  # user is not authenticated
-            logging.warning("Rejected unauthenticated upload attempt.")
-            return "fail"
-        # get user's id as doc backref
-        user_name = users[addr_hash]['name']
-        user_id = User.query.filter_by(name=user_name).first().id
-        # query text entered in search box, if any
-        query_text = queries[addr_hash] if addr_hash in queries else ""
+        
+        #os.chdir("~/Documents/SP17/less_is_more/HackIllinois2017")
+        print os.getcwd()
+        print "hi \n \n \n \n"
 
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        query_text = queries[addr_hash] if addr_hash in queries else ""
+        
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
-        
-        #get document
+
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt 
-        #write stuff to files so we can read in sub processes
         with open("cleaned.txt", "w") as f:
             f.write(cleaned_string)
         with open("query.txt", "w") as f:
             print "made text"
             f.write(query_text)
-        #call subprocess to run query and sumization stuff
+        with open("user.txt", "w") as f:
+            f.write(addr_hash)
+
         spr_analytics = spr.Popen(['python','untitled.py'])
         logging.warning(spr_analytics.communicate())
-        
-        #bring back the computed graph
         adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
         os.remove("cleaned.txt")
-        #let us know we did shit
-        logging.warning("Successfully brought back computations from sub-process")
-        sentences = tokenize_text(cleaned_string)
+        logging.warning("Successfully did some shit")
 
-        #run textrank on new graph and find get the most relevant sentences
+        sentences = tokenize_text(cleaned_string)
+        #print sentences
+        #stemmed_sentences = clean_document_and_return_sentances(cleaned_string)
+        #adj_matrix = create_sentence_adj_matrix(sentences)
+        #adj_matrix = update_graph_with_query(adj_matrix, query_text)
         strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
         
-        doctext = "\n".join(strings)
-        doc_obj = Document(
-            user_id=user_id,
-            text=doctext
-        )
-        db.session.add(doc_obj)
-        db.session.commit()
-        logging.warning("Successfully uploaded document for user %s" % user_name)
-        ###
-        
+        out_file = open(md5.new(request.headers["User-Agent"]).hexdigest()+".txt", "w")
+
+        for string in strings:
+            out_file.write(string+".")
+        out_file.close() # persistent abstract
         return "success"
 
 @app.route('/get-target',methods=['GET'])
@@ -100,6 +93,7 @@ def get_target():
     # get user's id as doc backref
     user_name = users[addr_hash]['name']
     user_id = User.query.filter_by(name=user_name).first().id
+    logging.warning(Document.query.all())
     doc_obj = Document.query.filter_by(user_id=user_id).order_by(Document.created_at.desc()).first()
     if doc_obj is not None:
         logging.warning("Successfully retrieved summary for user %s" % user_name)

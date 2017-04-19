@@ -10,17 +10,29 @@ from sklearn.preprocessing import normalize
 
 
 
-def get_scores_for_doc(q):
+def get_scores_for_doc(q, user):
 	#converts sentances written to the doc.dat file by the tokenizer to an inverted index
-	print os.getcwd()
-	if'summarizer/' in os.getcwd():
+	if 'summarizer/' in listdir(os.getcwd()):
 		print "hi"
 		os.chdir('summarizer/')
+	user_dir = user + "/"
+
+	print listdir(os.getcwd())
+
+	if user in listdir(os.getcwd()):
+		print user_dir
+		os.chdir(user_dir)
+	else: 
+		os.mkdir(user_dir)
+		os.chdir(user_dir)
+
 	onlyfiles = [f for f in listdir(os.getcwd()) if isfile(join(os.getcwd(), f))]
 	#print onlyfiles
 	if(os.path.exists('idx')):
 		shutil.rmtree('idx')
-	idx = metapy.index.make_inverted_index('config.toml')
+	print os.getcwd() + '/../config.toml'
+
+	idx = metapy.index.make_inverted_index(os.getcwd() + '/../config.toml')
 
 	ranker = metapy.index.OkapiBM25()
 	#rocchio = metapy.index.Rocchio(fwd)
@@ -30,9 +42,15 @@ def get_scores_for_doc(q):
 	print(query.content())
 
 	results = ranker.score(idx, query, idx.num_docs())
+
+	#leave subdirectory
+	os.chdir('/../..')
+
 	print('got scores from ranker')
 	results = sorted(results, key = lambda doc : int(doc[0]))
+
 	return results
+
 
 
 def update_topic_weights(adj_matrix, sen_weights, alpha):
@@ -62,8 +80,8 @@ def update_topic_weights(adj_matrix, sen_weights, alpha):
 	return normed_matrix
 
 
-def update_graph_with_query(adj_matrix, query):
-	sen_weights = get_scores_for_doc(query)
+def update_graph_with_query(adj_matrix, query, user):
+	sen_weights = get_scores_for_doc(query, user)
 	print "update"
 	alpha = .5
 	return update_topic_weights(adj_matrix, sen_weights, alpha)
@@ -77,7 +95,7 @@ def test_update_weights(doc):
 	print sens
 	adj_matrix = create_sentence_adj_matrix(sens)
 	print adj_matrix
-	adj_matrix = update_graph_with_query(adj_matrix, "wolf")
+	adj_matrix = update_graph_with_query(adj_matrix, "wolf", "kabir")
 	print adj_matrix
 
 
