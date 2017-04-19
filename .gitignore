@@ -7,3 +7,4 @@ pdfminer-20140328
 temp.txt
 BotCredentials.py
 query.txt
+*.pyc
