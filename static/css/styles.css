@@ -44,3 +44,16 @@ div.extension-frame {
     font-size: 16pt;
     color: black;
 }
+
+.icon-size {
+  width:100%;
+  max-width:125px;
+}
+
+.text-color {
+  color: #09163B;
+  }
+
+a:hover{
+  color:#F63C3D;
+}

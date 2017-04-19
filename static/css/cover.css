@@ -39,6 +39,7 @@ a:hover {
 }
 
 .extension-btn:hover {
+  cursor: pointer;
   background-color: #C1C2CE;
 }
 
@@ -72,7 +73,7 @@ i {
 .btn-default:hover,
 .btn-default:focus {
   color: #000;
-  text-shadow: none; 
+  text-shadow: none;
   /* Prevent inheritance from `body` */
   background-color: #fff;
   border: 1px solid #fff;
@@ -161,7 +162,7 @@ body {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: var(--grey);
+  color: var(--scarlet);
   border-bottom-color: #777;
 }
 
@@ -279,7 +280,7 @@ body {
 /*
  * Extension bar
  */
- 
+
 .ext-div {
   position:absolute;
   left:30px;
@@ -331,7 +332,7 @@ label {
 
 .market-table > div.ext-row {
   padding: 3px;
-  margin: 5px;
+  margin: 0px;
   padding-top: 7px;
   height: 130px;
   max-height: 130px;
