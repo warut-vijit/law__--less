@@ -3,6 +3,8 @@ app.controller('loginCtrl', function($scope, $http) {
     $scope.loginActive = false;
     $scope.showLoginWindow = false;
     $scope.showSignupWindow = false;
+    $scope.summaryActive = false;
+    $scope.summary = "";
 
     $scope.cases = [{name:"Jean Valjean"}, {name:"Marius Pontmercy"}, {name:"Gavroche"}, {name:"Javert"}];
 
@@ -94,5 +96,74 @@ app.controller('loginCtrl', function($scope, $http) {
             console.log("Error creating an account.");
         });
     };
+
+    // Special functions for cases
+    $scope.get_extensions = function() {
+        $http({
+            url: "/market/getextensions/",
+            method: "GET"
+        }).then(function(response){
+            //console.log("Successfully fetched "+reponse.length+" extensions.");
+            $scope.extensions = response.data;
+            console.log($scope.extensions);
+        }, function(error){
+            console.log("Error occurred while fetching extensions.");
+        });
+    }
+
+    $scope.query_summary = function($event) {
+        if($event.key=="Enter"){
+            $http({
+                url: "/cases",
+                method: "POST",
+                params: {
+                    query: document.getElementById("query").value 
+                }
+            }).then(function(response){
+                //TODO: Update hierarchy with response data
+                document.getElementById("query").value = "";
+                document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";
+                setTimeout(function(){
+                    document.getElementById("query").style.borderLeft = "3px solid var(--darkblue)";
+                    document.getElementById("main").focus();
+                }, 500);
+                console.log("Successfully queried summary.");
+            }, function(error){
+                console.log("Error occurred while querying summary.");
+            });
+        }
+    }
+
+    $scope.get_target = function() {
+        $http({
+            url: "/get-target",
+            method: "GET",
+        }).then(function(response){
+            if(response.data!=""){
+                console.log(response.data);
+                $scope.summaryActive = true;
+                $scope.summary = encryptxor("imaginecup2017", response.data);
+            }
+        }, function(error){
+            console.log("Error occurred while retrieving summary.");
+        });
+    }
+
+    $scope.download_summary = function() {
+        if($scope.summaryActive) {
+            var link = document.createElement("a");
+            link.href = 'data:text/plain;charset=utf-8,' + $scope.summary;
+            link.download = "law--less.txt";
+            link.click();
+        }
+    }
+
+    function encryptxor (key, message) {
+        var message_out = "";
+        for(var x=0; x<message.length; x++){
+            message_out += String.fromCharCode(message.charCodeAt(x) ^ key.charCodeAt(x%key.length));
+        }
+        return message_out;
+    }
 
 });
