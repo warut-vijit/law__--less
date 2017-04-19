@@ -89,51 +89,26 @@
               <h2>--less Extension Marketplace</h2>
             </div>
             <div class="nav_bar"> <!-- menu -->
-              <i class="material-icons" ng-click="previous_batch()">navigate_before</i>
-              <i class="material-icons" ng-click="next_batch()">navigate_next</i>
-              <span>{{position}} - {{end_batch()}} of {{total_extensions}}</span>
-              <i ng-click="select_all()">Select All</i>
-              <i ng-click="download()">Download</i>
-              <i ng-click="upload_ext()">Upload</i>
+              <i class="inputbtn" ng-click="upload_ext()">Upload</i>
             </div>
             <div style="width:100%;min-height:500px;max-height:800px;" class="market-table">
-              <div class="col-sm-12">
-                <div class="col-sm-1">
-                  <p>Select</p>
+              <br>
+              <hr>
+              <div ng-repeat="extension in extensions track by $index" class="col-sm-4 dropdown ext-row">
+                <div>
+                <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
                 </div>
-                <div class="col-sm-2">
-                  <a>Extension Name</a>
-                </div>
-                <div class="col-sm-7">
-                  <div class="col-sm-2 col-xs-6">Field</div>
-                  <div class="col-sm-2 col-xs-6">Rating</div>
-                  <div class="col-sm-8"></div>
-                  <p>Description</p>
-                </div>
-                <div class="col-sm-2">
-                  <p>Author</p>
-                </div>
-              </div>
-              <div ng-repeat="extension in extensions track by $index" class="col-sm-12 dropdown ext-row">
-                <div class="col-sm-1">
-                  <input type="checkbox" name="{{extension.name}}" class="checkbox">
-                </div>
-                <div class="col-sm-2">
-                  <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
-                </div>
-                <div class="col-sm-7">
-                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
-                  <div class="col-sm-2 col-xs-6">
-                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
-                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
-                    <b ng-class="{greenstyle: extension.rating_points>0, redstyle: extension.rating_points<0}">{{extension.rating_points}}</b>
-                  </div>
-                  <div class="col-sm-8"></div>
+                <div>
                   <p>{{extension.description}}</p>
-                </div>
-                <div class="col-sm-2">
+                </div></br>
+
+                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
+                  <div class="col-sm-6 col-xs-6">
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
+                    <b ng-class="{greenstyle: extension.rating_points>0, redstyle: extension.rating_points<0}">{{extension.rating_points}}</b>
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
+                  </div>
                   <p>{{extension.author}}</p>
-                </div>
               </div>
               <div ng-show="expand || upload_active" class="blanket-ext"></div>
               <div ng-show="expand" class="expand-ext">

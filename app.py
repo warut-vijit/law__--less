@@ -7,12 +7,12 @@ import logging
 import BotCredentials
 import datetime
 
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor
@@ -53,10 +53,10 @@ def upload_target():
 
     file_key = request.files.keys()[0]
     file_text = request.files[file_key] # of type FileStorage
-    cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-    sentences = tokenize_text(cleaned_string)
-    adj_matrix = create_sentence_adj_matrix(sentences)
-    strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+    #cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+    #sentences = tokenize_text(cleaned_string)
+    #adj_matrix = create_sentence_adj_matrix(sentences)
+    #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
     strings = ["Hello, friend user.", "This will have real analysis soon."]
     doctext = "\n".join(strings)
     doc_obj = Document(
