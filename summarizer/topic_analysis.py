@@ -11,7 +11,7 @@ import hashlib
 
 # memoize previous searches for runtime
 memoized = {}
-
+'''
 def get_header():
 	# read key from file
 	account_key = ''
@@ -21,7 +21,7 @@ def get_header():
 
 	headers = {'Content-Type':'application/json', 'Ocp-Apim-Subscription-Key':account_key}
 	return headers
-
+'''
 
 def get_list_of_blocks(file_name):
 	# Path to file with JSON inputs.
@@ -59,7 +59,7 @@ def get_response_for_list(list_of_bodys):
 	batch = 'westus.api.cognitive.microsoft.com'
 	batch_keyphrase_url = '/text/analytics/v2.0/keyPhrases?%s' % params
 
-	header = get_header()
+	#header = get_header()
 	#list of complied json results
 	results = []
 	print list_of_bodys

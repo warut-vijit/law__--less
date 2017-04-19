@@ -4,6 +4,7 @@ from os.path import isfile, join
 import md5
 import json
 import logging
+import subprocess as spr
 import BotCredentials
 import datetime
 
@@ -17,7 +18,8 @@ from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor
 
-import SMTPMail
+from summarizer.topic_extractor import *
+from untitled import * 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -65,10 +67,29 @@ def upload_target():
 
         file_key = request.files.keys()[0]
         file_text = request.files[file_key] # of type FileStorage
-        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
+        
+        #get document
+        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt 
+        #write stuff to files so we can read in sub processes
+        with open("cleaned.txt", "w") as f:
+            f.write(cleaned_string)
+        with open("query.txt", "w") as f:
+            print "made text"
+            f.write(query_text)
+        #call subprocess to run query and sumization stuff
+        spr_analytics = spr.Popen(['python','untitled.py'])
+        logging.warning(spr_analytics.communicate())
+        
+        #bring back the computed graph
+        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        os.remove("cleaned.txt")
+        #let us know we did shit
+        logging.warning("Successfully brought back computations from sub-process")
         sentences = tokenize_text(cleaned_string)
-        adj_matrix = create_sentence_adj_matrix(sentences)
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
+
+        #run textrank on new graph and find get the most relevant sentences
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
+        
         doctext = "\n".join(strings)
         doc_obj = Document(
             user_id=user_id,
@@ -77,19 +98,6 @@ def upload_target():
         db.session.add(doc_obj)
         db.session.commit()
         logging.warning("Successfully uploaded document for user %s" % user_name)
-
-        # send email here
-        if len(active_email) > 0:
-            send_to = [active_email[0].lower()]
-            active_email.pop(0)
-            subject = "Here is your summary!"
-            text = ""
-            for sen in strings:
-                text += sen + "\n"
-            files = [file_name]
-
-            SMTPMail.send_mail(BotCredentials.bot_username, BotCredentials.bot_password, 
-                send_to, subject, text, files)
         ###
         
         return "success"
