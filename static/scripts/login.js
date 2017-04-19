@@ -126,6 +126,7 @@ app.controller('loginCtrl', function($scope, $http) {
                     query: document.getElementById("query").value 
                 }
             }).then(function(response){
+                console.log("Received conf query submitted.");
                 document.getElementById("query").value = "";
                 document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";
                 setTimeout(function(){
@@ -164,7 +165,7 @@ app.controller('loginCtrl', function($scope, $http) {
             if(response.data!=""){
                 console.log(response.data);
                 $scope.summaryActive = true;
-                $scope.summary = encryptxor("imaginecup2017", response.data).split("\n");
+                $scope.summary = encryptxor("imaginecup2017", response.data);
             }
         }, function(error){
             console.log("Error occurred while retrieving summary.");

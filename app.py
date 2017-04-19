@@ -1,20 +1,21 @@
 from flask import Flask, request, render_template, url_for, redirect, jsonify
 from os import listdir,getcwd
 from os.path import isfile, join
+import os
 import md5
 import json
 import logging
 import subprocess as spr
 import datetime
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
-#from summarizer.topic_extractor import *
-#from untitled import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
+from summarizer.topic_extractor import *
+from untitled import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor 
@@ -71,7 +72,6 @@ def upload_target():
         spr_analytics = spr.Popen(['python','untitled.py'])
         logging.warning(spr_analytics.communicate())
         adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
-        os.remove("cleaned.txt")
         logging.warning("Successfully did some shit")
 
         sentences = tokenize_text(cleaned_string)
@@ -102,8 +102,8 @@ def get_target():
     # get user's id as doc backref
     user_name = users[addr_hash]['name']
     user_id = User.query.filter_by(name=user_name).first().id
-    logging.warning(Document.query.all())
     doc_obj = Document.query.filter_by(user_id=user_id).order_by(Document.created_at.desc()).first()
+    logging.error(Document.query.filter_by(user_id=user_id).count())
     if doc_obj is not None:
         logging.warning("Successfully retrieved summary for user %s" % user_name)
         return encryptxor("imaginecup2017", doc_obj.text)
@@ -124,21 +124,21 @@ def cases():
         query = request.args.get('query')
         queries[addr_hash] = query
         with open("query.txt", "w") as f:
-            f.write(query_text)
-        #call subprocess to run query and sumization stuff
-        #spr_analytics = spr.Popen(['python','untitled.py'])
-        #logging.warning(spr_analytics.communicate())
+            f.write(query)
+        with open("user.txt", "w") as f:
+            f.write(addr_hash)
 
-        #bring back the computed graph
-        #adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
-        #os.remove("query.txt")
-        #let us know we did shit
-        #logging.warning("Successfully brought back computations from sub-process")
-        #sentences = tokenize_text(cleaned_string)
+        spr_analytics = spr.Popen(['python','untitled.py'])
+        logging.warning(spr_analytics.communicate())
+        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        logging.warning("Successfully did some shit")
 
-        #run textrank on new graph and find get the most relevant sentences
-        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
-        strings = ['text']
+        sentences = tokenize_text(cleaned_string)
+        #print sentences
+        #stemmed_sentences = clean_document_and_return_sentances(cleaned_string)
+        #adj_matrix = create_sentence_adj_matrix(sentences)
+        #adj_matrix = update_graph_with_query(adj_matrix, query_text)
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
 
         doctext = "\n".join(strings)
         doc_obj = Document(
@@ -147,8 +147,8 @@ def cases():
         )
         db.session.add(doc_obj)
         db.session.commit()
-        logging.warning("Successfully uploaded document for user %s" % user_name)
-        return "success"
+        logging.error(Document.query.filter_by(user_id=user_id).count())
+        logging.warning("Successfully placed query for user %s" % user_name)
     response = render_template("cases.html")
     return response
 

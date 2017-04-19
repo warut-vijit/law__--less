@@ -117,7 +117,7 @@
               <div class="col-sm-7" style="overflow: hidden;max-height: 100%;" id="main">
                 <div class="main-pane row">
                   <h5 ng-hide="summaryActive" ng-click="get_target()">No case file is currently active. Click here to fetch one from the server.</h5>
-                  <h6 ng-show="summaryActive"><a ng-repeat="sentence in summary" ng-click="subquery(sentence)">{{sentence}}</a></h6>
+                  <h6 ng-show="summaryActive">{{summary}}</h6>
                 </div>
                 <div id="extensionFrame" class="row">
                   <h6 style="float:left;margin-left:30px;">Extensions</h6>
