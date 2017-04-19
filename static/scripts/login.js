@@ -126,7 +126,6 @@ app.controller('loginCtrl', function($scope, $http) {
                     query: document.getElementById("query").value 
                 }
             }).then(function(response){
-                //TODO: Update hierarchy with response data
                 document.getElementById("query").value = "";
                 document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";
                 setTimeout(function(){
@@ -140,6 +139,21 @@ app.controller('loginCtrl', function($scope, $http) {
             });
         }
     }
+
+    $scope.subquery = function(query) {
+        $http({
+            url: "/cases",
+            method: "POST",
+            params: {
+                query: query 
+            }
+        }).then(function(response){
+            $scope.get_target();
+            console.log("Successfully queried summary.");
+        }, function(error){
+            console.log("Error occurred while querying summary.");
+        });
+    }
     
 
     $scope.get_target = function() {
@@ -150,7 +164,7 @@ app.controller('loginCtrl', function($scope, $http) {
             if(response.data!=""){
                 console.log(response.data);
                 $scope.summaryActive = true;
-                $scope.summary = encryptxor("imaginecup2017", response.data);
+                $scope.summary = encryptxor("imaginecup2017", response.data).split("\n");
             }
         }, function(error){
             console.log("Error occurred while retrieving summary.");

@@ -7,14 +7,14 @@ import logging
 import subprocess as spr
 import datetime
 
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
-from summarizer.topic_extractor import *
-from untitled import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
+#from summarizer.topic_extractor import *
+#from untitled import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor 
@@ -126,18 +126,19 @@ def cases():
         with open("query.txt", "w") as f:
             f.write(query_text)
         #call subprocess to run query and sumization stuff
-        spr_analytics = spr.Popen(['python','untitled.py'])
-        logging.warning(spr_analytics.communicate())
+        #spr_analytics = spr.Popen(['python','untitled.py'])
+        #logging.warning(spr_analytics.communicate())
 
         #bring back the computed graph
-        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
-        os.remove("query.txt")
+        #adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        #os.remove("query.txt")
         #let us know we did shit
-        logging.warning("Successfully brought back computations from sub-process")
-        sentences = tokenize_text(cleaned_string)
+        #logging.warning("Successfully brought back computations from sub-process")
+        #sentences = tokenize_text(cleaned_string)
 
         #run textrank on new graph and find get the most relevant sentences
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
+        #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
+        strings = ['text']
 
         doctext = "\n".join(strings)
         doc_obj = Document(
