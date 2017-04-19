@@ -8,12 +8,12 @@ import subprocess as spr
 import BotCredentials
 import datetime
 
-from input_cleaning.pdf2txt import *
-from summarizer.unigrams import calculate_unigrams
-from summarizer.topic_analysis import *
-from summarizer.textrank import *
-from summarizer.graph_builder import *
-from summarizer.tokenizer import *
+#from input_cleaning.pdf2txt import *
+#from summarizer.unigrams import calculate_unigrams
+#from summarizer.topic_analysis import *
+#from summarizer.textrank import *
+#from summarizer.graph_builder import *
+#from summarizer.tokenizer import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor
@@ -34,17 +34,6 @@ active_email = []
 '''
 Endpoints for user interface delivery and document processing
 '''
-
-def init_extensions():
-    html_inject = ""
-    for extension in extensions:
-        if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
-            config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-            config_json = json.loads(config_text)
-            script = open(join('static', 'scripts', 'extensions', extension, extension+".js")).read()
-            html_inject += "<script>"+script+"</script>\n"
-            html_inject += "<input type='button' onclick='"+str(config_json["function"])+"()' class='btn btn-extend' value='"+str(config_json["name"])+"'></br>\n"
-    return html_inject
 
 # endpoints
 @app.route('/')
@@ -185,6 +174,27 @@ def vote():
         db.session.commit()
         return "success"
 
+@app.route('/market/uploadextension',methods=['POST'])
+def uploadextension():
+    logging.warning(request.files.keys())
+    if len(request.files.keys()) < 2:
+        logging.warning("User attempted to upload invalid extension")
+        return "fail"
+    config_json = json.loads(request.files["config"].read())
+    ext_object = Extension(
+        name= config_json["function"],
+        author=config_json["author"],
+        description=config_json["description"],
+        field=config_json["field"],
+        rating_points = 0,
+        total_ratings = 0,
+        code = request.files["code"].read()
+    )
+    db.session.add(ext_object)
+    db.session.commit()
+    logging.warning("Successfully added extension %s" % "electric_boogaloo")
+    return "success"
+
 '''
 Login system, interacts with database
 '''
@@ -231,18 +241,23 @@ db.create_all(app=app)
 extensions = [f for f in listdir(join('static', 'scripts', 'extensions')) if not isfile(join('static', 'scripts', 'extensions', f))]
 for extension in extensions:
     if "config.json" in listdir(join('static', 'scripts', 'extensions', extension)):
-        config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
-        config_json = json.loads(config_text)
-        ext_object = Extension(
-            name=extension,
-            author=config_json["author"],
-            description=config_json["description"],
-            field=config_json["field"],
-            rating_points = 0,
-            total_ratings = 0
-        )
-        db.session.add(ext_object)
-        db.session.commit()
+        try:
+            config_text = open(join('static', 'scripts', 'extensions', extension, 'config.json')).read()
+            code_text = open(join('static', 'scripts', 'extensions', extension, extension+'.js')).read()
+            config_json = json.loads(config_text)
+            ext_object = Extension(
+                name=extension,
+                author=config_json["author"],
+                description=config_json["description"],
+                field=config_json["field"],
+                rating_points = 0,
+                total_ratings = 0,
+                code = code_text
+            )
+            db.session.add(ext_object)
+            db.session.commit()
+        except IOError:
+            logging.error("Failed to upload extension file %s" % extension)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, threaded=True, debug=True) #debug=True can be added for debugging

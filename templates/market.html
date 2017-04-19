@@ -57,9 +57,28 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <a href="/">
-                <img src="{{url_for('static', filename='icons/logo.png')}}" width="40%" height="20%" alt="LL" id="logo">
-              </a>
+
+              <!-- Navigation toolbar for insite navigation -->
+              <div class="navbar navbar-default navbar-fixed-top" style="background-color:var(--darkblue);height:60px;">
+                <a class="navbar-brand" href="/">
+                  <img src="{{url_for('static', filename='icons/logo.png')}}" width="165px" height="60px" alt="LL" id="logo">
+                </a>
+              </div>
+              <nav class="navbar navbar-default navbar-fixed-top custom-navbar-top" style="top: 50px;max-height:53px;height:53px">
+                <div class="container">
+                  <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav custom-nav">
+                      <li><a href="home"><i class="material-icons">home</i> Home</a></li>
+                      <li><a href="cases"><i class="material-icons">pageview</i> Cases</a></li>
+                      <li><a href="features"><i class="material-icons">loupe</i> Features</a></li>
+                      <li><a href="profile"><i class="material-icons">account_box</i> User Profile</a></li>
+                      <li><a href="aboutus"><i class="material-icons">group</i> About Us</a></li>
+                      <li><a href="sponsors"><i class="material-icons">group_add</i> Sponsors</a></li>
+                      <li class="market"><a href="market"><i class="material-icons">card_travel</i> Market</a></li>
+                    </ul>
+                  </div>
+              </nav>
+
             </div>
           </div>
 
@@ -70,51 +89,26 @@
               <h2>--less Extension Marketplace</h2>
             </div>
             <div class="nav_bar"> <!-- menu -->
-              <i class="material-icons" ng-click="previous_batch()">navigate_before</i>
-              <i class="material-icons" ng-click="next_batch()">navigate_next</i>
-              <span>{{position}} - {{end_batch()}} of {{total_extensions}}</span>
-              <i ng-click="select_all()">Select All</i>
-              <i ng-click="download()">Download</i>
-              <i ng-click="upload_ext()">Upload</i>
+              <i class="inputbtn" ng-click="upload_ext()">Upload</i>
             </div>
             <div style="width:100%;min-height:500px;max-height:800px;" class="market-table">
-              <div class="col-sm-12">
-                <div class="col-sm-1">
-                  <p>Select</p>
+              <br>
+              <hr>
+              <div ng-repeat="extension in extensions track by $index" class="col-sm-4 dropdown ext-row">
+                <div>
+                <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
                 </div>
-                <div class="col-sm-2">
-                  <a>Extension Name</a>
-                </div>
-                <div class="col-sm-7">
-                  <div class="col-sm-2 col-xs-6">Field</div>
-                  <div class="col-sm-2 col-xs-6">Rating</div>
-                  <div class="col-sm-8"></div>
-                  <p>Description</p>
-                </div>
-                <div class="col-sm-2">
-                  <p>Author</p>
-                </div>
-              </div>
-              <div ng-repeat="extension in extensions track by $index" class="col-sm-12 dropdown ext-row">
-                <div class="col-sm-1">
-                  <input type="checkbox" name="{{extension.name}}" class="checkbox">
-                </div>
-                <div class="col-sm-2">
-                  <a class="expand-link" ng-click="expand_ext(extension)"><b>{{extension.name}}</b></a>
-                </div>
-                <div class="col-sm-7">
-                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
-                  <div class="col-sm-2 col-xs-6">
-                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
-                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
-                    <b ng-class="{greenstyle: extension.rating_points>0, redstyle: extension.rating_points<0}">{{extension.rating_points}}</b>
-                  </div>
-                  <div class="col-sm-8"></div>
+                <div>
                   <p>{{extension.description}}</p>
-                </div>
-                <div class="col-sm-2">
+                </div></br>
+
+                  <div class="col-sm-2 col-xs-6">{{extension.field}}</div>
+                  <div class="col-sm-6 col-xs-6">
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,1)">thumb_up</i>
+                    <b ng-class="{greenstyle: extension.rating_points>0, redstyle: extension.rating_points<0}">{{extension.rating_points}}</b>
+                    <i class="material-icons" style="font-size:18px" ng-click="vote(extension,-1)">thumb_down</i>
+                  </div>
                   <p>{{extension.author}}</p>
-                </div>
               </div>
               <div ng-show="expand || upload_active" class="blanket-ext"></div>
               <div ng-show="expand" class="expand-ext">
@@ -125,14 +119,21 @@
               <div ng-show="upload_active" class="expand-ext">
                 <i class="material-icons close-ext" ng-click="close_ext()">close</i>
                 <h4>Upload Extension</h4>
-                <form id="dropzone" action="/upload-ext" class="dropzone black-text"></form>
-                </br></br>
-                <center>
-                  <table>
-                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>config.json</td></tr>
-                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>JS script</td></tr>
-                  </table>
-                </center>
+                <form enctype="multipart/form-data" action="/market/uploadextension" method="post">
+                  </br></br>
+                  <center>
+                  <div class="inputbtn">
+                    <input type="file" name="config" id="config" class="inputfile">
+                    <label for="config"><i class="material-icons" style="padding-right: 30px">file_upload</i>Upload config file</label></br>
+                  </div>
+                  <div class="inputbtn">
+                    <input type="file" name="code" id="code" class="inputfile">
+                    <label for="code"><i class="material-icons" style="padding-right: 30px">file_upload</i>Upload code file</label></br>
+                  </div>  
+                  </center>
+                  </br></br>
+                  <input type="submit" class="btn btn-large" value="Submit!">
+                </form>
               </div>
             </div>
           </div>
