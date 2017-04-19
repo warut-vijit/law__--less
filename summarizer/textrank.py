@@ -1,5 +1,8 @@
 import numpy as np
 import scipy.linalg as spl
+from sklearn.preprocessing import normalize
+from topic_extractor import get_scores_for_doc
+
 
 '''
 len_adj_matrix: The size of the adj matrix
@@ -7,7 +10,7 @@ returns       : A nunpy array filled with 1/(size of adj matrix)
 '''
 def build_probability_matrix(len_adj_matrix):
     p_matrix = np.zeros(( len_adj_matrix , len_adj_matrix ))
-    probability = 1 / float(len_adj_matrix)
+    probability = 1 /(1 + float(len_adj_matrix))
     p_matrix.fill(probability)
     return p_matrix
 
@@ -20,8 +23,8 @@ returns: An array where each index of the array has a score and that index is
 def get_sentence_scores(s_array, vecs):
     scores = []
     for s in range( len( s_array ) ):
-        print s
-        print abs(vecs[s][0])
+        #print s
+        #print abs(vecs[s][0])
         scores.append(abs(vecs[s][0]))
     return scores
 
@@ -42,13 +45,15 @@ def textrank(adj_matrix, d, epsilon=0.00001, maxIterations=1000):
     tr_matrix = d * adj_matrix + (1 - d) * prob_matrix
 
     #old_state = np.copy(tr_matrix)
+    print tr_matrix.shape
 
-    power_matrix = np.empty_like(tr_matrix)
-    power_matrix.fill(.25)
+    #tr_matrix = normalize(tr_matrix, axis=0, norm='l1')
+
+    #print tr_matrix
 
     for iteration in range(maxIterations):
         old_state = np.copy(tr_matrix)
-        tr_matrix = tr_matrix.dot(power_matrix)
+        tr_matrix = tr_matrix.dot(old_state)
         delta = tr_matrix - old_state
         if np.sum(np.abs(tr_matrix - old_state)) < epsilon:
             break
@@ -56,15 +61,17 @@ def textrank(adj_matrix, d, epsilon=0.00001, maxIterations=1000):
     vectors = []
     for vec in tr_matrix.T:
         vectors.append(vec)
+    print vectors
     return vectors
     #using scipy left eigenvector to grab scores
-    #values, vectors = spl.eig(tr_matrix, left=True, right=False)
+    #values, vectorss = spl.eig(tr_matrix, left=True, right=False)
+    #return vectorss
 
 '''
 s_array: A list of sentences where each sentence is a list of terms
 scores : sentence scores
 n      : Number of sentences to return
-returns: n best sentences
+returns: n best sentencese
 '''
 def get_n_best_sentences(s_array, scores, n):
     #just in case
@@ -74,7 +81,8 @@ def get_n_best_sentences(s_array, scores, n):
     score_sentence = [(scores[i] , s_array[i]) for i in range(len(s_array))]
     #sort these tuples
     sorted_score_sentence_index = sorted(range(len(score_sentence)), key=lambda x: score_sentence[x])[-n:]
-    sorted_score_sentence_index.sort()    #grab the n best
+    sorted_score_sentence_index.sort()
+    #grab the n best
     best_n = [score_sentence[sorted_score_sentence_index[i]][1] for i in range(n)]
     return best_n
 ###########################This is effectively the main#########################
@@ -85,10 +93,12 @@ s_array   : A list of sentences where each sentence is a list of terms
 returns   : An array where each index of the array has a score and that index is
 the same as the order in which the sentence was passed in
 '''
-def run_textrank_and_return_n_sentences(adj_matrix, s_array, d, n):
+def run_textrank_and_return_n_sentences(adj_matrix, s_array, d, n, query):
     eigen_vectors =  textrank(adj_matrix, d)
-    scores = get_sentence_scores(s_array, eigen_vectors)
-    best_sentences = get_n_best_sentences( s_array, scores, n)
+    textrank_score = get_sentence_scores(s_array, eigen_vectors)
+    #BM25_score = get_scores_for_doc(query)
+    scores = textrank_score # + BM25_score
+    best_sentences = get_n_best_sentences(s_array, scores, n)
     return best_sentences
 
 ###########################Silly Test###########################################

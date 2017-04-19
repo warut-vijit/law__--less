@@ -101,9 +101,10 @@
               <div class="col-sm-3 extension-pane" ng-init="get_extensions()">
                 <div style="border-bottom: var(--navyblue) 2px solid" class="row">
                   <h6 style="float:left">Upload New Case File</h6></br>
-                  <div ng-repeat="extension in extensions" class="extension-btn">
+                  <div ng-click="load(extension)" ng-repeat="extension in extensions" class="extension-btn">
                     <h5><b>{{extension.name}}</b> {{extension.author}}<i class="material-icons">keyboard_arrow_right</i></h5></br>
                     <p style="font-size: 12px">{{extension.description}}</p>
+                    
                   </div>
                 </div>
                 <div class="row" style="padding-top: 30px">
@@ -118,7 +119,7 @@
                   <h5 ng-hide="summaryActive" ng-click="get_target()">No case file is currently active. Click here to fetch one from the server.</h5>
                   <h6 ng-show="summaryActive">{{summary}}</h6>
                 </div>
-                <div class="row">
+                <div id="extensionFrame" class="row">
                   <h6 style="float:left;margin-left:30px;">Extensions</h6>
                 </div>
               </div>

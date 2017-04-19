@@ -4,6 +4,7 @@ from os.path import isfile, join
 import md5
 import json
 import logging
+import subprocess as spr
 import BotCredentials
 import datetime
 
@@ -17,7 +18,8 @@ from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
 from utils import encryptxor
 
-import SMTPMail
+from summarizer.topic_extractor import *
+from untitled import * 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -41,47 +43,53 @@ def home():
 
 @app.route('/upload-target',methods=['POST'])
 def upload_target():
-    addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
-    if addr_hash not in users:  # user is not authenticated
-        logging.warning("Rejected unauthenticated upload attempt.")
-        return "fail"
-    # get user's id as doc backref
-    user_name = users[addr_hash]['name']
-    user_id = User.query.filter_by(name=user_name).first().id
-    # query text entered in search box, if any
-    query_text = queries[addr_hash] if addr_hash in queries else ""
+    if request.method == "POST" :
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        if addr_hash not in users:  # user is not authenticated
+            logging.warning("Rejected unauthenticated upload attempt.")
+            return "fail"
+        # get user's id as doc backref
+        user_name = users[addr_hash]['name']
+        user_id = User.query.filter_by(name=user_name).first().id
+        # query text entered in search box, if any
+        query_text = queries[addr_hash] if addr_hash in queries else ""
 
-    file_key = request.files.keys()[0]
-    file_text = request.files[file_key] # of type FileStorage
-    #cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt
-    #sentences = tokenize_text(cleaned_string)
-    #adj_matrix = create_sentence_adj_matrix(sentences)
-    #strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5)
-    strings = ["Hello, friend user.", "This will have real analysis soon."]
-    doctext = "\n".join(strings)
-    doc_obj = Document(
-        user_id=user_id,
-        text=doctext
-    )
-    db.session.add(doc_obj)
-    db.session.commit()
-    logging.warning("Successfully uploaded document for user %s" % user_name)
+        file_key = request.files.keys()[0]
+        file_text = request.files[file_key] # of type FileStorage
+        
+        #get document
+        cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt 
+        #write stuff to files so we can read in sub processes
+        with open("cleaned.txt", "w") as f:
+            f.write(cleaned_string)
+        with open("query.txt", "w") as f:
+            print "made text"
+            f.write(query_text)
+        #call subprocess to run query and sumization stuff
+        spr_analytics = spr.Popen(['python','untitled.py'])
+        logging.warning(spr_analytics.communicate())
+        
+        #bring back the computed graph
+        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        os.remove("cleaned.txt")
+        #let us know we did shit
+        logging.warning("Successfully brought back computations from sub-process")
+        sentences = tokenize_text(cleaned_string)
 
-    # send email here
-    if len(active_email) > 0:
-        send_to = [active_email[0].lower()]
-        active_email.pop(0)
-        subject = "Here is your summary!"
-        text = ""
-        for sen in strings:
-            text += sen + "\n"
-        files = [file_name]
-
-        SMTPMail.send_mail(BotCredentials.bot_username, BotCredentials.bot_password, 
-            send_to, subject, text, files)
-    ###
-    
-    return "success"
+        #run textrank on new graph and find get the most relevant sentences
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
+        
+        doctext = "\n".join(strings)
+        doc_obj = Document(
+            user_id=user_id,
+            text=doctext
+        )
+        db.session.add(doc_obj)
+        db.session.commit()
+        logging.warning("Successfully uploaded document for user %s" % user_name)
+        ###
+        
+        return "success"
 
 @app.route('/get-target',methods=['GET'])
 def get_target():
