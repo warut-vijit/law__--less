@@ -69,14 +69,6 @@ def stem(tokenized_list):
 		stemmed.append(w_l)
 	return stemmed
 
-<<<<<<< HEAD
-def remove_stopwords(sentances):
-	cleaned_sentances = []
-	for sentance in sentances:
-		stop = set(stopwords.words('english'))
-		cleaned_sentances.append([x for x in sentance.lower().split() if x not in stop])
-	return cleaned_sentances
-=======
 """
 	doc          :    the string to be tokenized stemmed and cleaned
 	languange    :    the language the document is in
@@ -85,7 +77,6 @@ def remove_stopwords(sentances):
 def clean_document_and_return_sentances(doc, language='english'):
 	sentances = tokenize_text(doc, language)
 	return stem(remove_stopwords_and_clean(sentances))
->>>>>>> master
 
 if __name__ == '__main__':
 	#nltk.download()
