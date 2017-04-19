@@ -39,6 +39,7 @@ a:hover {
 }
 
 .extension-btn:hover {
+  cursor: pointer;
   background-color: #C1C2CE;
 }
 
@@ -331,7 +332,7 @@ label {
 
 .market-table > div.ext-row {
   padding: 3px;
-  margin: 5px;
+  margin: 0px;
   padding-top: 7px;
   height: 130px;
   max-height: 130px;

@@ -133,12 +133,14 @@ app.controller('loginCtrl', function($scope, $http) {
                     document.getElementById("query").style.borderLeft = "3px solid var(--darkblue)";
                     document.getElementById("main").focus();
                 }, 500);
+                $scope.get_target();
                 console.log("Successfully queried summary.");
             }, function(error){
                 console.log("Error occurred while querying summary.");
             });
         }
     }
+    
 
     $scope.get_target = function() {
         $http({

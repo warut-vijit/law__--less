@@ -8,18 +8,17 @@ import subprocess as spr
 import BotCredentials
 import datetime
 
-#from input_cleaning.pdf2txt import *
-#from summarizer.unigrams import calculate_unigrams
-#from summarizer.topic_analysis import *
-#from summarizer.textrank import *
-#from summarizer.graph_builder import *
-#from summarizer.tokenizer import *
+from input_cleaning.pdf2txt import *
+from summarizer.unigrams import calculate_unigrams
+from summarizer.topic_analysis import *
+from summarizer.textrank import *
+from summarizer.graph_builder import *
+from summarizer.tokenizer import *
+from summarizer.topic_extractor import *
+from untitled import *
 from sqlalchemy.sql.expression import func
 from models import db, Extension, User, Document
-from utils import encryptxor
-
-from summarizer.topic_extractor import *
-from untitled import * 
+from utils import encryptxor 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -59,37 +58,16 @@ def upload_target():
         
         #get document
         cleaned_string = cleaner( pdf2text(file_text) ) # convert pdf to txt 
+        cleaned_string = "cleaned string"
         #write stuff to files so we can read in sub processes
         with open("cleaned.txt", "w") as f:
             f.write(cleaned_string)
         with open("query.txt", "w") as f:
-            print "made text"
             f.write(query_text)
-        #call subprocess to run query and sumization stuff
-        spr_analytics = spr.Popen(['python','untitled.py'])
-        logging.warning(spr_analytics.communicate())
-        
-        #bring back the computed graph
-        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
-        os.remove("cleaned.txt")
-        #let us know we did shit
-        logging.warning("Successfully brought back computations from sub-process")
-        sentences = tokenize_text(cleaned_string)
 
-        #run textrank on new graph and find get the most relevant sentences
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
-        
-        doctext = "\n".join(strings)
-        doc_obj = Document(
-            user_id=user_id,
-            text=doctext
-        )
-        db.session.add(doc_obj)
-        db.session.commit()
-        logging.warning("Successfully uploaded document for user %s" % user_name)
-        ###
-        
         return "success"
+    else:
+        return "wrong method"
 
 @app.route('/get-target',methods=['GET'])
 def get_target():
@@ -109,15 +87,42 @@ def get_target():
 
 @app.route('/cases',methods=['GET', 'POST']) # post method for handling queries
 def cases():
-    if request.method == 'POST':
-        if "query" in request.args:
-            query = request.args.get('query')
-            queries[md5.new(request.headers["User-Agent"]).hexdigest()] = query
-            return "success"
-        elif "email" in request.args:
-            email = request.args.get('email')
-            active_email.append(email)
-            return "success"
+    if request.method == 'POST' and "query" in request.args:
+
+        addr_hash = md5.new(request.headers["User-Agent"]).hexdigest()
+        if addr_hash not in users:
+            logging.warning("Rejected unauthorized summary request.")
+            return ""
+        user_name = users[addr_hash]['name']
+        user_id = User.query.filter_by(name=user_name).first().id
+
+        query = request.args.get('query')
+        queries[addr_hash] = query
+        with open("query.txt", "w") as f:
+            f.write(query_text)
+        #call subprocess to run query and sumization stuff
+        spr_analytics = spr.Popen(['python','untitled.py'])
+        logging.warning(spr_analytics.communicate())
+
+        #bring back the computed graph
+        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        os.remove("query.txt")
+        #let us know we did shit
+        logging.warning("Successfully brought back computations from sub-process")
+        sentences = tokenize_text(cleaned_string)
+
+        #run textrank on new graph and find get the most relevant sentences
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
+
+        doctext = "\n".join(strings)
+        doc_obj = Document(
+            user_id=user_id,
+            text=doctext
+        )
+        db.session.add(doc_obj)
+        db.session.commit()
+        logging.warning("Successfully uploaded document for user %s" % user_name)
+        return "success"
     response = render_template("cases.html")
     return response
 
@@ -179,10 +184,10 @@ def uploadextension():
     logging.warning(request.files.keys())
     if len(request.files.keys()) < 2:
         logging.warning("User attempted to upload invalid extension")
-        return "fail"
+        return redirect("/market")
     config_json = json.loads(request.files["config"].read())
     ext_object = Extension(
-        name= config_json["function"],
+        name= config_json["name"],
         author=config_json["author"],
         description=config_json["description"],
         field=config_json["field"],
@@ -192,8 +197,8 @@ def uploadextension():
     )
     db.session.add(ext_object)
     db.session.commit()
-    logging.warning("Successfully added extension %s" % "electric_boogaloo")
-    return "success"
+    logging.warning("Successfully added extension %s" % config_json["name"])
+    return redirect("/market")
 
 '''
 Login system, interacts with database
@@ -246,7 +251,7 @@ for extension in extensions:
             code_text = open(join('static', 'scripts', 'extensions', extension, extension+'.js')).read()
             config_json = json.loads(config_text)
             ext_object = Extension(
-                name=extension,
+                name=config_json["name"],
                 author=config_json["author"],
                 description=config_json["description"],
                 field=config_json["field"],
