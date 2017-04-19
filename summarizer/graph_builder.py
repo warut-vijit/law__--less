@@ -1,11 +1,11 @@
+from __future__ import division
 import numpy as np
-
 '''
 num_sentences_in_doc: An integer representing the number of sentences in the doc
 returns             : A zero initialized numpy matrix
 '''
 def initialize_adj_matrix(num_sentences_in_doc):
-    return np.zeros( ( num_sentences_in_doc , num_sentences_in_doc ) , dtype=np.int)
+    return np.zeros( ( num_sentences_in_doc , num_sentences_in_doc ) , dtype=np.float32)
 
 '''
 s_array_len     : Number of sentences in the doc
@@ -13,7 +13,7 @@ unique_terms_len: Number of unique terms in the doc
 returns         : A zero initialized numpy matrix
 '''
 def initialize_doc_matrix(s_array_len, unique_terms_len):
-    return np.zeros( ( s_array_len , unique_terms_len ) , dtype=np.int)
+    return np.zeros( ( s_array_len , unique_terms_len ) , dtype=np.float32)
 
 '''
 doc_s_matrix: A list of every sentence and an accompanying bitvector for the words in it
@@ -24,6 +24,12 @@ def build_adj_matrix(adj_matrix, doc_s_matrix):
     for s1_index in range( len( doc_s_matrix ) ):
         for s2_index in range( len( doc_s_matrix ) ):
             adj_matrix[s1_index][s2_index] = compute_similarity( doc_s_matrix[s1_index], doc_s_matrix[s2_index])
+        this_col = float(sum(adj_matrix[s1_index][:]))
+        #print this_col
+        for s2_index in range( len( doc_s_matrix ) ):
+            num = float(adj_matrix[s1_index][s2_index]) / this_col
+            adj_matrix[s1_index][s2_index] = num 
+            #print adj_matrix[s1_index][s2_index] 
     return adj_matrix
 
 '''
@@ -49,7 +55,7 @@ def compute_similarity(sentence1, sentence2):
     for word_index in range( len( sentence1 ) ):
         if sentence1[ word_index ] and sentence2[ word_index ]:
             similarity_score +=1
-    return similarity_score
+    return float(similarity_score)
 
 '''
 adj_matrix  : A matrix where each sentence is adjacent by some weight
@@ -76,8 +82,14 @@ def create_sentence_adj_matrix(s_array):
     adj_matrix = build_adj_matrix(adj_matrix, doc_s_matrix)
     return adj_matrix
 
+def create_sentence_graph(s_array):
+    unique_terms = find_unique_terms(s_array)
+    doc_s_matrix = initialize_doc_matrix( len(s_array), len(unique_terms))
+    doc_s_matrix = build_doc_matrix(s_array, doc_s_matrix, unique_terms)
+    return doc_s_matrix
 
 ###########################Silly Test###########################################
+
 # test = [['The', 'fox','dog','it',],
 #         ['foot', 'grazed', 'the', 'sleeping'],
 #         ['The', 'fox','waking', 'it']]
@@ -85,7 +97,7 @@ def create_sentence_adj_matrix(s_array):
 # print unique_test
 
 # test_doc_m = initialize_doc_matrix(len(test),len(unique_test))
-# print test_doc_m
+# #print test_doc_m
 
 # test_doc_m = build_doc_matrix(test,test_doc_m,unique_test)
 # print test_doc_m
