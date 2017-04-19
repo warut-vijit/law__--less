@@ -5,7 +5,6 @@ import md5
 import json
 import logging
 import subprocess as spr
-import BotCredentials
 import datetime
 
 #from input_cleaning.pdf2txt import *

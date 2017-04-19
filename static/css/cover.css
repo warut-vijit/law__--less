@@ -72,7 +72,7 @@ i {
 .btn-default:hover,
 .btn-default:focus {
   color: #000;
-  text-shadow: none; 
+  text-shadow: none;
   /* Prevent inheritance from `body` */
   background-color: #fff;
   border: 1px solid #fff;
@@ -161,7 +161,7 @@ body {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: var(--grey);
+  color: var(--scarlet);
   border-bottom-color: #777;
 }
 
@@ -279,7 +279,7 @@ body {
 /*
  * Extension bar
  */
- 
+
 .ext-div {
   position:absolute;
   left:30px;

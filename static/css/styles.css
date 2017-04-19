@@ -49,3 +49,11 @@ div.extension-frame {
   width:100%;
   max-width:125px;
 }
+
+.text-color {
+  color: #09163B;
+  }
+
+a:hover{
+  color:#F63C3D;
+}
