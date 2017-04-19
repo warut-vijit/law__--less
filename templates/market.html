@@ -144,14 +144,21 @@
               <div ng-show="upload_active" class="expand-ext">
                 <i class="material-icons close-ext" ng-click="close_ext()">close</i>
                 <h4>Upload Extension</h4>
-                <form id="dropzone" action="/upload-ext" class="dropzone black-text"></form>
-                </br></br>
-                <center>
-                  <table>
-                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>config.json</td></tr>
-                  <tr><td><i class="material-icons" style="padding-right: 60px">close</i></td><td>JS script</td></tr>
-                  </table>
-                </center>
+                <form enctype="multipart/form-data" action="/market/uploadextension" method="post">
+                  </br></br>
+                  <center>
+                  <div class="inputbtn">
+                    <input type="file" name="config" id="config" class="inputfile">
+                    <label for="config"><i class="material-icons" style="padding-right: 30px">file_upload</i>Upload config file</label></br>
+                  </div>
+                  <div class="inputbtn">
+                    <input type="file" name="code" id="code" class="inputfile">
+                    <label for="code"><i class="material-icons" style="padding-right: 30px">file_upload</i>Upload code file</label></br>
+                  </div>  
+                  </center>
+                  </br></br>
+                  <input type="submit" class="btn btn-large" value="Submit!">
+                </form>
               </div>
             </div>
           </div>

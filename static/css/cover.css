@@ -294,6 +294,28 @@ body {
  * Extensions table
  */
 
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputbtn {
+  margin: 10px;
+  width: 200px;
+  background-color: var(--scarlet);
+  color: var(--iceberg);
+  padding: 10px;
+}
+
+label {
+  cursor: pointer;
+  float: left;
+}
+
 .market-table > div:first-child {
   border-bottom: 3px solid white;
 }
