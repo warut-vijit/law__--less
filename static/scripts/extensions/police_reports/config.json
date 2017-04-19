@@ -1,7 +1,6 @@
 {
     "name": "Police Reports",
     "version": "1.0.3",
-    "function": "police_reports",
     "author": "warut-vijit",
     "description": "Gets data from a UK police department.",
     "field": "Law"

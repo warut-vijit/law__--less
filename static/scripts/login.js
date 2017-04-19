@@ -98,6 +98,12 @@ app.controller('loginCtrl', function($scope, $http) {
     };
 
     // Special functions for cases
+    $scope.load = function(ext) {
+        document.getElementById("extensionFrame").innerHTML = "";
+        eval(ext.code);
+        console.log("Loaded extension");
+    }
+
     $scope.get_extensions = function() {
         $http({
             url: "/market/getextensions/",
