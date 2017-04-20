@@ -165,7 +165,7 @@ app.controller('loginCtrl', function($scope, $http) {
             if(response.data!=""){
                 console.log(response.data);
                 $scope.summaryActive = true;
-                $scope.summary = encryptxor("imaginecup2017", response.data);
+                $scope.summary = encryptxor("imaginecup2017", response.data).split(".");
             }
         }, function(error){
             console.log("Error occurred while retrieving summary.");

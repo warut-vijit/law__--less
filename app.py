@@ -131,7 +131,6 @@ def cases():
         spr_analytics = spr.Popen(['python','untitled.py'])
         logging.warning(spr_analytics.communicate())
         adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
-        logging.warning("Successfully did some shit")
 
         sentences = tokenize_text(cleaned_string)
         #print sentences
