@@ -47,7 +47,9 @@ div.extension-frame {
 
 .icon-size {
   width:100%;
-  max-width:125px;
+  max-width:100px;
+  height:100%;
+  max-height:100px;
 }
 
 .text-color {
