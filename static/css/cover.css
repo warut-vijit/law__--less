@@ -55,6 +55,11 @@ i {
   vertical-align: middle !important;
 }
 
+.summary-sentence:hover {
+  background-color: var(--iceberg);
+  cursor: pointer;
+}
+
 .cases-content {
   border: var(--navyblue) 1px solid;
   margin: 5px;

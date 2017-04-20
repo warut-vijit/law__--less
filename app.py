@@ -133,6 +133,7 @@ def cases():
         adj_matrix = np.array(json.loads(open('adj_matrix.txt').read()))
         logging.warning("Successfully did some shit")
 
+
         sentences = tokenize_text(open("cleaned.txt").read())
         #print sentences
         #stemmed_sentences = clean_document_and_return_sentances(cleaned_string)

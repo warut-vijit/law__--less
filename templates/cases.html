@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
-    
+
     <!-- CDN for AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
@@ -104,7 +104,7 @@
                   <div ng-click="load(extension)" ng-repeat="extension in extensions" class="extension-btn">
                     <h5><b>{{extension.name}}</b> {{extension.author}}<i class="material-icons">keyboard_arrow_right</i></h5></br>
                     <p style="font-size: 12px">{{extension.description}}</p>
-                    
+
                   </div>
                 </div>
                 <div class="row" style="padding-top: 30px">
@@ -117,7 +117,9 @@
               <div class="col-sm-7" style="overflow: hidden;max-height: 100%;" id="main">
                 <div class="main-pane row">
                   <h5 ng-hide="summaryActive" ng-click="get_target()">No case file is currently active. Click here to fetch one from the server.</h5>
-                  <h6 ng-show="summaryActive">{{summary}}</h6>
+                  <h6 ng-show="summaryActive">
+                    <span ng-repeat="sentence in summary" class="summary-sentence" ng-click="subquery(sentence)">{{sentence}}</span>
+                  </h6>
                 </div>
                 <div id="extensionFrame" class="row">
                   <h6 style="float:left;margin-left:30px;">Extensions</h6>
@@ -204,14 +206,14 @@
           <!-- Footer with links to author GitHubs and other source information -->
           <div class="mastfoot">
             <div class="inner" style="padding-bottom:2.5%">
-              <p>legal advice web services |
-                <a href="https://devpost.com/software/less-is-more-fdztjn">law --less</a> | by
-                <a href="https://github.com/warut-vijit">Warut</a>,
-                <a href="https://github.com/cabosanlucas">Kabir</a>,
-                <a href="https://github.com/NAN1248">Nathan</a>,
-                <a href="https://github.com/Chiranth7954">Chiranth</a>,
-                <a href="https://github.com/nriaziat">Naveed</a>,
-                <a href="https://github.com/owenli10">Owen</a></p>
+              <p class="text-color">legal advice web services |
+                <a class="text-color" href="https://devpost.com/software/less-is-more-fdztjn">law --less</a> | by
+                <a class="text-color" href="https://github.com/warut-vijit">Warut</a>,
+                <a class="text-color" href="https://github.com/cabosanlucas">Kabir</a>,
+                <a class="text-color" href="https://github.com/NAN1248">Nathan</a>,
+                <a class="text-color" href="https://github.com/Chiranth7954">Chiranth</a>,
+                <a class="text-color" href="https://github.com/nriaziat">Naveed</a>,
+                <a class="text-color" href="https://github.com/owenli10">Owen</a></p>
             </div>
           </div>
       </div>
