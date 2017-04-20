@@ -126,7 +126,7 @@ app.controller('loginCtrl', function($scope, $http) {
                     query: document.getElementById("query").value 
                 }
             }).then(function(response){
-                //TODO: Update hierarchy with response data
+                console.log("Received conf query submitted.");
                 document.getElementById("query").value = "";
                 document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";
                 setTimeout(function(){
@@ -139,6 +139,21 @@ app.controller('loginCtrl', function($scope, $http) {
                 console.log("Error occurred while querying summary.");
             });
         }
+    }
+
+    $scope.subquery = function(query) {
+        $http({
+            url: "/cases",
+            method: "POST",
+            params: {
+                query: query 
+            }
+        }).then(function(response){
+            $scope.get_target();
+            console.log("Successfully queried summary.");
+        }, function(error){
+            console.log("Error occurred while querying summary.");
+        });
     }
     
 
