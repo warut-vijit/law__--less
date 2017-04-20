@@ -126,6 +126,7 @@ app.controller('loginCtrl', function($scope, $http) {
                     query: document.getElementById("query").value 
                 }
             }).then(function(response){
+                location.reload(true);
                 console.log("Received conf query submitted.");
                 document.getElementById("query").value = "";
                 document.getElementById("query").style.borderLeft = "3px solid var(--scarlet)";

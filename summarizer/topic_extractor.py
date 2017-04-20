@@ -12,6 +12,7 @@ from sklearn.preprocessing import normalize
 
 def get_scores_for_doc(q, user):
 	#converts sentances written to the doc.dat file by the tokenizer to an inverted index
+	print "get_scores_for_doc"
 	if 'summarizer/' in listdir(os.getcwd()):
 		print "hi"
 		os.chdir('summarizer/')

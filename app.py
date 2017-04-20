@@ -71,7 +71,7 @@ def upload_target():
 
         spr_analytics = spr.Popen(['python','untitled.py'])
         logging.warning(spr_analytics.communicate())
-        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        adj_matrix = np.array(json.loads(open('adj_matrix.txt').read()))
         logging.warning("Successfully did some shit")
 
         sentences = tokenize_text(cleaned_string)
@@ -130,16 +130,16 @@ def cases():
 
         spr_analytics = spr.Popen(['python','untitled.py'])
         logging.warning(spr_analytics.communicate())
-        adj_matrix = np.array(json.loads(open('cleaned.txt').read()))
+        adj_matrix = np.array(json.loads(open('adj_matrix.txt').read()))
         logging.warning("Successfully did some shit")
 
-        sentences = tokenize_text(cleaned_string)
+        sentences = tokenize_text(open("cleaned.txt").read())
         #print sentences
         #stemmed_sentences = clean_document_and_return_sentances(cleaned_string)
         #adj_matrix = create_sentence_adj_matrix(sentences)
         #adj_matrix = update_graph_with_query(adj_matrix, query_text)
-        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query_text)
-
+        strings = run_textrank_and_return_n_sentences(adj_matrix, sentences, .85, 5, query = query)
+        #strings = ["text"]
         doctext = "\n".join(strings)
         doc_obj = Document(
             user_id=user_id,
@@ -149,7 +149,9 @@ def cases():
         db.session.commit()
         logging.error(Document.query.filter_by(user_id=user_id).count())
         logging.warning("Successfully placed query for user %s" % user_name)
+        return "success"
     response = render_template("cases.html")
+    logging.error("jk not an error")
     return response
 
 @app.route('/features',methods=['GET'])

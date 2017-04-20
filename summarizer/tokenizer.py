@@ -98,8 +98,8 @@ def write_sentances(cleaned_sentances):
 
 	if('summarizer' in os.listdir(os.getcwd())):
 		print "hi"
-		os.chdir('summarizer')
-
+		os.chdir('summarizer/')
+	print "changed directory from tokenizer.py"
 	with open("doc/doc.dat", 'w') as file:
 		file.write(	"\n".join(cleaned_sentances))
 	with open("doc/doc.tab", "w") as f:
